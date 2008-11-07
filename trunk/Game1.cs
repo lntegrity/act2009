@@ -95,6 +95,7 @@ namespace ACT2009
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             menu.MenuInit(Content);
+            play.PlayInit(Content);
 
             // 3D Assets
             genCart = Content.Load<Model>("Models\\Generic Cart");
@@ -139,10 +140,7 @@ namespace ACT2009
             // Menu Update
             gameMode = menu.MenuUpdate(gameTime, gameMode);
 
-            // Play Game Update
-            play.PlayUpdate(gameTime, gameMode);
-
-            // Move Cart
+            // Play Game, Move Cart
             if (gameMode == GameMode.Play)
             {
                 if (keyboard.IsKeyDown(Keys.Down))
@@ -188,8 +186,7 @@ namespace ACT2009
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
 
-        // 3D Assists
-        
+        // 3D Assists        
         float modelRotate = 0.0f;
         Vector3 cameraPos = new Vector3(0.0f, 0.0f, 500.0f);
         Model genCart;
@@ -201,9 +198,11 @@ namespace ACT2009
             // Call Menu and Game state Draw methods here
             menu.MenuDraw(spriteBatch, gameMode);
 
-            // Draw Golf Cart in GameMode.Play
+            // Draw Golf Cart and HUD in GameMode.Play
             if (gameMode == GameMode.Play)
             {
+                play.PlayDraw(spriteBatch);
+
                 Matrix[] transforms = new Matrix[genCart.Bones.Count];
                 genCart.CopyAbsoluteBoneTransformsTo(transforms);
                 foreach (ModelMesh mesh in genCart.Meshes)

@@ -27,12 +27,14 @@ namespace ACT2009
         #region Variables
 
         // Textures
-        Texture2D hudNeedle, hudMeter, hudMap;
+        Texture2D hudMeter, hudMap;
+        GameObject hudNeedle;
         Model genCart;
 
         // Menu Element Rectangles
         static readonly Rectangle
-            hudNeedleDest = new Rectangle(0, 24, 360, 72);
+            hudNeedleDest = new Rectangle(600, 500, 180, 140),
+            hudMeterDest = new Rectangle(600, 500, 180, 140);
 
         public Play()
         {
@@ -46,8 +48,8 @@ namespace ACT2009
         {
             // 2D Assets
             hudMeter = Content.Load<Texture2D>("Textures\\SpeedometerImage");
-            hudNeedle = Content.Load<Texture2D>("Textures\\needle");
-           
+            hudNeedle = new GameObject(Content.Load<Texture2D>("Textures\\needle"));
+            hudNeedle
             // 3D Assets
             genCart = Content.Load<Model>("Models\\Generic Cart");
         }
@@ -57,9 +59,22 @@ namespace ACT2009
 
         public Game1.GameMode PlayUpdate(GameTime gameTime, Game1.GameMode gameMode)
         {
-            // Update Play Method    
+            // Update Play Method
+            
+
+            return gameMode;
         }
         #endregion
 
+        #region PlayDraw
+
+        public void PlayDraw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Begin();
+            spriteBatch.Draw(hudMeter, hudMeterDest, Color.White);
+            spriteBatch.Draw(hudNeedle, hudNeedleDest, Color.White);
+            spriteBatch.End();
+        }
+        #endregion
     }
 }
