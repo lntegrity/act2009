@@ -4,7 +4,7 @@
 // Author: Ron Malcolm, Team 2
 // Code lines: 222
 // Creation date: 10.21.2008 09:55
-// Last modified: 10.31.2008 13:15
+// Last modified: 11.10.2008 13:15
 
 #region Using Directives
 using System;
@@ -143,6 +143,8 @@ namespace ACT2009
             // Play Game, Move Cart
             if (gameMode == GameMode.Play)
             {
+                play.PlayUpdate(gameTime, gameMode);
+
                 if (keyboard.IsKeyDown(Keys.Down))
                     modelPos.Z += -10.0f;
                 if (keyboard.IsKeyDown(Keys.Up))
@@ -157,8 +159,8 @@ namespace ACT2009
                     modelPos.Y = -100.0f;
                     modelPos.Z = 50.0f;
                 }
-                if (modelPos.Z > 180.0f)
-                    modelPos.Z = 180.0f;
+                if (modelPos.Z > 160.0f)
+                    modelPos.Z = 160.0f;
             }
             
             //if (gameMode == GameMode.Play && keyboard.IsKeyDown(Keys.Escape))
