@@ -92,7 +92,7 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <NestedContentProject Include="Content\Content.contentproj">
+    <NestedContentProject Include="Content.contentproj">
       <Project>b5d510e8-26af-47e8-9303-4833e9608fc5</Project>
       <Visible>False</Visible>
     </NestedContentProject>
