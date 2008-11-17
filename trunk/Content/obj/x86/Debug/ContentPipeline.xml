@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline" xmlns:Graphics="Microsoft.Xna.Framework.Graphics" xmlns:Processors="Microsoft.Xna.Framework.Content.Pipeline.Processors">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Textures\ScreenController.jpg</Source>
+      <Name>Textures\ScreenController</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ScreenController.xnb</Output>
+      <Time>2008-10-22T15:54:00-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ScreenMenuNav.jpg</Source>
+      <Name>Textures\ScreenMenuNav</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ScreenMenuNav.xnb</Output>
+      <Time>2008-10-22T13:32:26-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ScreenCredits.jpg</Source>
+      <Name>Textures\ScreenCredits</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ScreenCredits.xnb</Output>
+      <Time>2008-10-22T17:48:10-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ConceptHUD.jpg</Source>
+      <Name>Textures\ConceptHUD</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ConceptHUD.xnb</Output>
+      <Time>2008-10-22T17:58:44-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ScreenMenuNavElements.png</Source>
+      <Name>Textures\ScreenMenuNavElements</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ScreenMenuNavElements.xnb</Output>
+      <Time>2008-10-23T12:26:28-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Generic Cart.FBX</Source>
+      <Name>Models\Generic Cart</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\Generic Cart.xnb</Output>
+      <Time>2008-10-26T18:02:16-04:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\Generic Cart%0.xml</Key>
+        <Value>2008-11-03T11:25:14-05:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\Generic Cart.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\Generic Cart%0.xml</Output>
+      <Time>2008-10-26T18:02:16-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\needle.tga</Source>
+      <Name>Textures\needle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\needle.xnb</Output>
+      <Time>2008-11-05T11:31:16-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\SpeedometerImage.png</Source>
+      <Name>Textures\SpeedometerImage</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\SpeedometerImage.xnb</Output>
+      <Time>2008-11-06T11:58:12-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box.fbx</Source>
+      <Name>Models\box</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box.xnb</Output>
+      <Time>2008-11-07T14:08:26-05:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Models\box%0.xml</Key>
+        <Value>2008-11-07T14:08:50-05:00</Value>
+      </Dependency>
+      <Request>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box\Concrete_Block_Retaining_Gray%0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\box.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Models\box%0.xml</Output>
+      <Time>2008-11-07T14:08:26-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box\Asphalt_Stamped_Brick.jpg</Source>
+      <Name>Models\box\Asphalt_Stamped_Brick</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box\Asphalt_Stamped_Brick.xnb</Output>
+      <Time>2008-11-07T14:08:32-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box\Concrete_Block_Retaining_Gray.jpg</Source>
+      <Name>Models\box\Concrete_Block_Retaining_Gray</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box\Concrete_Block_Retaining_Gray.xnb</Output>
+      <Time>2008-11-07T14:08:32-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\box\Concrete_Block_Retaining_Gray.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box\Concrete_Block_Retaining_Gray%0.xnb</Output>
+      <Time>2008-11-07T14:08:32-05:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <TargetPlatform>Windows</TargetPlatform>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <RootDirectory>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\Content\</RootDirectory>
+      <LoggerRootDirectory>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\</LoggerRootDirectory>
+      <IntermediateDirectory>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>c:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2007-11-28T12:08:00-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>c:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2007-11-28T12:08:42-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>c:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2007-11-28T12:08:30-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>c:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2007-11-28T12:07:44-05:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\2.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2008-07-22T11:31:00.296875-04:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
