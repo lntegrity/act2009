@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ScreenController.xnb</Output>
-      <Time>2008-10-22T15:54:00-04:00</Time>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Textures\ScreenController.xnb</Output>
+      <Time>2008-11-17T12:06:31.1133655-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\ScreenMenuNav.jpg</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ScreenMenuNav.xnb</Output>
-      <Time>2008-10-22T13:32:26-04:00</Time>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Textures\ScreenMenuNav.xnb</Output>
+      <Time>2008-11-17T12:06:31.1289932-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\ScreenCredits.jpg</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ScreenCredits.xnb</Output>
-      <Time>2008-10-22T17:48:10-04:00</Time>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Textures\ScreenCredits.xnb</Output>
+      <Time>2008-11-17T12:06:31.1446209-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\ConceptHUD.jpg</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ConceptHUD.xnb</Output>
-      <Time>2008-10-22T17:58:44-04:00</Time>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Textures\ConceptHUD.xnb</Output>
+      <Time>2008-11-17T12:06:31.1289932-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\ScreenMenuNavElements.png</Source>
@@ -43,28 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\ScreenMenuNavElements.xnb</Output>
-      <Time>2008-10-23T12:26:28-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\Generic Cart.FBX</Source>
-      <Name>Models\Generic Cart</Name>
-      <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
-      <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\Generic Cart.xnb</Output>
-      <Time>2008-10-26T18:02:16-04:00</Time>
-      <Dependency>
-        <Key>obj\x86\Debug\Models\Generic Cart%0.xml</Key>
-        <Value>2008-11-03T11:25:14-05:00</Value>
-      </Dependency>
-    </Item>
-    <Item>
-      <Source>Models\Generic Cart.FBX</Source>
-      <Importer>FbxImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>obj\x86\Debug\Models\Generic Cart%0.xml</Output>
-      <Time>2008-10-26T18:02:16-04:00</Time>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Textures\ScreenMenuNavElements.xnb</Output>
+      <Time>2008-11-17T12:06:31.1289932-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\needle.tga</Source>
@@ -72,8 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\needle.xnb</Output>
-      <Time>2008-11-05T11:31:16-05:00</Time>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Textures\needle.xnb</Output>
+      <Time>2008-11-17T12:06:31.1289932-05:00</Time>
     </Item>
     <Item>
       <Source>Textures\SpeedometerImage.png</Source>
@@ -81,50 +61,33 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Textures\SpeedometerImage.xnb</Output>
-      <Time>2008-11-06T11:58:12-05:00</Time>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Textures\SpeedometerImage.xnb</Output>
+      <Time>2008-11-17T12:06:31.1133655-05:00</Time>
     </Item>
     <Item>
-      <Source>Models\box.fbx</Source>
-      <Name>Models\box</Name>
+      <Source>Models\Generic Cart.FBX</Source>
+      <Name>Models\Generic Cart</Name>
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box.xnb</Output>
-      <Time>2008-11-07T14:08:26-05:00</Time>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Models\Generic Cart.xnb</Output>
+      <Time>2008-11-17T12:06:30.2225866-05:00</Time>
       <Dependency>
-        <Key>obj\x86\Debug\Models\box%0.xml</Key>
-        <Value>2008-11-07T14:08:50-05:00</Value>
+        <Key>obj\x86\Debug\Models\Generic Cart_0.xml</Key>
+        <Value>2008-11-17T12:16:32.3266122-05:00</Value>
       </Dependency>
-      <Request>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box\Concrete_Block_Retaining_Gray%0.xnb</Request>
+      <Request>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Models\Lakerem_0.xnb</Request>
+      <Request>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Models\izgrrr_0.xnb</Request>
     </Item>
     <Item>
-      <Source>Models\box.fbx</Source>
+      <Source>Models\Generic Cart.FBX</Source>
       <Importer>FbxImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>obj\x86\Debug\Models\box%0.xml</Output>
-      <Time>2008-11-07T14:08:26-05:00</Time>
+      <Output>obj\x86\Debug\Models\Generic Cart_0.xml</Output>
+      <Time>2008-11-17T12:06:30.2225866-05:00</Time>
     </Item>
     <Item>
-      <Source>Models\box\Asphalt_Stamped_Brick.jpg</Source>
-      <Name>Models\box\Asphalt_Stamped_Brick</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box\Asphalt_Stamped_Brick.xnb</Output>
-      <Time>2008-11-07T14:08:32-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\box\Concrete_Block_Retaining_Gray.jpg</Source>
-      <Name>Models\box\Concrete_Block_Retaining_Gray</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box\Concrete_Block_Retaining_Gray.xnb</Output>
-      <Time>2008-11-07T14:08:32-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Models\box\Concrete_Block_Retaining_Gray.jpg</Source>
+      <Source>Models\Lakerem.jpg</Source>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Parameters>
@@ -135,38 +98,67 @@
         <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\Models\box\Concrete_Block_Retaining_Gray%0.xnb</Output>
-      <Time>2008-11-07T14:08:32-05:00</Time>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Models\Lakerem_0.xnb</Output>
+      <Time>2001-01-15T14:20:28-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\izgrrr.bmp</Source>
+      <Name>Models\izgrrr</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Models\izgrrr.xnb</Output>
+      <Time>2008-11-17T12:18:57.0234865-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\izgrrr.bmp</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Graphics:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\Models\izgrrr_0.xnb</Output>
+      <Time>2008-11-17T12:18:57.0234865-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>
-      <RootDirectory>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\Content\</RootDirectory>
-      <LoggerRootDirectory>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\</LoggerRootDirectory>
-      <IntermediateDirectory>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\Content\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\bin\x86\Debug\Content\</OutputDirectory>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Documents and Settings\rjm5123\Desktop\New Folder\Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Documents and Settings\rjm5123\Desktop\New Folder\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Documents and Settings\rjm5123\Desktop\New Folder\Content\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Documents and Settings\rjm5123\Desktop\New Folder\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>c:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2007-11-28T12:08:00-05:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2008-10-10T17:42:32-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>c:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2007-11-28T12:08:42-05:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2008-10-10T17:43:28-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>c:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2007-11-28T12:08:30-05:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2008-10-10T17:43:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>c:\Program Files\Microsoft XNA\XNA Game Studio\v2.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2007-11-28T12:07:44-05:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2008-10-10T17:48:18-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\2.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2008-07-22T11:31:00.296875-04:00</Value>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio\v3.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2008-10-10T17:48:50-04:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\3.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2008-11-01T10:39:54.7291952-04:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
