@@ -1,0 +1,3 @@
+Content\ACT2009.xgs
+Content\Wave Bank.xwb
+Content\Sound Bank.xsb
