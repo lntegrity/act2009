@@ -1,0 +1,2 @@
+C:\Documents and Settings\rjm5123\Desktop\New Folder\Content\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\rjm5123\Desktop\New Folder\Content\obj\x86\Debug\ACT2009.xml
