@@ -1,4 +1,0 @@
-J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-H:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\Content\obj\x86\Debug\ResolveAssemblyReference.cache
-J:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\Content\obj\x86\Debug\ACT2009.xml
-H:\PSU 2008\IST 402\TRT08\ACT2009\ACT2009\Content\obj\x86\Debug\ACT2009.xml
