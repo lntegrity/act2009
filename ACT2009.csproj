@@ -80,6 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Car.cs" />
     <Compile Include="Menus.cs" />
     <Compile Include="Play.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
