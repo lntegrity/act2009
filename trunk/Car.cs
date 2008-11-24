@@ -35,9 +35,9 @@ namespace ACT2009
         //controller the car listens to
         private Input controller = null;
 		//maximum acceleration (meters per second squared)
-		private float maxAcceleration = 6.9;
+		private float maxAcceleration = 6.9f;
 		//maxumum negative acceleration (braking) (meters per second square)
-		private float maxBraking = 8.0;
+		private float maxBraking = 8.0f;
 		
         //initializes the car's data
         public Car(Input contr)
@@ -72,7 +72,7 @@ namespace ACT2009
 		//returns the highest possible acceleration of the car
         public float GetMaxAcceleration()
         {
-            return maxAccelleration;
+            return maxAcceleration;
         }
 
         //sets the highest possible acceleration of the car
