@@ -34,11 +34,16 @@ namespace ACT2009
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        // the Display object -> controlls the Display of the game.
+        Display display;
+
+        
         float aspectRatio;
 
         // Input Objects
         KeyboardState keyboard = Keyboard.GetState();
         GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
+
 
         // Menu Enum
         public enum GameMode
@@ -77,6 +82,7 @@ namespace ACT2009
             // TODO: Add your initialization logic here
             menu = new Menus();
             play = new Play();
+            display = new Display();
             
             base.Initialize();
         }
@@ -96,11 +102,12 @@ namespace ACT2009
 
             menu.MenuInit(Content);
             play.PlayInit(Content);
+            display.DisplayInit(Content);
 
             // 3D Assets
-            genCart = Content.Load<Model>("Models\\Generic Cart");
+            /*genCart = Content.Load<Model>("Models\\Generic Cart");
             aspectRatio = (float)graphics.GraphicsDevice.Viewport.Width / (float)graphics.GraphicsDevice.Viewport.Height;
-
+            */
             //// TODO: use this.Content to load your game content here
         }
         
@@ -141,7 +148,7 @@ namespace ACT2009
             gameMode = menu.MenuUpdate(gameTime, gameMode);
 
             // Play Game, Move Cart
-            if (gameMode == GameMode.Play)
+            /*if (gameMode == GameMode.Play)
             {
                 play.PlayUpdate(gameTime, gameMode);
 
@@ -161,7 +168,8 @@ namespace ACT2009
                 }
                 if (modelPos.Z > 160.0f)
                     modelPos.Z = 160.0f;
-            }
+            }*/
+            display.Update(keyboard);
             
             //if (gameMode == GameMode.Play && keyboard.IsKeyDown(Keys.Escape))
             //{
@@ -191,7 +199,7 @@ namespace ACT2009
         // 3D Assists        
         float modelRotate = 0.0f;
         Vector3 cameraPos = new Vector3(0.0f, 0.0f, 500.0f);
-        Model genCart;
+        //Model genCart;
 
         protected override void Draw(GameTime gameTime)
         {
@@ -203,9 +211,13 @@ namespace ACT2009
             // Draw Golf Cart and HUD in GameMode.Play
             if (gameMode == GameMode.Play)
             {
-                play.PlayDraw(spriteBatch);
+                
+                
 
-                Matrix[] transforms = new Matrix[genCart.Bones.Count];
+                graphics.GraphicsDevice.RenderState.DepthBufferEnable = true;
+                display.Draw();
+                play.PlayDraw(spriteBatch);
+                /*Matrix[] transforms = new Matrix[genCart.Bones.Count];
                 genCart.CopyAbsoluteBoneTransformsTo(transforms);
                 foreach (ModelMesh mesh in genCart.Meshes)
                 {
@@ -217,7 +229,10 @@ namespace ACT2009
                         effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), aspectRatio, 1.0f, 10000.0f);
                     } // foreach Effects
                     mesh.Draw();
-                } // foreach Mesh
+                }*/
+                
+                
+                // foreach Mesh
             } // if GameMode Play
 
             base.Draw(gameTime);

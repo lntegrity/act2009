@@ -20,7 +20,7 @@ namespace ACT2009
         Input()
         {
         }
-
+        
         //returns accelleration between -1 (full reverse) and 1 (full forward)
         public float GetAccelleration()
         {

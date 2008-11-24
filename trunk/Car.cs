@@ -19,24 +19,28 @@ namespace ACT2009
     class Car
     {
         //absolute position the car is at (in meters)
-        Vector3 position = new Vector3(0);
+        private Vector3 position = new Vector3(0);
         //direction the car is looking at
-        Vector3 direction = new Vector3(0);
+        private Vector3 direction = new Vector3(0);
         //velocity the car is currently moving at (kilometers per hour)
-        float speed = 0;
+        private float speed = 0;
         //color the car is painted in
-        Color color = Color.Blue;
+        private Color color = Color.Blue;
         //maximum velocity moving forward (kilometers per hour)
-        float maxSpeedFwd = 50;
+        private float maxSpeedFwd = 50;
         //maximum velocity moving backward (kilometers per hour)
-        float maxSpeedRew = 15;
+        private float maxSpeedRew = 15;
         //weight of the car (kilogram)
-        float weight = 300;
+        private float weight = 300;
         //controller the car listens to
-        Input controller = null;
-
+        private Input controller = null;
+		//maximum acceleration (meters per second squared)
+		private float maxAcceleration = 6.9;
+		//maxumum negative acceleration (braking) (meters per second square)
+		private float maxBraking = 8.0;
+		
         //initializes the car's data
-        Car(Input contr)
+        public Car(Input contr)
         {
             //can only be set here
             controller = contr;
@@ -65,6 +69,30 @@ namespace ACT2009
             weight = wgt;
         }
 
+		//returns the highest possible acceleration of the car
+        public float GetMaxAcceleration()
+        {
+            return maxAccelleration;
+        }
+
+        //sets the highest possible acceleration of the car
+        public void SetMaxAcceleration(float macc)
+        {
+            maxAcceleration = macc;
+        }
+		
+		//returns the highest possible braking of the car
+        public float GetMaxBraking()
+        {
+            return maxBraking;
+        }
+
+        //sets the highest possible braking of the car
+        public void SetMaxBraking(float mbrac)
+        {
+            maxBraking = mbrac;
+        }
+		
         //returns the current absolute position of the car
         public Vector3 GetPosition()
         {
@@ -80,13 +108,13 @@ namespace ACT2009
         //returns the vector the car directs at
         public Vector3 GetDirection()
         {
-            return position;
+            return direction;
         }
 
         //sets the direction the car looks at
-        public void SetDirection(Vector3 pos)
+        public void SetDirection(Vector3 dir)
         {
-            position = pos;
+            direction = dir;
         }
 
         //returns the current speed of the car in km/h
@@ -96,7 +124,7 @@ namespace ACT2009
         }
 
         //sets the current speed of the car in km/h
-        public void SetDirection(float spd)
+        public void SetSpeed(float spd)
         {
             speed = spd;
         }
