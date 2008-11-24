@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace ACT2009
 {
@@ -10,44 +8,46 @@ namespace ACT2009
         //calculates collision and returns either the collisionarc or null of two 3D-Lines pressed down to z=0
         float getCollisionarc(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
         {
-            if ((b[0] - a[0])*(d[1] - c[1]) - (b[1] - a[1])*(d[0] - c[0]) == 0)
+            if ((b.X - a.X)*(d.Y - c.Y) - (b.Y - a.Y)*(d.X - c.X) == 0)
             { // parallel
-                if ((b[0] - a[0])*(c[1] - a[1]) - (b[1] - a[1])*(c[0] - a[0]) == 0)
+                if ((b.X - a.X)*(c.Y - a.Y) - (b.Y - a.Y)*(c.X - a.X) == 0)
                 { // identical, colliding under 0 degree
                     return 0;
                 }
                 else
                 { // really parallel, not crossing
-                    return null;
+                    //TODO: Must be extended to return corner and side or null
+                    return 0;
                 }
             }
 
-            float lambda = ((c[0] - a[0]) * (d[1] - c[1]) - (c[1] - a[1]) * (d[0] - c[0])) / ((b[0] - a[0]) * (d[1] - c[1]) - (b[1] - a[1]) * (d[0] - c[0]));
+            float lambda = ((c.X - a.X) * (d.Y - c.Y) - (c.Y - a.Y) * (d.X - c.X)) / ((b.X - a.X) * (d.Y - c.Y) - (b.Y - a.Y) * (d.X - c.X));
             float sigma;
-            if (d[0] - c[0]) {
-                sigma = (a[0] - c[0] + lambda*(b[0] - a[0]))/(d[0]-c[0]);
+            if (d.X == c.X) {
+                sigma = (a.X - c.X + lambda*(b.X - a.X))/(d.X-c.X);
             } else {
-                sigma = (a[1] - c[1] + lambda*(b[1] - a[1]))/(d[1]-c[1]);
+                sigma = (a.Y - c.Y + lambda*(b.Y - a.Y))/(d.Y-c.Y);
             }
 
             if (lambda <= 1 && 0 <= lambda && 1 <= sigma && 0 <= sigma)
             {
-                return arccos((abs(sub(b, a)) ^ 2 + abs(sub(d, c)) ^ 2 - abs(sub(sub(b, a), sub(d, c))) ^ 2) / (2 * abs(sub(b, a)) * abs(sub(d, c))));
+                return (float)Math.Acos((Math.Pow(abs(sub(b, a)), 2) + Math.Pow(abs(sub(d, c)), 2) - Math.Pow(abs(sub(sub(b, a), sub(d, c))), 2)) / (2 * abs(sub(b, a)) * abs(sub(d, c))));
             }
 
             //not colliding within borderlength
-            return null;
+            //TODO: umformen!
+            return 0;
         }
 
         //helpermethod to calculate the distance between two points
         float abs(Vector3 o)
         {
-            return sqrt((o.x)^2 + (o.y)^2);
+            return  (float)Math.Sqrt(o.X*o.X + o.Y*o.Y);
         }
 
         Vector3 sub(Vector3 a, Vector3 b)
         {
-            return Vector3(a[0] - b[0], a[1] - b[1], 0);
+            return new Vector3(a.X - b.X, a.Y - b.Y, 0);
         }
     }
 }
