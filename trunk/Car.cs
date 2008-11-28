@@ -18,7 +18,21 @@ namespace ACT2009
 {
     class Car
     {
-        //absolute position the car is at (in meters)
+        //predefined corners of the car (for collisionhandling)
+        public static int FRONTLEFT = 1;
+        public static int FRONTRIGHT = 2;
+        public static int BACKLEFT = 3;
+        public static int BACKRIGHT = 4;
+
+        //corner which had a collision, 0 if no collision
+        private int collisionCorner = 0;
+        //arc at which the collision has occured
+        private float collisionArc = 0;
+        //line at which the car collided (for reflecting)
+        private Vector3 collisionLine = new Vector3(0);
+        //dimensions of the Car
+        private Vector3 dimension = new Vector3(1.5f, 1.5f, 2.0f);
+        //absolute position the car is at (in meters, bottom-middle of the car)
         private Vector3 position = new Vector3(0);
         //direction the car is looking at
         private Vector3 direction = new Vector3(0);
