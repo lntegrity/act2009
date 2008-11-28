@@ -16,33 +16,46 @@ namespace ACT2009
         //Matrix worldMatrix;
         //Matrix RotationMatrix;
 
-        Matrix PositionMatrix;
+        // The graphic device for some 3D methods
+        GraphicsDevice device;
+
         Matrix viewMatrix;
         Matrix projectionMatrix;
-        float Xrot, Yrot;
-        float movingSpeed = 0.5f;
-        float rotationSpeed = 0.03f;
 
-        float carScaleValue = 0.01f;
+        // Debugging helper
+        // Those variables are used to navigate throught the landscape
+        // Not a part of the gameplay
+        bool navigationHelper = false; // navigation debugging helper ON OFF?
+        Matrix navPositionMatrix; // navigation position
+        float Xrot, Yrot; // navigation direction
+        float movingSpeed = 1.0f; // moving speed when navigating
+        float rotationSpeed = 0.05f; // rotation speed when navigating
+        bool NBpushed = false; // N + B key pushed?
+
+
+        float carScaleValue = 0.015f; // Car Size
 
         Vector3 carPosition, carOffset;
 
 
         public Display()
         {
+
         }
 
-        public void DisplayInit(ContentManager Content)
+        public void DisplayInit(ContentManager Content, GraphicsDevice dev, Car carObj)
         {
-            // test-Model
+            // Loading the 3D models
             car = Content.Load<Model>("Models/Generic Cart");
             landscape = Content.Load<Model>("Models/complete_smooth_track2");
+
+            device = dev;
 
             carPosition = new Vector3(45.0f, 0.0f, 70.0f);
             carOffset = new Vector3(0.1f, 0.0f, 3.0f);
 
-            Yrot = 3.14f;
-            PositionMatrix = Matrix.CreateTranslation(new Vector3(0.0f, -1.0f, 0.0f));
+            Yrot = 3.14f; // base 180° rotation
+            navPositionMatrix = Matrix.CreateTranslation(new Vector3(0.0f, -1.0f, 0.0f));
             viewMatrix = Matrix.CreateLookAt(new Vector3(0, 0, 1), Vector3.Zero, Vector3.Up);
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), 800.0f / 600.0f, 1.0f, 10000.0f);
         
@@ -54,41 +67,84 @@ namespace ACT2009
             return Matrix.CreateRotationY(Yrot) * Matrix.CreateRotationX(Xrot) * tMatrix * Matrix.CreateRotationX(-Xrot) * Matrix.CreateRotationY(-Yrot);
         }
 
+        // Debbuging helper navigation
         public void Update(KeyboardState keyboardState)
         {
+            // switching debugging navigation helper ON OFF
+            if (keyboardState.IsKeyDown(Keys.N) && keyboardState.IsKeyDown(Keys.B))
+            {
+                if (!NBpushed)
+                {
+                    NBpushed = true;
+                    if (navigationHelper)
+                    {
+                        navigationHelper = false;
+                        // Set the cam position back behind the car
+                        navPositionMatrix = Matrix.CreateTranslation(new Vector3(0.0f, -1.0f, 0.0f));
+                        Yrot = 3.14f;
+                        Xrot = 0.0f;
+                    }
+                    else
+                    {
+                        navigationHelper = true;
+                    }
+                }
+            }
+            else
+            {
+                NBpushed = false;
+            }
+
+
             // Checking for key inputs -> Navigation
-            if (keyboardState.IsKeyDown(Keys.A))
-                PositionMatrix *= rotatedTranslation(Matrix.CreateTranslation(new Vector3(movingSpeed, 0.0f, 0.0f)));
-            else if (keyboardState.IsKeyDown(Keys.D))
-                PositionMatrix *= rotatedTranslation(Matrix.CreateTranslation(new Vector3(-movingSpeed, 0.0f, 0.0f)));
+            if (navigationHelper)
+            {
+                if (keyboardState.IsKeyDown(Keys.A))
+                    navPositionMatrix *= rotatedTranslation(Matrix.CreateTranslation(new Vector3(movingSpeed, 0.0f, 0.0f)));
+                else if (keyboardState.IsKeyDown(Keys.D))
+                    navPositionMatrix *= rotatedTranslation(Matrix.CreateTranslation(new Vector3(-movingSpeed, 0.0f, 0.0f)));
 
-            if (keyboardState.IsKeyDown(Keys.W))
-                PositionMatrix *= rotatedTranslation(Matrix.CreateTranslation(new Vector3(0.0f, 0.0f, movingSpeed)));
-            else if (keyboardState.IsKeyDown(Keys.S))
-                PositionMatrix *= rotatedTranslation(Matrix.CreateTranslation(new Vector3(0.0f, 0.0f, -movingSpeed)));
+                if (keyboardState.IsKeyDown(Keys.W))
+                    navPositionMatrix *= rotatedTranslation(Matrix.CreateTranslation(new Vector3(0.0f, 0.0f, movingSpeed)));
+                else if (keyboardState.IsKeyDown(Keys.S))
+                    navPositionMatrix *= rotatedTranslation(Matrix.CreateTranslation(new Vector3(0.0f, 0.0f, -movingSpeed)));
 
-            if (keyboardState.IsKeyDown(Keys.Left))
-                Yrot -= 0.03f;
-            else if (keyboardState.IsKeyDown(Keys.Right))
-                Yrot += 0.03f;
+                if (keyboardState.IsKeyDown(Keys.Left))
+                    Yrot -= 0.03f;
+                else if (keyboardState.IsKeyDown(Keys.Right))
+                    Yrot += 0.03f;
 
-            if (keyboardState.IsKeyDown(Keys.Up))
-                Xrot -= 0.03f;
-            else if (keyboardState.IsKeyDown(Keys.Down))
-                Xrot += 0.03f;
+                if (keyboardState.IsKeyDown(Keys.Up))
+                    Xrot -= 0.03f;
+                else if (keyboardState.IsKeyDown(Keys.Down))
+                    Xrot += 0.03f;
+            }
         }
 
+        // The method for called for drawing the 3D environment
         public void Draw()
         {
-            Matrix[] transforms = new Matrix[car.Bones.Count];
-            car.CopyAbsoluteBoneTransformsTo(transforms);
+            // Graphic Device settings
+            device.RenderState.DepthBufferEnable = true;
+            device.RenderState.AlphaBlendEnable = true;
 
-            foreach (ModelMesh mesh in car.Meshes)
+            // car bones for car parts position
+            Matrix[] transforms = new Matrix[car.Bones.Count];
+            car.CopyAbsoluteBoneTransformsTo(transforms); 
+
+            // Draw the landscape
+            foreach (ModelMesh mesh in landscape.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.EnableDefaultLighting();
-                    effect.World = transforms[mesh.ParentBone.Index] * Matrix.CreateScale(carScaleValue) * PositionMatrix *Matrix.CreateTranslation(carOffset) * Matrix.CreateRotationY(Yrot) * Matrix.CreateRotationX(Xrot);
+
+                    // Position of the landscape on the screen
+                    effect.World =  Matrix.CreateTranslation(carPosition) // translate the landscape based on car position
+                                    * navPositionMatrix                 // debbuging navigation helper position
+                                    * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
+                                    * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
+
                     effect.View = viewMatrix;
 
                     effect.Projection = projectionMatrix;
@@ -96,12 +152,21 @@ namespace ACT2009
                 mesh.Draw();
             }
 
-            foreach (ModelMesh mesh in landscape.Meshes)
+            // Draw the car
+            foreach (ModelMesh mesh in car.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
                     effect.EnableDefaultLighting();
-                    effect.World = PositionMatrix * Matrix.CreateTranslation(carPosition) * Matrix.CreateRotationY(Yrot) * Matrix.CreateRotationX(Xrot);
+
+                    // Position of the car on the screen
+                    effect.World =  transforms[mesh.ParentBone.Index]   // Positions of the car parts based on the bones
+                                    * Matrix.CreateScale(carScaleValue) // scaling the car size
+                                    * Matrix.CreateTranslation(carOffset) // car screen position offset
+                                    * navPositionMatrix                 // debbuging navigation helper position
+                                    * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
+                                    * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
+
                     effect.View = viewMatrix;
 
                     effect.Projection = projectionMatrix;
