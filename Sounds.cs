@@ -20,133 +20,138 @@ using Microsoft.Xna.Framework.Storage;
 using System.IO;
 using System.Text;
 using System.Threading;
+using Microsoft.Xna.Framework.Media;
 #endregion
 
 namespace ACT2009
 {
     class Sounds
     {
-        static AudioEngine audioEngine;
-        static WaveBank waveBank;
-        static SoundBank soundBank;
-        static AudioCategory musicCategory;
-        
-        static Sounds()
-        {
-            Console.WriteLine("in sound");
-            try
-            {
-                //string dir = Directory.
-                audioEngine = new AudioEngine("Content\\ACT2009.xgs");
-                waveBank = new WaveBank(audioEngine, "Content\\Wave Bank.xwb");
+        public static ContentManager Content;// As //ContentManager
 
-                if (waveBank != null)
-                {
-                    soundBank = new SoundBank(audioEngine, "Content\\Sound Bank.xsb");
-                }
-                musicCategory = audioEngine.GetCategory("Music");
-            }
-            catch (Exception e)
-            {
-                Console.Write("ERROR: Failed to create sound class: " + e.ToString());
-            }
+        public Sounds(Game1 game)
+        {
+            //content = new ContentManager(content, "Content");
+            //this.content = content;
+            Content = new ContentManager(game.Services, "Content");
+            Content.RootDirectory = "Content";
+            Console.WriteLine("in sound");
+
+            Console.WriteLine(Content);
         }
 
         public static void Play(string soundName)
         {
-            if (soundBank == null)
-                return;
-            Console.WriteLine("im in??");
-
+            Console.WriteLine("Sounds\\" + soundName);
             try
             {
-                soundBank.PlayCue(soundName);
+                Song mysong = Content.Load<Song>("Sounds\\" +soundName);
+                MediaPlayer.Play(mysong);
+                MediaPlayer.IsRepeating = true;
             }
-            catch (Exception e)
+            catch(Exception ex)
             {
-                Console.Write("ERROR: Playing sound " + soundName + " failed: " + e.ToString());
+                Console.WriteLine("Exception caught "+ex.Message);
             }
         }
 
         public static void Play(SoundEnum sound)
         {
-            Console.Write("I'm in Play enum");
             Play(sound.ToString());
         }
 
         
+        public static void PlayBangSound()
+        {
+            Play(SoundEnum.bang);
+            Console.WriteLine("in bang");
+        }
+
         public static void PlayBirdSound()
         {
             Play(SoundEnum.bird);
             Console.WriteLine("in birds");
         }
 
-        public static void PlayWaterSound()
-        {
-            Play(SoundEnum.water);
-        }
-
-        public static void PlayBangSound()
-        {
-            Play(SoundEnum.bang);
-        }
-
-        public static void PlayBrakes()
+        public static void PlayBrakesSound()
         {
             Play(SoundEnum.brakes);
+            Console.WriteLine("in brakes");
         }
 
-        public static void PlayDriveSound()
+        public static void PlayBurstSound()
+        {
+            Play(SoundEnum.burst);
+            Console.WriteLine("in burst");
+        }
+
+        public static void PlayFinalDriveSound()
         {
             Play(SoundEnum.finalDrive);
+            Console.WriteLine("in finalDrive");
+        }
+        
+        public static void PlayFinalIdleSound()
+        {
+            Play(SoundEnum.finalIdle);
+            Console.WriteLine("in finalIdle");
         }
 
         public static void PlayHornSound()
         {
             Play(SoundEnum.horn);
+            Console.WriteLine("in horn");
         }
 
-        public static void PlayIdleSound()
+        public static void PlayMenuMusicSound()
         {
-            Play(SoundEnum.finalIdle);
+            Play(SoundEnum.menumusic);
+            Console.WriteLine("in menuMusic");
+        }
+
+        public static void PlayWaterMusicSound()
+        {
+            Play(SoundEnum.water);
+            Console.WriteLine("in menuMusic");
         }
 
         public static void PlayWindSound()
         {
             Play(SoundEnum.wind);
+            Console.WriteLine("in wind");
         }
         
 
         public static void StartMusic()
         {
-            //Play(SoundEnum.start);
+            Play(SoundEnum.start);
             //needs to be replaced with the Game Music
         }
 
         public static void StopMusic()
         {
-            musicCategory.Stop(AudioStopOptions.Immediate);
+            MediaPlayer.Stop();
+            //musicCategory.Stop(AudioStopOptions.Immediate);
         }
 
         public static void Update()
         {
-            if (audioEngine != null)
-            {
-                audioEngine.Update();
-            }
+           
         }
 
         public enum SoundEnum
         {
-            wind,
-            water,
-            horn,
-            finalIdle,
-            finalDrive,
-            burst,
-            brakes,
+            bang,
             bird,
-            bang
+            brakes,
+            burst,
+            finalDrive,
+            finalIdle,
+            horn,
+            menumusic,
+            water,
+            wind,
+            start
         }
     }
 }
