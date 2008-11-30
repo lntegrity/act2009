@@ -12,30 +12,32 @@ namespace ACT2009
     class Display
     {
         // 3D stuff
-        Model car, landscape;
+        private Model car, landscape;
         //Matrix worldMatrix;
         //Matrix RotationMatrix;
 
         // The graphic device for some 3D methods
-        GraphicsDevice device;
+        private GraphicsDevice device;
 
-        Matrix viewMatrix;
-        Matrix projectionMatrix;
+        private Matrix viewMatrix;
+        private Matrix projectionMatrix;
 
         // Debugging helper
         // Those variables are used to navigate throught the landscape
         // Not a part of the gameplay
-        bool navigationHelper = false; // navigation debugging helper ON OFF?
-        Matrix navPositionMatrix; // navigation position
-        float Xrot, Yrot; // navigation direction
-        float movingSpeed = 1.0f; // moving speed when navigating
-        float rotationSpeed = 0.05f; // rotation speed when navigating
-        bool NBpushed = false; // N + B key pushed?
+        private bool navigationHelper = false; // navigation debugging helper ON OFF?
+        private Matrix navPositionMatrix; // navigation position
+        private float Xrot, Yrot; // navigation direction
+        private float movingSpeed = 1.0f; // moving speed when navigating
+        private float rotationSpeed = 0.05f; // rotation speed when navigating
+        private bool NBpushed = false; // N + B key pushed?
 
 
         float carScaleValue = 0.015f; // Car Size
 
-        Vector3 carPosition, carOffset;
+        //Vector3 carPosition;
+        Vector3 carOffset;
+        Car actCart;
 
 
         public Display()
@@ -51,7 +53,8 @@ namespace ACT2009
 
             device = dev;
 
-            carPosition = new Vector3(45.0f, 0.0f, 70.0f);
+            actCart = carObj;
+            //carPosition = new Vector3(45.0f, 0.0f, 70.0f);
             carOffset = new Vector3(0.1f, 0.0f, 3.0f);
 
             Yrot = 3.14f; // base 180° rotation
@@ -140,7 +143,7 @@ namespace ACT2009
                     effect.EnableDefaultLighting();
 
                     // Position of the landscape on the screen
-                    effect.World =  Matrix.CreateTranslation(carPosition) // translate the landscape based on car position
+                    effect.World =  Matrix.CreateTranslation(actCart.GetPosition()) // translate the landscape based on car position
                                     * navPositionMatrix                 // debbuging navigation helper position
                                     * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
                                     * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
