@@ -31,7 +31,7 @@ namespace ACT2009
                 {
                     //if the distance between car and current point is smaller than the distanceLimit,
                     //we test for collisions
-                    if ()
+                    if (true)
                     {
                     }
                 }

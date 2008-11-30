@@ -75,13 +75,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACT2009.xap">
-      <Name>ACT2009</Name>
-      <Importer>XactImporter</Importer>
-      <Processor>XactProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Textures\needle.tga">
       <Name>needle</Name>
       <Importer>TextureImporter</Importer>

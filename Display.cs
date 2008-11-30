@@ -49,7 +49,7 @@ namespace ACT2009
         {
             // Loading the 3D models
             car = Content.Load<Model>("Models/Generic Cart");
-            landscape = Content.Load<Model>("Models/complete_smooth_track2");
+            landscape = Content.Load<Model>("Models/fhhof");
 
             device = dev;
 
