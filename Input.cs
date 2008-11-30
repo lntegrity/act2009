@@ -27,9 +27,12 @@ namespace ACT2009
         }
 
         //Updating the Input
-        public void Update(KeyboardState keyboardState, GamePadState gamePad)
+        public void Update()
         {
-            // set the states back
+            KeyboardState keyboardState = Keyboard.GetState();
+            GamePadState gamePad = GamePad.GetState(Microsoft.Xna.Framework.PlayerIndex.One);
+
+            // resets the states
             Direction = 0.0f;
             Acceleration = 0.0f;
             Brake = 0.0f;

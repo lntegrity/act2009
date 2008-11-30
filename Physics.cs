@@ -32,15 +32,13 @@ namespace ACT2009
         private const float g = 9.81f;
         private const float my = 0.55f;
         private Car pCart;
-        private GameTime gtime;
         private float t;
         
-        public Physics(ref Car cart, ref Input input, ref GameTime time)
+        public Physics(ref Car cart)
         {
             // lädt alle wichtigen Parameter in die Variablen
-            gtime = time;
-            t = gtime.ElapsedRealTime.Seconds;
             pCart=cart;
+            Input input = pCart.GetController();
             InputAcceleration = input.GetAccelleration();
             InputCarBrake = input.GetBrake();
             InputCarDirection = input.GetDirection();
@@ -59,8 +57,10 @@ namespace ACT2009
         /// Update wird aufgerufen um auf die Eingaben aus der Inputklasse zu reagieren und die
         /// entsprechende interne Funktionalität aufzurufen. 
         /// </summary>
-        public void Update()
+        public void Update(GameTime gtime)
         {
+            //Aktuelle Zeit wird berechnet
+            t = gtime.ElapsedRealTime.Seconds;
             // wird gebremst, dann Brake-Funktion starten
             if (InputCarBrake != 0)
                 this.Brake(maxBrak);

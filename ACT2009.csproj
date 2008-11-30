@@ -84,8 +84,10 @@
     <Compile Include="Display.cs" />
     <Compile Include="Input.cs" />
     <Compile Include="Collisiondetect.cs" />
+    <Compile Include="Math.cs" />
     <Compile Include="Menus.cs" />
     <Compile Include="Objecthandler.cs" />
+    <Compile Include="Physics.cs" />
     <Compile Include="Play.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

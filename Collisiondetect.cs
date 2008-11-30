@@ -73,10 +73,10 @@ namespace ACT2009
                 float yopt7 = b.Y - a.Y;
                 float xopt8 = d.X - c.X;
                 float yopt8 = d.Y - c.Y;
-                double opt9 = Math.Sqrt(yopt7 * yopt7 + xopt7 * xopt7);
-                double opt10 = Math.Sqrt(yopt8 * yopt8 + xopt8 * xopt8);
-                double opt11 = Math.Sqrt((xopt7 - xopt8) * (xopt7 - xopt8) + (yopt7 - yopt8) * (yopt7 - yopt8));
-                return (float)Math.Acos((opt9*opt9 + opt10*opt10 - opt11*opt11) / (2 * opt9 * opt10));
+                double opt9 = System.Math.Sqrt(yopt7 * yopt7 + xopt7 * xopt7);
+                double opt10 = System.Math.Sqrt(yopt8 * yopt8 + xopt8 * xopt8);
+                double opt11 = System.Math.Sqrt((xopt7 - xopt8) * (xopt7 - xopt8) + (yopt7 - yopt8) * (yopt7 - yopt8));
+                return (float)System.Math.Acos((opt9 * opt9 + opt10 * opt10 - opt11 * opt11) / (2 * opt9 * opt10));
             }
 
             //not colliding within borderlength
