@@ -226,5 +226,11 @@ namespace ACT2009
         {
             return controller;
         }
+
+        //Updating the corresponding input
+        public void Update()
+        {
+            controller.Update();
+        }
     }
 }

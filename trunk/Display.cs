@@ -29,7 +29,6 @@ namespace ACT2009
         private Matrix navPositionMatrix; // navigation position
         private float Xrot, Yrot; // navigation direction
         private float movingSpeed = 1.0f; // moving speed when navigating
-        private float rotationSpeed = 0.05f; // rotation speed when navigating
         private bool NBpushed = false; // N + B key pushed?
 
 

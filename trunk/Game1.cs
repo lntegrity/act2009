@@ -38,10 +38,8 @@ namespace ACT2009
         Display display;
         //Car object, contains car-related information
         Car actCart;
-
-
-        
-        float aspectRatio;
+        //Physics for turning, accdellerating and braking the car
+        Physics physics;
 
         // Input Objects
         KeyboardState keyboard = Keyboard.GetState();
@@ -86,8 +84,8 @@ namespace ACT2009
             menu = new Menus();
             play = new Play();
             display = new Display();
-            actCart = new Car(controller);
-            physics = new Physics(actCart, new Input(), new GameTime());
+            actCart = new Car(new Input());
+            physics = new Physics(ref actCart);
             
             base.Initialize();
         }
@@ -152,11 +150,11 @@ namespace ACT2009
             // Menu Update
             gameMode = menu.MenuUpdate(gameTime, gameMode);
 
-            // Updating the controller -> checking for player input
-            controller.Update(keyboard, gamePad);
+            //Updating the car, which calls its corresponding input-update
+            actCart.Update();
 
             // Updating the game physic
-            physics.Update();
+            physics.Update(gameTime);
 
             // Updating the Display (only neccesery for debugging help.)
             display.Update(keyboard);
@@ -186,8 +184,7 @@ namespace ACT2009
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
 
-        // 3D Assists        
-        float modelRotate = 0.0f;
+        // 3D Assists
         Vector3 cameraPos = new Vector3(0.0f, 0.0f, 500.0f);
         //Model genCart;
 
