@@ -235,7 +235,7 @@ Wave Bank
     Wave
     {
         Name = bang;
-        File = bang.wav;
+        File = Sounds\bang.mp3;
         Build Settings Last Modified Low = 375203108;
         Build Settings Last Modified High = 29964761;
 
@@ -258,7 +258,7 @@ Wave Bank
     Wave
     {
         Name = bird;
-        File = bird.wav;
+        File = Sounds\bird.mp3;
         Build Settings Last Modified Low = 375203108;
         Build Settings Last Modified High = 29964761;
 
@@ -281,7 +281,7 @@ Wave Bank
     Wave
     {
         Name = brakes;
-        File = brakes.wav;
+        File = Sounds\brakes.mp3;
         Build Settings Last Modified Low = 375359391;
         Build Settings Last Modified High = 29964761;
 
@@ -304,7 +304,7 @@ Wave Bank
     Wave
     {
         Name = burst;
-        File = burst.wav;
+        File = Sounds\burst.mp3;
         Build Settings Last Modified Low = 375359391;
         Build Settings Last Modified High = 29964761;
 
@@ -327,7 +327,7 @@ Wave Bank
     Wave
     {
         Name = finalDrive;
-        File = finalDrive.wav;
+        File = Sounds\finalDrive.mp3;
         Build Settings Last Modified Low = 375515674;
         Build Settings Last Modified High = 29964761;
 
@@ -350,7 +350,7 @@ Wave Bank
     Wave
     {
         Name = finalIdle;
-        File = finalIdle.wav;
+        File = Sounds\finalIdle.mp3;
         Build Settings Last Modified Low = 375515674;
         Build Settings Last Modified High = 29964761;
 
@@ -373,7 +373,7 @@ Wave Bank
     Wave
     {
         Name = horn;
-        File = horn.wav;
+        File = Sounds\horn.mp3;
         Build Settings Last Modified Low = 375671957;
         Build Settings Last Modified High = 29964761;
 
@@ -396,7 +396,7 @@ Wave Bank
     Wave
     {
         Name = water;
-        File = water.wav;
+        File = Sounds\water.mp3;
         Build Settings Last Modified Low = 375671957;
         Build Settings Last Modified High = 29964761;
 
@@ -419,7 +419,7 @@ Wave Bank
     Wave
     {
         Name = wind;
-        File = wind.wav;
+        File = Sounds\wind.mp3;
         Build Settings Last Modified Low = 375828240;
         Build Settings Last Modified High = 29964761;
 

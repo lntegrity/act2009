@@ -5,18 +5,41 @@ namespace ACT2009
 {
     class Collisiondetect
     {
-        void testCollisionarc()
+        //Class to maintain tracklimits and objects on the track
+        Objecthandler objectHandler;
+        //To gain the 
+        Car car;
+        float distanceLimit;
+
+        Collisiondetect(Objecthandler oh, Car c)
         {
-            
+            objectHandler = oh;
+            car = c;
         }
 
-        void writeCoordinates(Vector3 a)
+        //tests every position-pair of inner and outer border if it collided with a car-constraint
+        public void detectCollision()
         {
-            System.Console.WriteLine("a: x="+a.X+" y="+a.Y);
+            //Save the inner border beginning to test with the end
+            Vector3 beginning = objectHandler.getPosition(0, 0);
+            if (beginning != null)
+            {
+                Vector3 last = beginning;
+                Vector3 current;
+                int i = 1;
+                while ((current = objectHandler.getPosition(0, i)) != null) 
+                {
+                    //if the distance between car and current point is smaller than the distanceLimit,
+                    //we test for collisions
+                    if ()
+                    {
+                    }
+                }
+            }
         }
 
         //calculates collision and returns either the collisionarc or null of two 3D-Lines pressed down to z=0
-        float getCollisionarc(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
+        private float getCollisionarc(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
         {
             float opt1 = d.Y - c.Y;
             float opt2 = c.Y - a.Y;
