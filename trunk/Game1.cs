@@ -36,6 +36,9 @@ namespace ACT2009
 
         // the Display object -> controlls the Display of the game.
         Display display;
+        //Car object, contains car-related information
+        Car car;
+
 
         
         float aspectRatio;
@@ -61,6 +64,8 @@ namespace ACT2009
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Input input = new Input();
+            car = new Car(input);
             //graphics.IsFullScreen = true;
             //pauseShadow = new Color(128, 128, 128, 128);
         }
@@ -102,7 +107,7 @@ namespace ACT2009
 
             menu.MenuInit(Content);
             play.PlayInit(Content);
-            display.DisplayInit(Content);
+            display.DisplayInit(Content, GraphicsDevice, car);
 
             // 3D Assets
             /*genCart = Content.Load<Model>("Models\\Generic Cart");

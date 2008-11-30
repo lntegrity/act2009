@@ -17,6 +17,7 @@ namespace ACT2009
             {
                 return objectType[dimension];
             }
+            return null;
         }
 
         public Vector3 getPosition(int dimension, int index)
@@ -28,7 +29,8 @@ namespace ACT2009
                     return objects[dimension, index];
                 }
             }
-            return null;
+            //hack To indicate no return-value
+            return new Vector3(0);
         }
     }
 }
