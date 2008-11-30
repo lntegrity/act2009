@@ -52,38 +52,80 @@ namespace ACT2009
 		private float maxAcceleration = 6.9f;
 		//maxumum negative acceleration (braking) (meters per second square)
 		private float maxBraking = 8.0f;
-		
-        //initializes the car's data
+
+        //initializes the car's in constructor
         public Car(Input contr)
         {
-            //can only be set here
+            //can only be set in constructor
             controller = contr;
         }
 
         //initializes the car's data
         Car(Input contr, Color clr)
         {
-            //can only be set here
+            //can only be set in constructor
             color = clr;
 
-            //can only be set here
+            //can only be set in constructor
             controller = contr;
         }
 
         //initializes the car's data
         Car(Input contr, Color clr, float wgt)
         {
-            //can only be set here
+            //can only be set in constructor
             color = clr;
 
-            //can only be set here
+            //can only be set in constructor
             controller = contr;
 
-            //can only be set here
+            //can only be set in constructor
             weight = wgt;
         }
 
-		//returns the highest possible acceleration of the car
+        //sets the corner which had a collision, 0 if no collision occured
+        public void SetCollisionCorner(int crnr)
+        {
+            collisionCorner = crnr;
+        }
+
+        //returns the corner which had a collision, 0 if no collision occured
+        public int GetCollisionCorner()
+        {
+            return collisionCorner;
+        }
+
+        //sets the arc at which the collision has occured
+        public void SetCollisionArc(float cllArc)
+        {
+            collisionArc = cllArc;
+        }
+
+        //returns the arc at which the collision has occured
+        public float GetCollisionArc()
+        {
+            return collisionArc;
+        }
+
+        //Sets the line at which the car collided (for reflecting)
+        public void SetCollisionLine(Vector3 cllLine)
+        {
+            collisionLine = cllLine;
+        }
+
+        //Returns the line at which the car collided (for reflecting)
+        public Vector3 SetCollisionLine()
+        {
+            return collisionLine;
+        }
+
+        //returns the dimensions of the Car
+        public Vector3 GetDimension()
+        {
+            return dimension;
+        }
+        
+        //returns the highest possible acceleration of the car
         public float GetMaxAcceleration()
         {
             return maxAcceleration;
