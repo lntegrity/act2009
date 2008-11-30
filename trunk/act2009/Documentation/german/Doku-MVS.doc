@@ -1,0 +1,101 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fswiss\fcharset0 Arial;}{\f1\fnil\fcharset2 Wingdings;}{\f2\froman\fcharset2 Symbol;}{\f3\fswiss\fcharset0 Verdana;}{\f4\froman\fcharset0 Book Antiqua;}}
+{\colortbl ;\red0\green0\blue0;}
+{\*\generator Msftedit 5.41.15.1515;}\viewkind4\uc1\pard\cf1\lang1031\ul\b\f0\fs32 Projekt Autorennspiel\line\ulnone\b0\fs24 (GER-Gruppe 5, US-Gruppe 2)\fs28\par
+\par
+\ul Projektbeschreibung\par
+\ulnone\fs24 Als Projekt wurde im Vorfeld ein 3D-Autorennspiel auf der XBOX-360 Plattform festgelegt. \line Die Mitglieder des Teams sind:\par
+\pard{\pntext\f0 1\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec }
+\fi-360\li1080\tx1080 Claus Wollnik (ger)\par
+{\pntext\f0 2\tab}Mike Kotsch (ger)\par
+\pard{\pntext\f0 2\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart2\pndec }
+\fi-360\li1080\tx1080 Hans Vogl (ger)\par
+\pard{\pntext\f0 3\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart3\pndec }
+\fi-360\li1080\tx1080 Denis Sinner (ger)\par
+\pard{\pntext\f0 4\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart4\pndec }
+\fi-360\li1080\tx1080 Maximilian F\'f6rster (ger)\par
+\pard{\pntext\f0 5\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart5\pndec }
+\fi-360\li1080\tx1080 Tobias Feigel (ger)\par
+\pard{\pntext\f0 6\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart6\pndec }
+\fi-360\li1080\tx1080 Chris Kearse (us)\par
+\pard{\pntext\f0 7\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart7\pndec }
+\fi-360\li1080\tx1080 Jasmin Paszko (us)\par
+\pard{\pntext\f0 8\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart8\pndec }
+\fi-360\li1080\tx1080 Shane Moore (us)\par
+\pard{\pntext\f0 9\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart9\pndec }
+\fi-360\li1080\tx1080 Ron Malcom (us)\par
+\pard Vorgabe unserer amerikanischen Kollegen war ein Autorennspiel, das als Rennstrecke den Campus der Pennstate University vorgesehen hat. Unser deutsches Team hat sich daraufhin entschlossen, auch den Campus der FH-Hof mit in das Spiel zu integrieren.\line Das Spiel selbst soll sowohl von einem Einzelspieler als auch von zwei Spielern, via Splitscreen oder Netzwerkverbindung gespielt werden k\'f6nnen. Es soll w\'e4hrend des ganzen Spiels ein Sound im Hintergrund h\'f6rbar sein. Nachdem das Spiel gestartet wurde soll der Spieler im Hauptmen\'fc \'fcber einen Optionsdialog ausw\'e4hlen, ob es sich um ein Einzelspiel oder eine Mehrspieler-Runde handelt. Ebenso soll ein Level und ein Fahrzeug in diesem Men\'fc gew\'e4hlt werden bis es dann zum letztendlichen Spiel kommt. \par
+\par
+\par
+\par
+\ul\fs28 Anforderungen und Spezifikationen\par
+\ulnone\fs24 Die grunds\'e4tzliche Anforderung an das Spiel war, dass es sich um ein Autorennspiel in einer 3D-Umgebung handeln sollte. Als Plattform f\'fcr das Spiel waren die XBOX-360 und der PC vorgesehen. Als Fahrzeuge sollen Golf-Carts zur Verf\'fcgung stehen, die man sich im Spielmen\'fc ausw\'e4hlen kann.\line Das Fahrzeug selbst soll man aus der Sicht der dritten Person steuern k\'f6nnen. Die Geschwindigkeit und eine verkleinerte Kartenansicht sollen an den R\'e4ndern des Bildschirms erkennbar sein. Ebenso soll eine grundlegende Physik geschaffen werden, in der Beschleunigung, Abbremsen und Lenkung ber\'fccksichtigt werden.\par
+Als 3D-Modelle sollen die Golf-Carts, verschiedene B\'e4ume, Gras, umliegendes Terrain sowie Wasser erstellt werden. Ebenso sollen die Geb\'e4ude in die Karte eingebaut werden.\line Als HUD-Elemente werden 2D-Assets genommen, die der Pfeil (wie bei einem Auto-Tachometer) und die Mini-Map darstellen. \par
+\page Ebenso wurde von der Gruppe einen Milestone-Plan erstellt.\line\par
+\par
+\super\par
+\ul\nosupersub\fs28 Aufgabenverteilung\par
+\pard\nowidctlpar\hyphpar0\lang1033\kerning1\ulnone\fs24 Innerhalb der Gruppe gab es verschiedenen Themen zu behandeln. Diese Aufgaben wurden wie folgt verteilt:\line\tab\cf0 Projektleitung:\tab\cf1 Ron Malcom\cf0  und Claus Wollnik\par
+\pard\nowidctlpar\hyphpar0\fi720 3D-Objekte:\tab\tab\cf1 Shane Moore, Denis Sinner, Maximilian F\'f6rster\cf0\par
+HUD:\tab\tab\tab\cf1 Chris Kearse \par
+\pard\li720\cf0\lang1031\kerning0 Trackdesign:\tab\tab Shane Moore, Mike Kotsch und Hans Vogl\cf1\par
+\pard\nowidctlpar\hyphpar0\fi720\cf0\lang1033\kerning1 Physikengine:\tab Tobias Feigel\par
+Sound / Musik:\tab Jasmin \cf1 Paszko\cf0\par
+Kamera:\tab\tab\cf1 Denis Sinner\cf0\par
+Grafikengine:\tab\tab\cf1 Denis Sinner\cf0\par
+Programmierung:\tab Jasmin \cf1 Paszko, Claus Wollnik\cf0  und Ron \cf1 Malcom\par
+Dokumentation:\tab Maximilian F\'f6rster\cf0\par
+\pard\cf1\lang1031\kerning0\par
+\ul\par
+\par
+\par
+\fs28 Design (UML Diagramme)\-\-\-\par
+\ulnone\fs24 Hier kommen die UML-Diagramme hin \lang1033\f1 J\lang1031\f0\par
+\par
+\par
+\par
+\ul\fs28 Tools\par
+\ulnone\fs24 Als Tools wurden einige Standards innerhalb der Gruppe festgelegt.\par
+Google-Group wurde als eine Art Forum und Mailingliste festgelegt. Hier k\'f6nnen alle Themen besprochen werden und jeder bekommt Nachrichten in Echtzeit zugestellt. Ebenso k\'f6nnen innerhalb des Forums Dateien hochgeladen werden, die dann f\'fcr alle Gruppenmitglieder zug\'e4nglich sind. Nat\'fcrlich wurden auch E-Mail-Adressen innerhalb des Teams ausgetauscht um auch direkten Kontakt zu erm\'f6glichen. Als Chatprogramm wurde Skype ausgew\'e4hlt, da es neben dem normalen Nachrichtenaustausch auch die M\'f6glichkeit der Telefonkonferenz und des Video-Chats erm\'f6glicht.\par
+F\'fcr das Projektmanagement und das Erstellen der Milestones wurde Microsoft Project 2007 verwendet. Dank eines Praxisblocks im Sommer hatten einige Studenten aus Hof bereits Erfahrung mit dem Umgang mit Project. \line F\'fcr die 3D-Modellierung w\'fcrden die Programme Blender sowie FX Composer 2.5 benutzt. Blender wurde haupts\'e4chlich aufgrund seiner freien Verf\'fcgbarkeit (GPL lizensiert), seiner guten Dokumentation sowie seines \'fcppigen Funktionsumfangs. Der FX Composer von NVIDIA wurde aufgrund seiner Kompatibilit\'e4t zu DirectX, OpenGL, etc ausgew\'e4hlt. Auch seine freie Verf\'fcgbarkeit war hier ein Grund.\line Texturen wurden haupts\'e4chlich mit Photoshop CS3 erstellt und bearbeitet. Hier hatten die Studenten der Medieninformatik bereits etliche Erfahrungen gesammelt und somit war dieses Programm nahe liegend.\par
+Die Entwicklung und Programmierung wurde mit Microsoft Visual Studio 2008 und dem Microsoft XNA-Studio 3.0 die Standard-Software f\'fcr Spieleentwicklung auf der XBOX-360 gew\'e4hlt. Mit diesen Programmen konnte eine h\'f6chstm\'f6gliche Kompatibilit\'e4t gew\'e4hrleistet werden.\par
+\ul\fs28\par
+\par
+\par
+\page Risikoanalyse und Vorgehen\par
+\pard\nowidctlpar\hyphpar0\fi-360\li720\sa120\tx720\cf0\lang1033\kerning1\ulnone\f1\fs24\'b7\lang1031\f2\tab\lang1033\f0 Schwieriges Problem, schwieriger Fehler (>50%)\par
+\pard\nowidctlpar\hyphpar0\fi-360\li1080\sa120\tx1080 1.\lang1031\tab\lang1033 XNA-Buch lesen\par
+2.\lang1031\tab\lang1033 im Netz recherchieren\par
+3.\lang1031\tab\lang1033 andere Mitglieder fragen\par
+4.\lang1031\tab\lang1033 Teamleiter informieren, der die Architektur \'fcberpr\'fcft und gegebenenfalls korrigiert\par
+5.\lang1031\tab\lang1033 Teamleiter und Mitglied fragen Professor\par
+6.\lang1031\tab\lang1033 Feature wegfallen lassen\par
+\pard\nowidctlpar\hyphpar0\fi-360\li720\sa120\tx720\f2\'b7\lang1031\tab\lang1033\f0 Ausfall eines Mitglieds (<30%)\par
+\pard\nowidctlpar\hyphpar0\fi-360\li1080\sa120\tx1080 1.\lang1031\tab\lang1033 Umverlagerung der Arbeit\par
+2.\lang1031\tab\lang1033 Abspecken der bearbeiteten Aufgaben\par
+3.\lang1031\tab\lang1033 Wegfall der bearbeiteten Features des Mitglieds\par
+\pard\nowidctlpar\hyphpar0\fi-360\li720\sa120\tx720\f2\'b7\lang1031\tab\lang1033\f0 Arbeitsverweigerung (<30%)\par
+\pard\nowidctlpar\hyphpar0\fi-360\li1080\sa120\tx1080 1.\lang1031\tab\lang1033 mit dem Mitglied Kontakt aufnehmen und Problem ergr\'fcnden\par
+2.\lang1031\tab\lang1033 Problem in der Gruppe diskutieren\par
+3.\lang1031\tab\lang1033 Professor als Vermittler einschalten\par
+4.\lang1031\tab\lang1033 Mitglied aus Gruppe ausschlie\'dfen\par
+\pard\nowidctlpar\hyphpar0\fi-360\li720\sa120\tx720\f2\'b7\lang1031\tab\lang1033\f0 Ausfall E-Mail-Account eines Mitglieds (m\'f6glich)\par
+\pard\nowidctlpar\hyphpar0\fi-360\li1080\sa120\tx1080 1.\lang1031\tab\lang1033 Account bei anderem Anbieter erstellen\par
+2.\lang1031\tab\lang1033 Zugangsdaten anpassen\par
+\pard\nowidctlpar\hyphpar0\fi-360\li720\sa120\tx720\f2\'b7\lang1031\tab\lang1033\f0 Ausfall Googlegroup (<10%)\par
+\pard\nowidctlpar\hyphpar0\fi-731\li1440\sa120\tx1134 1.\lang1031\tab\lang1033 andere Mailingliste verwenden (z.B. Mikkysoft)\par
+\pard\nowidctlpar\hyphpar0\fi-425\li1134\sa120 2.\lang1031\tab\lang1033 Mailadressliste erstellen und aktuell halten\par
+\pard{\pntext\f0 1\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart1\pndec }
+\nowidctlpar\hyphpar0\fi-360\li720\sa120\tx720 Ausfall Googlecode (<10%)\par
+\pard\nowidctlpar\hyphpar0\fi-425\li1134\sa120\tx1134 1.\lang1031\tab\lang1033 SVN-Benutzerdaten werden auf anderen Server verlagert (z.B. Claus Wollnik's Server) und die Verwaltung und Download erfolgt dann von dort\par
+2.\lang1031\tab\lang1033 Repository muss regelm\'e4\'dfig abgerufen werden, um den Datenverlust zu Minimieren\par
+\pard\nowidctlpar\hyphpar0\fi-360\li720\sa120\tx720\f2\'b7\lang1031\tab\lang1033\f0 Ausfall Skype / IRC (<10%)\par
+\pard\nowidctlpar\hyphpar0\fi-360\li1080\sa120\tx1080 1.\lang1031\tab\lang1033 Besprechungsergebnisse in der Googlegroup / der Maillingliste publizieren\par
+\pard\cf1\kerning0\page\ul\fs28 Literatur (B\'fccher und Weblinks)\par
+\ulnone\f3\fs18\par
+\par
+\pard{\pntext\f0 10\tab}{\*\pn\pnlvlbody\pnf0\pnindent360\pnstart10\pndec }
+\fi-360\li1080\tx1080\f0\fs24 Professional XNA Programming: Building Games for Xbox 360 and Windows with XNA Game Studio 2.0\par
+\pard{\pntext\f4 11\tab}{\*\pn\pnlvlbody\pnf4\pnindent360\pnstart11\pndec }
+\fi-360\li1080\tx1080\cf0\f4\par
+}
+ 
