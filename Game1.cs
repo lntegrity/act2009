@@ -37,7 +37,7 @@ namespace ACT2009
         // the Display object -> controlls the Display of the game.
         Display display;
         //Car object, contains car-related information
-        Car car;
+        Car actCart;
 
 
         
@@ -64,8 +64,6 @@ namespace ACT2009
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            Input input = new Input();
-            car = new Car(input);
             //graphics.IsFullScreen = true;
             //pauseShadow = new Color(128, 128, 128, 128);
         }
@@ -88,6 +86,8 @@ namespace ACT2009
             menu = new Menus();
             play = new Play();
             display = new Display();
+            actCart = new Car(controller);
+            physics = new Physics(actCart, new Input(), new GameTime());
             
             base.Initialize();
         }
@@ -107,7 +107,7 @@ namespace ACT2009
 
             menu.MenuInit(Content);
             play.PlayInit(Content);
-            display.DisplayInit(Content, GraphicsDevice, car);
+            display.DisplayInit(Content, graphics.GraphicsDevice, actCart);
 
             // 3D Assets
             /*genCart = Content.Load<Model>("Models\\Generic Cart");
@@ -152,28 +152,13 @@ namespace ACT2009
             // Menu Update
             gameMode = menu.MenuUpdate(gameTime, gameMode);
 
-            // Play Game, Move Cart
-            /*if (gameMode == GameMode.Play)
-            {
-                play.PlayUpdate(gameTime, gameMode);
+            // Updating the controller -> checking for player input
+            controller.Update(keyboard, gamePad);
 
-                if (keyboard.IsKeyDown(Keys.Down))
-                    modelPos.Z += -10.0f;
-                if (keyboard.IsKeyDown(Keys.Up))
-                    modelPos.Z += 10.0f;
-                if (keyboard.IsKeyDown(Keys.Left))
-                    modelPos.X += -10.0f;
-                if (keyboard.IsKeyDown(Keys.Right))
-                    modelPos.X += 10.0f;
-                if (keyboard.IsKeyDown(Keys.R))
-                {
-                    modelPos.X = 30.0f;
-                    modelPos.Y = -100.0f;
-                    modelPos.Z = 50.0f;
-                }
-                if (modelPos.Z > 160.0f)
-                    modelPos.Z = 160.0f;
-            }*/
+            // Updating the game physic
+            physics.Update();
+
+            // Updating the Display (only neccesery for debugging help.)
             display.Update(keyboard);
             
             //if (gameMode == GameMode.Play && keyboard.IsKeyDown(Keys.Escape))
@@ -221,21 +206,7 @@ namespace ACT2009
 
                 graphics.GraphicsDevice.RenderState.DepthBufferEnable = true;
                 display.Draw();
-                play.PlayDraw(spriteBatch);
-                /*Matrix[] transforms = new Matrix[genCart.Bones.Count];
-                genCart.CopyAbsoluteBoneTransformsTo(transforms);
-                foreach (ModelMesh mesh in genCart.Meshes)
-                {
-                    foreach (BasicEffect effect in mesh.Effects)
-                    {
-                        effect.EnableDefaultLighting();
-                        effect.View = Matrix.CreateLookAt(cameraPos, Vector3.Zero, Vector3.Up);
-                        effect.World = transforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(modelRotate) * Matrix.CreateTranslation(modelPos);
-                        effect.Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), aspectRatio, 1.0f, 10000.0f);
-                    } // foreach Effects
-                    mesh.Draw();
-                }*/
-                
+                play.PlayDraw(spriteBatch);                
                 
                 // foreach Mesh
             } // if GameMode Play
