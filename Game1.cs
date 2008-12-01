@@ -40,6 +40,7 @@ namespace ACT2009
         Car actCart;
         //Physics for turning, accdellerating and braking the car
         Physics physics;
+        Play play;
 
         // Input Objects
         KeyboardState keyboard = Keyboard.GetState();
@@ -67,7 +68,7 @@ namespace ACT2009
         }
 
         Menus menu;
-        Play play;
+        
 
         #endregion  // Variables
 
@@ -160,6 +161,7 @@ namespace ACT2009
 
             // Updating the Display (only neccesery for debugging help.)
             display.Update(keyboard);
+            play.PlayUpdate(gameTime, gameMode);
             
             //if (gameMode == GameMode.Play && keyboard.IsKeyDown(Keys.Escape))
             //{
