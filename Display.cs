@@ -35,7 +35,7 @@ namespace ACT2009
         float carScaleValue = 0.015f; // Car Size
 
         //Vector3 carPosition;
-        Vector3 carOffset;
+        Vector3 carOffset, carRotationOffset;
         Car actCart;
 
 
@@ -54,12 +54,13 @@ namespace ACT2009
 
             actCart = carObj;
             //carPosition = new Vector3(45.0f, 0.0f, 70.0f);
-            carOffset = new Vector3(0.1f, 0.0f, 3.0f);
+            carOffset = new Vector3(0.0f, -0.20f, 2.5f);
+            carRotationOffset = new Vector3(0.4f, 0.0f, 0.5f);
 
-            Yrot = 3.14f; // base 180° rotation
+            Yrot = 3.141592f; // base 180° rotation
             navPositionMatrix = Matrix.CreateTranslation(new Vector3(0.0f, -1.0f, 0.0f));
-            viewMatrix = Matrix.CreateLookAt(new Vector3(0, 0, 1), Vector3.Zero, Vector3.Up);
-            projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), 800.0f / 600.0f, 1.0f, 10000.0f);
+            viewMatrix = Matrix.CreateLookAt(new Vector3(0, 2, 5), Vector3.Zero, Vector3.Up);
+            projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), 800.0f / 600.0f, 1.0f, 1000.0f);
         
         }
 
@@ -132,7 +133,11 @@ namespace ACT2009
 
             // car bones for car parts position
             Matrix[] transforms = new Matrix[car.Bones.Count];
-            car.CopyAbsoluteBoneTransformsTo(transforms); 
+            car.CopyAbsoluteBoneTransformsTo(transforms);
+
+            Vector3 tempVector = actCart.GetDirection();
+            tempVector.Normalize();
+            actCart.SetDirection(tempVector);
 
             // Draw the landscape
             foreach (ModelMesh mesh in landscape.Meshes)
@@ -144,6 +149,12 @@ namespace ACT2009
                     // Position of the landscape on the screen
                     effect.World =  Matrix.CreateTranslation(actCart.GetPosition()) // translate the landscape based on car position
                                     * navPositionMatrix                 // debbuging navigation helper position
+                                    * Matrix.CreateRotationY((float)(System.Math.PI/2))
+                                    * Matrix.CreateTranslation(new Vector3(-carOffset.X, -carOffset.Y, -carOffset.Z))
+                                    * Matrix.CreateTranslation(new Vector3(-carRotationOffset.X, -carRotationOffset.Y, -carRotationOffset.Z))
+                                    * Matrix.CreateRotationY((float)(System.Math.Atan2(actCart.GetDirection().Z, actCart.GetDirection().X)))
+                                    * Matrix.CreateTranslation(carOffset)
+                                    * Matrix.CreateTranslation(carRotationOffset)
                                     * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
                                     * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
 
@@ -153,6 +164,7 @@ namespace ACT2009
                 }
                 mesh.Draw();
             }
+
 
             // Draw the car
             foreach (ModelMesh mesh in car.Meshes)
@@ -165,6 +177,7 @@ namespace ACT2009
                     effect.World =  transforms[mesh.ParentBone.Index]   // Positions of the car parts based on the bones
                                     * Matrix.CreateScale(carScaleValue) // scaling the car size
                                     * Matrix.CreateTranslation(carOffset) // car screen position offset
+                                    * Matrix.CreateTranslation(carRotationOffset)
                                     * navPositionMatrix                 // debbuging navigation helper position
                                     * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
                                     * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
