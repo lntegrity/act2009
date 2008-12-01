@@ -86,8 +86,8 @@ namespace ACT2009
             play = new Play();
             display = new Display();
             actCart = new Car(new Input());
-            actCart.SetPosition(new Vector3(2, 0, 120));
-            actCart.SetDirection(new Vector3(-0.8f, 0, -1));
+            actCart.SetPosition(new Vector3(3, 0, 120));
+            actCart.SetDirection(new Vector3(1.0f, 0, 0.0f));
             physics = new Physics(ref actCart);
             
             base.Initialize();
@@ -155,6 +155,33 @@ namespace ACT2009
 
             //Updating the car, which calls its corresponding input-update
             actCart.Update();
+
+            //Rotate the car  
+            if(actCart.GetController().GetDirection() < 0)
+            {
+                Vector3 tempVector = actCart.GetDirection();
+                tempVector.Normalize();
+                actCart.SetDirection(tempVector);
+
+                double angle = System.Math.Atan2(actCart.GetDirection().Z, actCart.GetDirection().X) -0.03;
+                actCart.SetDirection(new Vector3((float)System.Math.Cos(angle), 0.0f, (float)System.Math.Sin(angle)));
+            }
+            else if (actCart.GetController().GetDirection() > 0)
+            {
+                Vector3 tempVector = actCart.GetDirection();
+                tempVector.Normalize();
+                actCart.SetDirection(tempVector);
+
+                double angle = System.Math.Atan2(actCart.GetDirection().Z, actCart.GetDirection().X) + 0.03;
+                actCart.SetDirection(new Vector3((float)System.Math.Cos(angle), 0.0f, (float)System.Math.Sin(angle)));
+            }
+
+            //Change Car Position
+            if (actCart.GetController().GetAccelleration() > 0)
+            {
+                float speedFactor = 0.2f;
+                actCart.SetPosition(actCart.GetPosition() + new Vector3((float)actCart.GetDirection().X * speedFactor, (float)actCart.GetDirection().Y * speedFactor, (float)actCart.GetDirection().Z * speedFactor));
+            }
 
             // Updating the game physic
             physics.Update(gameTime);
