@@ -19,10 +19,10 @@ namespace ACT2009
     class Car
     {
         //predefined corners of the car (for collisionhandling)
-        public static int FRONTLEFT = 1;
-        public static int FRONTRIGHT = 2;
-        public static int BACKLEFT = 3;
-        public static int BACKRIGHT = 4;
+        public const int FRONTLEFT = 1;
+        public const int FRONTRIGHT = 2;
+        public const int BACKLEFT = 3;
+        public const int BACKRIGHT = 4;
 
         //corner which had a collision, 0 if no collision
         private int collisionCorner = 0;
@@ -231,6 +231,25 @@ namespace ACT2009
         public void Update()
         {
             controller.Update();
+        }
+
+        //Return corners defined by static variables
+        public Vector3 getCorner(int corner)
+        {
+            Vector3 cornerPos = new Vector3();
+            switch (corner)
+            {
+                case Car.FRONTLEFT:
+ 
+                    break;
+                case Car.FRONTRIGHT: 
+                    break;
+                case Car.BACKLEFT: 
+                    break;
+                case Car.BACKRIGHT: 
+                    break;
+            }
+            return cornerPos;
         }
     }
 }
