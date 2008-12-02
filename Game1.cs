@@ -20,6 +20,7 @@ using Microsoft.Xna.Framework.Storage;
 using System.IO;
 using System.Text;
 using System.Threading;
+using System.Globalization;
 #endregion
 
 namespace ACT2009
@@ -91,6 +92,31 @@ namespace ACT2009
             physics = new Physics(ref actCart);
             
             base.Initialize();
+        }
+
+        /// <summary>
+        /// Loads the points for elementpositioning from an xml file
+        /// </summary>
+        private List<Vector3> loadPoints(String xmlFile)
+        {
+            List<Vector3> trackPoints = new List<Vector3>();
+
+            String xmlData = Content.Load<string>(xmlFile);
+            xmlData = xmlData.Trim();
+            String[] lines = xmlData.Split('\n');
+
+            // Gets a NumberFormatInfo associated with the en-US culture.
+            NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                String[] currLineCoords = lines[i].Split(' ');
+                trackPoints.Add(new Vector3(float.Parse(currLineCoords[0], nfi),
+                                                float.Parse(currLineCoords[2], nfi),
+                                                float.Parse(currLineCoords[1], nfi)));
+            }
+
+            return trackPoints;
         }
         
         #endregion // Initialize

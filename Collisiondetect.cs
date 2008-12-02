@@ -1,19 +1,31 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace ACT2009
 {
     class Collisiondetect
     {
-        //Class to maintain tracklimits and objects on the track
-        Objecthandler objectHandler;
-        //To gain the 
+        //inner Border
+        List<Vector3> innerBorder;
+        //outer Border
+        List<Vector3> outerBorder;
+        //tree positions
+        List<Vector3> treePositions;
+        //car positions
+        List<Vector3> carPositions;
+        //lamp positions
+        List<Vector3> lampPositions;
+        //bush positions
+        List<Vector3> bushPositions;
+
+        //
         Car car;
         float distanceLimit;
 
-        Collisiondetect(Objecthandler oh, Car c)
+
+        Collisiondetect(Car c)
         {
-            objectHandler = oh;
             car = c;
         }
 
@@ -21,19 +33,19 @@ namespace ACT2009
         public void detectCollision()
         {
             //Save the inner border beginning to test with the end
-            Vector3 beginning = objectHandler.getPosition(0, 0);
-            if (beginning != null)
+            Vector3 last = innerBorder[innerBorder.Count-1];
+
+            foreach (Vector3 current in innerBorder)
             {
-                Vector3 last = beginning;
-                Vector3 current;
-                int i = 1;
-                while ((current = objectHandler.getPosition(0, i)) != null) 
-                {
-                    //if the distance between car and current point is smaller than the distanceLimit,
-                    //we test for collisions
-                    if (true)
-                    {
-                    }
+                //if the distance between car and current point is smaller than the distanceLimit,
+                //we test for collisions
+                if (true) //HACK distance is currently unlimited
+                {/*
+                    getCollisionarc(, last, current)
+                    carLeft
+                carFront
+                    carRear*/
+                    last = current;
                 }
             }
         }
