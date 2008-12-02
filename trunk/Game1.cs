@@ -43,6 +43,9 @@ namespace ACT2009
         Physics physics;
         Play play;
 
+        //Jasmin
+        Sounds Sounds;
+
         // Input Objects
         KeyboardState keyboard = Keyboard.GetState();
         GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
@@ -90,7 +93,8 @@ namespace ACT2009
             actCart.SetPosition(new Vector3(3, 0, 120));
             actCart.SetDirection(new Vector3(1.0f, 0, 0.0f));
             physics = new Physics(ref actCart);
-            
+            Sounds = new Sounds(this);
+
             base.Initialize();
         }
 
@@ -141,6 +145,10 @@ namespace ACT2009
             aspectRatio = (float)graphics.GraphicsDevice.Viewport.Width / (float)graphics.GraphicsDevice.Viewport.Height;
             */
             //// TODO: use this.Content to load your game content here
+
+            //Sounds
+            Sounds.StartMusic();
+
         }
         
         #endregion // Load Content
