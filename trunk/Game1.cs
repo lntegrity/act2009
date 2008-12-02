@@ -147,7 +147,7 @@ namespace ACT2009
             //// TODO: use this.Content to load your game content here
 
             //Sounds
-            Sounds.StartMusic();
+            Sounds.StartMusic(true);
 
         }
         

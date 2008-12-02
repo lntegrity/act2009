@@ -100,7 +100,8 @@ namespace ACT2009
                         selected = 3;
                     else
                         selected--;
-                    Sounds.PlayBangSound();
+
+                    Sounds.PlayBangSound(false);
                 }
                 else if ((keyboard.IsKeyUp(Keys.Up) && gamePad.DPad.Up == ButtonState.Released))
                     menuUp = true;
@@ -111,7 +112,7 @@ namespace ACT2009
                         selected = 0;
                     else
                         selected++;
-                    Sounds.PlayBangSound();
+                    Sounds.PlayBangSound(false);
                 }
                 else if (keyboard.IsKeyUp(Keys.Down) && gamePad.DPad.Down == ButtonState.Released)
                     menuDown = true;
@@ -153,7 +154,7 @@ namespace ACT2009
                 gamePad.Buttons.A == ButtonState.Pressed)
             {
                 gameMode = Game1.GameMode.Play;
-                Sounds.PlayBrakesSound();
+                Sounds.PlayBrakesSound(false);
             }
             // Go To Controller Layout
             if (menuTab == MenuTabs.Layout && keyboard.IsKeyDown(Keys.Enter) ||
