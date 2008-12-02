@@ -40,14 +40,14 @@ namespace ACT2009
             Console.WriteLine(Content);
         }
 
-        public static void Play(string soundName)
+        public static void Play(string soundName, Boolean loop)
         {
             Console.WriteLine("Sounds\\" + soundName);
             try
             {
                 Song mysong = Content.Load<Song>("Sounds\\" +soundName);
                 MediaPlayer.Play(mysong);
-                MediaPlayer.IsRepeating = true;
+                MediaPlayer.IsRepeating = loop;
             }
             catch(Exception ex)
             {
@@ -55,76 +55,76 @@ namespace ACT2009
             }
         }
 
-        public static void Play(SoundEnum sound)
+        public static void Play(SoundEnum sound, Boolean loop)
         {
-            Play(sound.ToString());
+            Play(sound.ToString(), loop);
         }
 
-        
-        public static void PlayBangSound()
+
+        public static void PlayBangSound(Boolean loop)
         {
-            Play(SoundEnum.bang);
+            Play(SoundEnum.bang,loop);
             Console.WriteLine("in bang");
         }
 
-        public static void PlayBirdSound()
+        public static void PlayBirdSound(Boolean loop)
         {
-            Play(SoundEnum.bird);
+            Play(SoundEnum.bird,loop);
             Console.WriteLine("in birds");
         }
 
-        public static void PlayBrakesSound()
+        public static void PlayBrakesSound(Boolean loop)
         {
-            Play(SoundEnum.brakes);
+            Play(SoundEnum.brakes,loop);
             Console.WriteLine("in brakes");
         }
 
-        public static void PlayBurstSound()
+        public static void PlayBurstSound(Boolean loop)
         {
-            Play(SoundEnum.burst);
+            Play(SoundEnum.burst,loop);
             Console.WriteLine("in burst");
         }
 
-        public static void PlayFinalDriveSound()
+        public static void PlayFinalDriveSound(Boolean loop)
         {
-            Play(SoundEnum.finalDrive);
+            Play(SoundEnum.finalDrive,loop);
             Console.WriteLine("in finalDrive");
         }
-        
-        public static void PlayFinalIdleSound()
+
+        public static void PlayFinalIdleSound(Boolean loop)
         {
-            Play(SoundEnum.finalIdle);
+            Play(SoundEnum.finalIdle,loop);
             Console.WriteLine("in finalIdle");
         }
 
-        public static void PlayHornSound()
+        public static void PlayHornSound(Boolean loop)
         {
-            Play(SoundEnum.horn);
+            Play(SoundEnum.horn,loop);
             Console.WriteLine("in horn");
         }
 
-        public static void PlayMenuMusicSound()
+        public static void PlayMenuMusicSound(Boolean loop)
         {
-            Play(SoundEnum.menumusic);
+            Play(SoundEnum.menumusic,loop);
             Console.WriteLine("in menuMusic");
         }
 
-        public static void PlayWaterMusicSound()
+        public static void PlayWaterMusicSound(Boolean loop)
         {
-            Play(SoundEnum.water);
+            Play(SoundEnum.water,loop);
             Console.WriteLine("in menuMusic");
         }
 
-        public static void PlayWindSound()
+        public static void PlayWindSound(Boolean loop)
         {
-            Play(SoundEnum.wind);
+            Play(SoundEnum.wind, loop);
             Console.WriteLine("in wind");
         }
-        
 
-        public static void StartMusic()
+
+        public static void StartMusic(Boolean loop)
         {
-            Play(SoundEnum.start);
+            Play(SoundEnum.start,loop);
             //needs to be replaced with the Game Music
         }
 
