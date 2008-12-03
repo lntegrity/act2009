@@ -183,6 +183,8 @@ namespace ACT2009
             
             // Sound Update
             Sounds.Update();
+
+            // Sound Call Test
             
             // Menu Update
             gameMode = menu.MenuUpdate(gameTime, gameMode);

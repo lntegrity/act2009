@@ -27,7 +27,7 @@ namespace ACT2009
         #region Variables
 
         // Textures
-        Texture2D hudMeter, hudMap, hudNeedle;
+        Texture2D hudMeter, hudNeedle;
         Model genCart;
 
         // Menu Element Rectangles
@@ -57,6 +57,8 @@ namespace ACT2009
    
             // 3D Assets
             genCart = Content.Load<Model>("Models\\Generic Cart");
+
+            rotation = -5.0f;
         }
         #endregion // Initialize
 
@@ -67,13 +69,13 @@ namespace ACT2009
             // Update Play Method
             KeyboardState keyboard = Keyboard.GetState();
 
-            if (keyboard.IsKeyDown(Keys.Up))
+            if (keyboard.IsKeyDown(Keys.Space))
             {
-                rotation += .025f;
+                rotation += .0125f;
             }
             else
             {
-                rotation -= .05f;
+                rotation -= .01f;
             }
             rotation = MathHelper.Clamp(rotation, -MathHelper.PiOver2, 1.4f);
             
