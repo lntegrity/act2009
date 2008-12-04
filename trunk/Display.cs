@@ -38,13 +38,7 @@ namespace ACT2009
         Vector3 carOffset, carRotationOffset;
         Car actCart;
 
-
-        public Display()
-        {
-
-        }
-
-        public void DisplayInit(ContentManager Content, GraphicsDevice dev, Car carObj)
+        public void DisplayInit(ContentManager Content, GraphicsDevice dev, ref Car carObj)
         {
             // Loading the 3D models
             car = Content.Load<Model>("Models/Generic Cart");
