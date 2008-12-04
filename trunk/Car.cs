@@ -54,7 +54,7 @@ namespace ACT2009
 		private float maxBraking = 8.0f;
 
         //initializes the car's in constructor
-        public Car(Input contr)
+        public Car(ref Input contr)
         {
             //can only be set in constructor
             controller = contr;

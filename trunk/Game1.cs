@@ -89,7 +89,8 @@ namespace ACT2009
             menu = new Menus();
             play = new Play();
             display = new Display();
-            actCart = new Car(new Input());
+            Input input = new Input();
+            actCart = new Car(ref input);
             actCart.SetPosition(new Vector3(3, 0, 120));
             actCart.SetDirection(new Vector3(1.0f, 0, 0.0f));
             physics = new Physics(ref actCart);
