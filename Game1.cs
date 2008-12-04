@@ -138,7 +138,7 @@ namespace ACT2009
 
             menu.MenuInit(Content);
             play.PlayInit(Content);
-            display.DisplayInit(Content, graphics.GraphicsDevice, actCart);
+            display.DisplayInit(Content, graphics.GraphicsDevice, ref actCart);
 
             // 3D Assets
             /*genCart = Content.Load<Model>("Models\\Generic Cart");

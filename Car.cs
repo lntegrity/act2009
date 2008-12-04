@@ -237,16 +237,25 @@ namespace ACT2009
         public Vector3 getCorner(int corner)
         {
             Vector3 cornerPos = new Vector3();
+            Vector3 r = direction;
+            r.Normalize();
+            Vector3 r2 = new Vector3(-r.Z, 0, r.X);
+            Vector3 L = r*dimension.X/2;
+            Vector3 B = r2*dimension.Z/2;
+
             switch (corner)
             {
                 case Car.FRONTLEFT:
- 
+                    cornerPos = position + L - B;
                     break;
                 case Car.FRONTRIGHT: 
+                    cornerPos = position + L + B;
                     break;
                 case Car.BACKLEFT: 
+                    cornerPos = position - L - B;
                     break;
                 case Car.BACKRIGHT: 
+                    cornerPos = position - L + B;
                     break;
             }
             return cornerPos;
