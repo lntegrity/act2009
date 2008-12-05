@@ -21,6 +21,7 @@ using System.IO;
 using System.Text;
 using System.Threading;
 using System.Globalization;
+using Microsoft.Xna.Framework.Media;
 #endregion
 
 namespace ACT2009
@@ -148,7 +149,10 @@ namespace ACT2009
             //// TODO: use this.Content to load your game content here
 
             //Sounds
-            Sounds.StartMusic(true);
+            //Song mysong = Content.Load<Song>("Sounds\\menumusic");
+            
+            Sounds.PlayMenuMusicSound(true);
+            Sounds.PlayBangSound(false);
 
         }
         
