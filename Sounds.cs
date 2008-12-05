@@ -27,6 +27,7 @@ namespace ACT2009
 {
     class Sounds
     {
+        //SoundEffect mySound;
         public static ContentManager Content;// As //ContentManager
 
         public Sounds(Game1 game)
@@ -45,9 +46,9 @@ namespace ACT2009
             Console.WriteLine("Sounds\\" + soundName);
             try
             {
-                Song mysong = Content.Load<Song>("Sounds\\" +soundName);
-                MediaPlayer.Play(mysong);
-                MediaPlayer.IsRepeating = loop;
+                SoundEffect mySound = Content.Load<SoundEffect>("Sounds\\" + soundName);
+                //Song mysong = Content.Load<Song>("Sounds\\" +soundName);
+                mySound.Play(1.0f, 0.0f, 0.0f, loop);
             }
             catch(Exception ex)
             {
@@ -105,7 +106,10 @@ namespace ACT2009
 
         public static void PlayMenuMusicSound(Boolean loop)
         {
-            Play(SoundEnum.menumusic,loop);
+            Song mysong = Content.Load<Song>("Sounds//menumusic");
+            MediaPlayer.Play(mysong);
+            MediaPlayer.IsRepeating = loop;
+            //Play(SoundEnum.menumusic,loop);
             Console.WriteLine("in menuMusic");
         }
 
@@ -148,7 +152,6 @@ namespace ACT2009
             finalDrive,
             finalIdle,
             horn,
-            menumusic,
             water,
             wind,
             start

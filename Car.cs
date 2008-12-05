@@ -73,6 +73,7 @@ namespace ACT2009
         //initializes the car's data
         Car(Input contr, Color clr, float wgt)
         {
+
             //can only be set in constructor
             color = clr;
 
