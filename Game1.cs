@@ -152,7 +152,6 @@ namespace ACT2009
             //Song mysong = Content.Load<Song>("Sounds\\menumusic");
             
             Sounds.PlayMenuMusicSound(true);
-            Sounds.PlayBangSound(false);
 
         }
         
