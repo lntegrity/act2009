@@ -18,6 +18,8 @@ namespace ACT2009
 {
     class Car
     {
+        //Input Input;
+
         //predefined corners of the car (for collisionhandling)
         public const int FRONTLEFT = 1;
         public const int FRONTRIGHT = 2;
@@ -232,6 +234,45 @@ namespace ACT2009
         public void Update()
         {
             controller.Update();
+
+            /**
+             * 1. das motorgeräusch: die tonhöhe (pitch) abhängig von der geschwindigkeit/maximale geschwindigkeit
+             * 2. Kollisionsgeräusch abspielen, wenn die Kollisionsvariable auf true steht
+             * 3. bei Lenkvolleinschlag (input.getDirection() oder so ähnlich auf 1 oder -1) quietschgeräusche abspielen
+             *       nur, wenn die geschwindigkeit ungleich 0 ist
+            */
+            // Tonhoehe abhaengig von Geschwindigkeit
+
+            if (speed == maxSpeedFwd || speed == maxSpeedRew)
+            {
+                //Loud sound
+            }
+            if (speed < maxSpeedFwd&&speed>0)
+            {
+                float pitch = speed / maxSpeedFwd;
+
+                Sounds.PlayFinalDriveSound(pitch, true);
+            }
+            if (speed < maxSpeedRew && speed > 0)
+            {
+                float pitch = speed / maxSpeedRew;
+                Sounds.PlayFinalDriveSound(pitch, true);
+            }
+
+
+
+            //Kollission
+            if (collisionCorner!=0)
+            {
+                Sounds.PlayBangSound(false);
+            }
+
+            // Lenken
+            if((controller.GetDirection() ==1 || controller.GetDirection()==-1)&&(speed==0))
+            {
+                Sounds.PlayBrakesSound(false);
+            }
+
         }
 
         //Return corners defined by static variables

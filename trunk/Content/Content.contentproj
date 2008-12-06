@@ -110,11 +110,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sounds\brakes.mp3">
-      <Name>brakes</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-    </Compile>
     <Compile Include="Sounds\menumusic.mp3">
       <Name>menumusic</Name>
       <Importer>Mp3Importer</Importer>
@@ -197,6 +192,13 @@
     </Compile>
     <Compile Include="Sounds\start.wav">
       <Name>start</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sounds\brakes.wav">
+      <Name>brakes</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
     </Compile>
