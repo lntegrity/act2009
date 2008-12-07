@@ -90,8 +90,9 @@ namespace ACT2009
             Console.WriteLine("in burst");
         }
 
-        public static void PlayFinalDriveSound(float pitch, Boolean loop)
+        public static void PlayFinalDriveSound(Boolean loop)
         {
+            float pitch = 0;
             Play(SoundEnum.finalDrive,pitch,loop);
             Console.WriteLine("in finalDrive");
         }
@@ -117,6 +118,14 @@ namespace ACT2009
             MediaPlayer.IsRepeating = loop;
             //Play(SoundEnum.menumusic,loop);
             Console.WriteLine("in menuMusic");
+        }
+
+        public static void PlayGameMusic(Boolean loop)
+        {
+            Song gameSong = Content.Load<Song>("Sounds//Happy Racing");
+            MediaPlayer.Play(gameSong);
+            MediaPlayer.IsRepeating = loop;
+            Console.WriteLine("In gameMusic");
         }
 
         public static void PlayWaterMusicSound(Boolean loop)
@@ -160,6 +169,7 @@ namespace ACT2009
             burst,
             finalDrive,
             finalIdle,
+            game,
             horn,
             water,
             wind,

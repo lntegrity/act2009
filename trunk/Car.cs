@@ -245,18 +245,17 @@ namespace ACT2009
 
             if (speed == maxSpeedFwd || speed == maxSpeedRew)
             {
-                //Loud sound
+                
             }
-            if (speed < maxSpeedFwd&&speed>0)
+            if (speed < maxSpeedFwd && speed > 0)
             {
                 float pitch = speed / maxSpeedFwd;
-
-                Sounds.PlayFinalDriveSound(pitch, true);
+                Sounds.PlayFinalDriveSound(true);
             }
             if (speed < maxSpeedRew && speed > 0)
             {
                 float pitch = speed / maxSpeedRew;
-                Sounds.PlayFinalDriveSound(pitch, true);
+                Sounds.PlayFinalDriveSound(true);
             }
 
 
