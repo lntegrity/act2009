@@ -7,17 +7,17 @@ namespace ACT2009
     class Collisiondetect
     {
         //inner Border
-        List<Vector3> innerBorder;
+        ModelPositions innerBorder;
         //outer Border
-        List<Vector3> outerBorder;
+        ModelPositions outerBorder;
         //tree positions
-        List<Vector3> treePositions;
+        ModelPositions treePositions;
         //car positions
-        List<Vector3> carPositions;
+        ModelPositions carPositions;
         //lamp positions
-        List<Vector3> lampPositions;
+        ModelPositions lampPositions;
         //bush positions
-        List<Vector3> bushPositions;
+        ModelPositions bushPositions;
 
         //
         Car car;
@@ -29,6 +29,11 @@ namespace ACT2009
             car = c;
         }
 
+        private void Sweep(ModelPositions border, Vector3 a, Vector3 b)
+        {
+
+        }
+        /*
         //tests every position-pair of inner and outer border if it collided with a car-constraint
         public void detectCollision()
         {
@@ -44,11 +49,12 @@ namespace ACT2009
                     getCollisionarc(, last, current)
                     carLeft
                 carFront
-                    carRear*/
+                    carRear
                     last = current;
                 }
             }
         }
+*/
 
         //calculates collision and returns either the collisionarc or null of two 3D-Lines pressed down to z=0
         private float getCollisionarc(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
