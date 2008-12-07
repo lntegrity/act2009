@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Project: ACT2009, File: Physics.cs
+// Namespace: ACT2009, Class: Game1
+// Path: \ACT2009\Physics.cs
+// Author: Tobias Feigel, Team 2
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,7 +52,7 @@ namespace ACT2009
 
             oldPosition = cart.GetPosition();
             oldDirection = cart.GetDirection();
-            oldSpeed = cart.GetSpeed();
+            oldSpeed = 50f;
             Weight = cart.GetWeight();
             SpeedMax = cart.GetMaxSpeedFwd();
             SpeedMaxRev = cart.GetMaxSpeedRew();
@@ -78,44 +83,59 @@ namespace ACT2009
         private void Accelerate()
         {
             // neue Geschwindigkeit nach v = a*t berechnen:
-            float speed;
-            speed = oldSpeed + Math.KMperHour((a(InputAcceleration, maxAcc) * t));
-            
+            float speed = 0;
+
+            if (InputAcceleration != 0)
+            {
+                speed = oldSpeed + Math.KMperHour((a(InputAcceleration, maxAcc) * t));
+            }
+
             // Geschwindigkeit prüfen und in Cart schreiben:
             speed = speedCheck(speed);
             pCart.SetSpeed(speed);
 
             // neue Richtung ermitteln und schreiben:
             Vector3 v_direction = new Vector3();
-            v_direction = oldDirection + v_Fres(InputAcceleration, maxAcc);
-            pCart.SetDirection(v_direction);
+            if (InputCarDirection != 0)
+            {              
+                v_direction = oldDirection + v_Fres(InputAcceleration, maxAcc);
+                v_direction = Vector3.Normalize(v_direction);
+                pCart.SetDirection(v_direction);
+            }
+            else
+            {
+                v_direction = oldDirection;
+            }
 
-            // neue Position ermitteln und schreiben:
-            Vector3 v_position = new Vector3();
-            v_position = (speed * v_direction) + oldDirection;
-            pCart.SetDirection(v_position);
+            if (speed != 0)
+            {
+                // neue Position ermitteln und schreiben:
+                Vector3 v_position = new Vector3();
+                v_position = (Math.MeterPerSecond(speed) * v_direction) + oldPosition;
+                pCart.SetPosition(v_position);
+            }
         }
+
         /// <summary>
         /// Wird aufgerufen, wenn der Benutzer bremst.
         /// </summary>
         /// <param name="maxBrake">übergibt maximal negative Beschleunigung</param>
+        
         private void Brake(float maxBrake)
         {
             float speed;
 
+            //Wenn wir schon stehen, dann Funktion verlassen und nichts machen
+            if (oldSpeed == 0)
+                return;
+
             // Fahren wir vorwärts oder rückwärts?
             if (oldSpeed > 0)
             {
-                // Maximale Bremsbeschleunigung muss negiert werden.
-                maxBrake = maxBrak - 2 * maxBrak;
-            }
-            else
-            {
-                // Maximale Bremsbeschleunigung wird positiv verwendet, da wir rückwärts fahren.
-                maxBrake = maxBrak;
+                maxBrake = maxBrake - 2 * maxBrake;
             }
 
-            // neue Geschwindigkeit wird berechnet
+            // neue Geschwindigkeit berechnen
             speed = oldSpeed + Math.KMperHour((a(InputCarBrake, maxBrake) * t));
 
             // Falls wir das Vorzeichen der Geschwindigkeit ändern, bleiben wir stehen:
@@ -124,8 +144,6 @@ namespace ACT2009
                 speed = 0;
             }
 
-            // Maximal Geschwindigkeiten prüfen
-            speed = speedCheck(speed);
             pCart.SetSpeed(speed);
 
             // neue Richtung ermitteln und schreiben:
@@ -147,15 +165,12 @@ namespace ACT2009
         {
             float speed;
 
-            // Reibung addieren oder subtrahieren? (vorwärts oder rückwärts unterwegs)
-            if (oldSpeed < 0)
-            {
-                speed = oldSpeed - Math.KMperHour((a(0, 0) * t));
-            }
-            else 
-            {
-                speed = oldSpeed + Math.KMperHour((a(0, 0) * t));
-            }
+            if (oldSpeed == 0)
+                return;
+
+            // neue Geschwindigkeit berechnen
+            speed = oldSpeed + Math.KMperHour((a(0, 0) * t));
+            
             
             // Stehen wir schon oder rollen wie weiter?
             if ((oldSpeed < 0 && speed > 0)||(oldSpeed > 0 && speed < 0))
@@ -165,7 +180,7 @@ namespace ACT2009
             }
             
             // neue Geschwindigkeit schreiben
-            pCart.SetSpeed(speed);
+                pCart.SetSpeed(speed);
 
         }
         /// <summary>
@@ -182,19 +197,28 @@ namespace ACT2009
             float temp;
 
             // berechnet die in Y-Richtung wirkende Kraft normiert auf Bereich 0 bis 1
-            temp = Fres_y(Acc, max)/System.Math.Abs(Weight * Acc * max);
+            if (Acc != 0)
+            {
+                temp = Fres_y(Acc, max) / System.Math.Abs(Weight * Acc * max);
+            }
+            else
+            {
+                temp = 0;
+            }
 
             // Koordinaten des resultierenden Vektors werden ermittelt
             x = InputCarDirection;
-            y = temp;
-            z = 0;
+            y = 0;
+            z = temp;
 
             // Vektor wird erzeugt und zurückgegeben
             Vector3 vektor = new Vector3(x, y, z);
-            vektor = Vector3.Normalize(vektor);
-    
+            
+            //Prüfung ob Nullvektor, da Normalisierung sonst nicht möglich!
+            if (vektor.X != 0 || vektor.Y != 0 || vektor.Z != 0)
+                vektor = Vector3.Normalize(vektor);
             return vektor;
-        }
+         }
 
         /// <summary>
         /// Berechnet die Beschleunigung, die auf das Auto wirkt.
@@ -236,13 +260,24 @@ namespace ACT2009
 
             // Muss die Reibung abgezogen oder addiert werden? 
             // Abhängig von der Fahrtrichtung!
-            if (Force >= 0)
+            if (oldSpeed > 0)
             {
                 temp = Force - Friction;
             }
-            else
+            else if (oldSpeed < 0)
             {
                 temp = Force + Friction;
+            }
+            else
+            {
+                if (max > 0 && Acc > 0)
+                {
+                    temp = Force - Friction;
+                }
+                else
+                {
+                    temp = Force + Friction;
+                }
             }
 
             // gibt resultierende Kraft in N zurück            
@@ -266,5 +301,15 @@ namespace ACT2009
             //Geschwindigkeit zurückgeben
             return speed;
         }
+
+        public void Test()
+        {
+            //a(-1f, 10f);
+            //v_Fres(-1f, 6.9f);
+            //noInput();
+            //Brake(8.0f);
+            //Accelerate();
+        }
+    
     } 
 }
