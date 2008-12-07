@@ -134,7 +134,7 @@ namespace ACT2009
             actCart.SetDirection(tempVector);
 
             // Draw the landscape
-            DrawObject(landscape);
+            DrawObject(landscape, Vector3.Zero, Vector3.Zero);
 
 
             // Draw the car
@@ -161,8 +161,9 @@ namespace ACT2009
             }
         }
 
-        private void DrawObject(Model objectModel)
+        public void DrawObject(Model objectModel,Vector3 position, Vector3 direction)
         {
+            //HACK position and direction must be implemented
             foreach (ModelMesh mesh in objectModel.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)

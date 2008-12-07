@@ -33,5 +33,24 @@ namespace ACT2009
             this.positions = positions;
             this.directions = directions;
         }
+
+        //returns count of positions
+        public int GetCount()
+        {
+            return positions.Count;
+        }
+
+        public void DrawObjects(Display display)
+        {
+            for(int i = 0; i < positions.Count; ++i)
+            {
+                display.DrawObject(objectModel,positions[i],directions[i]);
+            }
+        }
+
+        public Vector3 getPosition(int i)
+        {
+            return positions[i];
+        }
     }
 }
