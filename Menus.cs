@@ -153,8 +153,7 @@ namespace ACT2009
             if (menuTab == MenuTabs.Play && keyboard.IsKeyDown(Keys.Enter) ||
                 gamePad.Buttons.A == ButtonState.Pressed)
             {
-                gameMode = Game1.GameMode.Play;
-                Sounds.PlayBrakesSound(false);
+                gameMode = Game1.GameMode.Play;            
             }
             // Go To Controller Layout
             if (menuTab == MenuTabs.Layout && keyboard.IsKeyDown(Keys.Enter) ||

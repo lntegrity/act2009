@@ -63,6 +63,8 @@ namespace ACT2009
             Exit
         }
         GameMode gameMode = GameMode.Main;
+        GameMode currentMenu;
+        GameMode previousMenu;
 
         public Game1()
         {
@@ -188,10 +190,22 @@ namespace ACT2009
             // Sound Update
             Sounds.Update();
 
-            // Sound Call Test
-            
+            // Game Music Change
             // Menu Update
+            previousMenu = gameMode;
             gameMode = menu.MenuUpdate(gameTime, gameMode);
+            if (gameMode == GameMode.Play && previousMenu == GameMode.Main)
+            {
+                Sounds.StopMusic();
+                Sounds.PlayGameMusic(true);
+                Sounds.PlayFinalDriveSound(true);
+            }
+            if (gameMode == GameMode.Main && previousMenu == GameMode.Play)
+            {
+                Sounds.StopMusic();
+                Sounds.PlayMenuMusicSound(true);
+                Sounds.PlayFinalDriveSound(false);
+            }
 
             //Updating the car, which calls its corresponding input-update
             actCart.Update();
