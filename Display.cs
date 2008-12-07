@@ -134,30 +134,7 @@ namespace ACT2009
             actCart.SetDirection(tempVector);
 
             // Draw the landscape
-            foreach (ModelMesh mesh in landscape.Meshes)
-            {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.EnableDefaultLighting();
-
-                    // Position of the landscape on the screen
-                    effect.World =  Matrix.CreateTranslation(actCart.GetPosition()) // translate the landscape based on car position
-                                    * navPositionMatrix                 // debbuging navigation helper position
-                                    * Matrix.CreateRotationY((float)(System.Math.PI/2))
-                                    * Matrix.CreateTranslation(new Vector3(-carOffset.X, -carOffset.Y, -carOffset.Z))
-                                    * Matrix.CreateTranslation(new Vector3(-carRotationOffset.X, -carRotationOffset.Y, -carRotationOffset.Z))
-                                    * Matrix.CreateRotationY((float)(System.Math.Atan2(actCart.GetDirection().Z, actCart.GetDirection().X)))
-                                    * Matrix.CreateTranslation(carOffset)
-                                    * Matrix.CreateTranslation(carRotationOffset)
-                                    * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
-                                    * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
-
-                    effect.View = viewMatrix;
-
-                    effect.Projection = projectionMatrix;
-                }
-                mesh.Draw();
-            }
+            DrawObject(landscape);
 
 
             // Draw the car
@@ -173,6 +150,34 @@ namespace ACT2009
                                     * Matrix.CreateTranslation(carOffset) // car screen position offset
                                     * Matrix.CreateTranslation(carRotationOffset)
                                     * navPositionMatrix                 // debbuging navigation helper position
+                                    * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
+                                    * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
+
+                    effect.View = viewMatrix;
+
+                    effect.Projection = projectionMatrix;
+                }
+                mesh.Draw();
+            }
+        }
+
+        private void DrawObject(Model objectModel)
+        {
+            foreach (ModelMesh mesh in objectModel.Meshes)
+            {
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.EnableDefaultLighting();
+
+                    // Position of the objectModel on the screen
+                    effect.World = Matrix.CreateTranslation(actCart.GetPosition()) // translate the objectModel based on car position
+                                    * navPositionMatrix                 // debbuging navigation helper position
+                                    * Matrix.CreateRotationY((float)(System.Math.PI / 2))
+                                    * Matrix.CreateTranslation(new Vector3(-carOffset.X, -carOffset.Y, -carOffset.Z))
+                                    * Matrix.CreateTranslation(new Vector3(-carRotationOffset.X, -carRotationOffset.Y, -carRotationOffset.Z))
+                                    * Matrix.CreateRotationY((float)(System.Math.Atan2(actCart.GetDirection().Z, actCart.GetDirection().X)))
+                                    * Matrix.CreateTranslation(carOffset)
+                                    * Matrix.CreateTranslation(carRotationOffset)
                                     * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
                                     * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
 

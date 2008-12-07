@@ -86,6 +86,7 @@
     <Compile Include="Collisiondetect.cs" />
     <Compile Include="Math.cs" />
     <Compile Include="Menus.cs" />
+    <Compile Include="ModelPositions.cs" />
     <Compile Include="Physics.cs" />
     <Compile Include="Play.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,9 +131,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-<Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-              <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
-	<!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
