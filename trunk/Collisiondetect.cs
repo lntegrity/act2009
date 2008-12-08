@@ -10,50 +10,101 @@ namespace ACT2009
         ModelPositions innerBorder;
         //outer Border
         ModelPositions outerBorder;
-        //tree positions
-        ModelPositions treePositions;
         //car positions
         ModelPositions carPositions;
-        //lamp positions
-        ModelPositions lampPositions;
-        //bush positions
-        ModelPositions bushPositions;
 
-        //
         Car car;
+        //Maximum Distance allowed to use point for collision detection
         float distanceLimit;
 
 
         Collisiondetect(Car c)
         {
             car = c;
+
         }
 
-        private void SweepPoints(ModelPositions border, Vector3 a, Vector3 b)
+        //@param arc: arcus under wich the collision occured, if any
+        private bool SweepPoints(ModelPositions border, Vector3 a, Vector3 b, ref float arc)
         {
             for (int i=0; i+1 < border.GetCount(); ++i)
             {
-                getCollisionarc(a, b, border.getPosition(i), border.getPosition(i + 1));
+                if (getCollisionarc(a, b, border.getPosition(i), border.getPosition(i + 1), ref arc))
+                {
+                    return true;
+                }
             }
-            getCollisionarc(a, b, border.getPosition(border.GetCount()-1), border.getPosition(0));
+            return getCollisionarc(a, b, border.getPosition(border.GetCount()-1), border.getPosition(0), ref arc);
         }
 
         //tests every position-pair of inner and outer border if it collided with a car-constraint
         public void detectCollision()
         {
-            SweepPoints(innerBorder, car.getCorner(Car.FRONTLEFT), car.getCorner(Car.FRONTRIGHT));
-            SweepPoints(innerBorder, car.getCorner(Car.FRONTRIGHT), car.getCorner(Car.BACKRIGHT));
-            SweepPoints(innerBorder, car.getCorner(Car.BACKRIGHT), car.getCorner(Car.BACKLEFT));
-            SweepPoints(innerBorder, car.getCorner(Car.BACKLEFT), car.getCorner(Car.FRONTLEFT));
+            //car.ResetCollision();
+            car.SetCollisionCorner(0);
 
-            SweepPoints(outerBorder, car.getCorner(Car.FRONTLEFT), car.getCorner(Car.FRONTRIGHT));
-            SweepPoints(outerBorder, car.getCorner(Car.FRONTRIGHT), car.getCorner(Car.BACKRIGHT));
-            SweepPoints(outerBorder, car.getCorner(Car.BACKRIGHT), car.getCorner(Car.BACKLEFT));
-            SweepPoints(outerBorder, car.getCorner(Car.BACKLEFT), car.getCorner(Car.FRONTLEFT));
+            //Collisionarc on the side
+            float arcSide = 0;
+            //Collisionarc on front or back
+            float arcFront = 0;
+
+            bool frontCollision = false;
+            bool rightCollision = false;
+            bool leftCollision = false;
+            bool rearCollision = false;
+
+            frontCollision = SweepPoints(innerBorder, car.getCorner(Car.FRONTLEFT), car.getCorner(Car.FRONTRIGHT), ref arcFront)
+                                || SweepPoints(outerBorder, car.getCorner(Car.FRONTLEFT), car.getCorner(Car.FRONTRIGHT), ref arcFront);
+
+            rightCollision = SweepPoints(innerBorder, car.getCorner(Car.FRONTRIGHT), car.getCorner(Car.BACKRIGHT), ref arcSide)
+                                || SweepPoints(outerBorder, car.getCorner(Car.FRONTRIGHT), car.getCorner(Car.BACKRIGHT), ref arcSide);
+
+            rearCollision = SweepPoints(innerBorder, car.getCorner(Car.BACKRIGHT), car.getCorner(Car.BACKLEFT), ref arcFront)
+                                || SweepPoints(outerBorder, car.getCorner(Car.BACKRIGHT), car.getCorner(Car.BACKLEFT), ref arcFront);
+
+            leftCollision = SweepPoints(innerBorder, car.getCorner(Car.BACKLEFT), car.getCorner(Car.FRONTLEFT), ref arcSide)
+                                || SweepPoints(outerBorder, car.getCorner(Car.BACKLEFT), car.getCorner(Car.FRONTLEFT), ref arcSide);
+
+            if (frontCollision)
+            {
+                if (rightCollision)
+                {
+                    car.SetCollisionArc(arcSide);
+                    car.SetCollisionCorner(Car.FRONTRIGHT);
+                }
+                else if (leftCollision)
+                {
+                    car.SetCollisionArc(arcSide);
+                    car.SetCollisionCorner(Car.FRONTLEFT);
+                }
+                else
+                {
+                    car.SetCollisionArc((float)(System.Math.PI / 2));
+                    car.SetCollisionCorner(Car.FRONTLEFT);
+                }
+            }
+            else if (rearCollision)
+            {
+                if (rightCollision)
+                {
+                    car.SetCollisionArc((float)System.Math.PI - arcSide);
+                    car.SetCollisionCorner(Car.FRONTRIGHT);
+                }
+                else if (leftCollision)
+                {
+                    car.SetCollisionArc((float)System.Math.PI - arcSide);
+                    car.SetCollisionCorner(Car.FRONTLEFT);
+                }
+                else
+                {
+                    car.SetCollisionArc((float)(System.Math.PI / 2));
+                    car.SetCollisionCorner(Car.FRONTLEFT);
+                }
+            }
         }
 
         //calculates collision and returns either the collisionarc or null of two 3D-Lines pressed down to z=0
-        private float getCollisionarc(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
+        private bool getCollisionarc(Vector3 a, Vector3 b, Vector3 c, Vector3 d, ref float arc)
         {
             float opt1 = d.Y - c.Y;
             float opt2 = c.Y - a.Y;
@@ -68,12 +119,12 @@ namespace ACT2009
             { // parallel
                 if (det2 == 0)
                 { // identical, colliding under 0 degree
-                    return 0;
+                    arc = 0;
+                    return true;
                 }
                 else
                 { // really parallel, not crossing
-                    //TODO: Must be extended to return corner and side or null
-                    return 0;
+                    return false;
                 }
             }
 
@@ -90,12 +141,12 @@ namespace ACT2009
                 double opt9 = System.Math.Sqrt(yopt7 * yopt7 + xopt7 * xopt7);
                 double opt10 = System.Math.Sqrt(yopt8 * yopt8 + xopt8 * xopt8);
                 double opt11 = System.Math.Sqrt((xopt7 - xopt8) * (xopt7 - xopt8) + (yopt7 - yopt8) * (yopt7 - yopt8));
-                return (float)System.Math.Acos((opt9 * opt9 + opt10 * opt10 - opt11 * opt11) / (2 * opt9 * opt10));
+                arc = (float)System.Math.Acos((opt9 * opt9 + opt10 * opt10 - opt11 * opt11) / (2 * opt9 * opt10));
+                return true;
             }
 
             //not colliding within borderlength
-            //TODO: umformen!
-            return 0;
+            return false;
         }
     }
 }
