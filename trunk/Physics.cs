@@ -17,7 +17,8 @@ namespace ACT2009
     { 
         // Definiert Hilfsvariablen, die dann im Konstruktor gefüllt werden und zur
         // Verwendung in der Klasse bereitgestellt werden.
-        
+        private Input input;
+
         // stellt Variablen für Werte der Inputklasse bereit
         private float InputAcceleration;                    
         private float InputCarBrake;                       
@@ -35,27 +36,16 @@ namespace ACT2009
 
         //stellt weitere Variablen und Constanten bereit:
         private const float g = 9.81f;
-        private const float my = 0.55f;
+        private const float my = 0.45f;
         private Car pCart;
         private float t;
+        private float oldt;
         
         public Physics(ref Car cart)
         {
             // lädt alle wichtigen Parameter in die Variablen
             pCart=cart;
-            Input input = pCart.GetController();
-            InputAcceleration = input.GetAccelleration();
-            InputCarBrake = input.GetBrake();
-            InputCarDirection = input.GetDirection();
-            maxAcc = cart.GetMaxAcceleration();
-            maxBrak = cart.GetMaxBraking();
-
-            oldPosition = cart.GetPosition();
-            oldDirection = cart.GetDirection();
-            oldSpeed = 50f;
-            Weight = cart.GetWeight();
-            SpeedMax = cart.GetMaxSpeedFwd();
-            SpeedMaxRev = cart.GetMaxSpeedRew();
+            input = pCart.GetController();
         }
 
         /// <summary>
@@ -64,13 +54,35 @@ namespace ACT2009
         /// </summary>
         public void Update(GameTime gtime)
         {
+
+            InputAcceleration = input.GetAccelleration();
+            //InputAcceleration = 1f;
+            InputCarBrake = input.GetBrake();
+            InputCarDirection = input.GetDirection();
+            maxAcc = pCart.GetMaxAcceleration();
+            maxBrak = pCart.GetMaxBraking();
+
+            oldPosition = pCart.GetPosition();
+            oldDirection = pCart.GetDirection();
+            oldSpeed = pCart.GetSpeed();
+            Weight = pCart.GetWeight();
+            SpeedMax = pCart.GetMaxSpeedFwd();
+            SpeedMaxRev = pCart.GetMaxSpeedRew();
+            
             //Aktuelle Zeit wird berechnet
-            t = gtime.ElapsedRealTime.Seconds;
+            //if (oldt == 0f)
+            //{
+            //    oldt = gtime.TotalGameTime.Seconds;
+            //}
+
+            t = (float) gtime.ElapsedGameTime.Milliseconds/1000f;
+            oldt = gtime.TotalGameTime.Milliseconds/1000f;
             // wird gebremst, dann Brake-Funktion starten
+            
             if (InputCarBrake != 0)
-                this.Brake(maxBrak);
+                this.Brake();
             // wird nicht gelenkt, dann noInput aufrufen
-            if (InputCarDirection == 0)
+            if (InputCarDirection == 0 && InputAcceleration == 0 && InputCarBrake == 0)
                 this.noInput();
             // wird gelenkt oder Gas gegeben, dann Accelerate aufrufen
             else
@@ -111,7 +123,7 @@ namespace ACT2009
             {
                 // neue Position ermitteln und schreiben:
                 Vector3 v_position = new Vector3();
-                v_position = (Math.MeterPerSecond(speed) * v_direction) + oldPosition;
+                v_position = (Math.MeterPerSecond(speed) * v_direction * t) + oldPosition;
                 pCart.SetPosition(v_position);
             }
         }
@@ -121,7 +133,7 @@ namespace ACT2009
         /// </summary>
         /// <param name="maxBrake">übergibt maximal negative Beschleunigung</param>
         
-        private void Brake(float maxBrake)
+        private void Brake()
         {
             float speed;
 
@@ -132,11 +144,11 @@ namespace ACT2009
             // Fahren wir vorwärts oder rückwärts?
             if (oldSpeed > 0)
             {
-                maxBrake = maxBrake - 2 * maxBrake;
+                maxBrak = maxBrak - 2 * maxBrak;
             }
 
             // neue Geschwindigkeit berechnen
-            speed = oldSpeed + Math.KMperHour((a(InputCarBrake, maxBrake) * t));
+            speed = oldSpeed + Math.KMperHour((a(InputCarBrake, maxBrak) * t));
 
             // Falls wir das Vorzeichen der Geschwindigkeit ändern, bleiben wir stehen:
             if ((oldSpeed < 0 && speed > 0)||(oldSpeed > 0 && speed < 0))
@@ -148,12 +160,11 @@ namespace ACT2009
 
             // neue Richtung ermitteln und schreiben:
             Vector3 v_direction = new Vector3();
-            v_direction = oldDirection + v_Fres(InputCarBrake, maxBrake);
-            pCart.SetDirection(v_direction);
+            v_direction = oldDirection;
 
             // neue Position ermitteln und schreiben:
             Vector3 v_position = new Vector3();
-            v_position = (speed * v_direction) + oldDirection;
+            v_position = (Math.MeterPerSecond(speed) * v_direction * t) + oldPosition;
             pCart.SetPosition(v_position);
         }
 
@@ -161,6 +172,7 @@ namespace ACT2009
         /// Wird verwendet, wenn der User weder beschleunigt, bremst noch lenkt.
         /// Es wird nur die Reibung berücksichtigt und die Geschwindigkeit angepasst.
         /// </summary>
+        
         private void noInput()
         {
             float speed;
@@ -180,7 +192,16 @@ namespace ACT2009
             }
             
             // neue Geschwindigkeit schreiben
+                speed = speedCheck(speed);
                 pCart.SetSpeed(speed);
+
+            // neue Position ermitteln und schreiben:
+            Vector3 v_position = new Vector3();
+            Vector3 v_direction = new Vector3();
+
+            v_direction = oldDirection;
+            v_position = (Math.MeterPerSecond(speed) * v_direction * t) + oldPosition;
+            pCart.SetPosition(v_position);
 
         }
         /// <summary>
