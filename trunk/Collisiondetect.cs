@@ -29,32 +29,28 @@ namespace ACT2009
             car = c;
         }
 
-        private void Sweep(ModelPositions border, Vector3 a, Vector3 b)
+        private void SweepPoints(ModelPositions border, Vector3 a, Vector3 b)
         {
-
+            for (int i=0; i+1 < border.GetCount(); ++i)
+            {
+                getCollisionarc(a, b, border.getPosition(i), border.getPosition(i + 1));
+            }
+            getCollisionarc(a, b, border.getPosition(border.GetCount()-1), border.getPosition(0));
         }
-        /*
+
         //tests every position-pair of inner and outer border if it collided with a car-constraint
         public void detectCollision()
         {
-            //Save the inner border beginning to test with the end
-            Vector3 last = innerBorder[innerBorder.Count-1];
+            SweepPoints(innerBorder, car.getCorner(Car.FRONTLEFT), car.getCorner(Car.FRONTRIGHT));
+            SweepPoints(innerBorder, car.getCorner(Car.FRONTRIGHT), car.getCorner(Car.BACKRIGHT));
+            SweepPoints(innerBorder, car.getCorner(Car.BACKRIGHT), car.getCorner(Car.BACKLEFT));
+            SweepPoints(innerBorder, car.getCorner(Car.BACKLEFT), car.getCorner(Car.FRONTLEFT));
 
-            foreach (Vector3 current in innerBorder)
-            {
-                //if the distance between car and current point is smaller than the distanceLimit,
-                //we test for collisions
-                if (true) //HACK distance is currently unlimited
-                {/*
-                    getCollisionarc(, last, current)
-                    carLeft
-                carFront
-                    carRear
-                    last = current;
-                }
-            }
+            SweepPoints(outerBorder, car.getCorner(Car.FRONTLEFT), car.getCorner(Car.FRONTRIGHT));
+            SweepPoints(outerBorder, car.getCorner(Car.FRONTRIGHT), car.getCorner(Car.BACKRIGHT));
+            SweepPoints(outerBorder, car.getCorner(Car.BACKRIGHT), car.getCorner(Car.BACKLEFT));
+            SweepPoints(outerBorder, car.getCorner(Car.BACKLEFT), car.getCorner(Car.FRONTLEFT));
         }
-*/
 
         //calculates collision and returns either the collisionarc or null of two 3D-Lines pressed down to z=0
         private float getCollisionarc(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
