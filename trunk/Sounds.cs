@@ -41,74 +41,77 @@ namespace ACT2009
             Console.WriteLine(Content);
         }
 
-        public static void Play(string soundName, float pitch, Boolean loop)
+        public static SoundEffectInstance Play(string soundName, float pitch, Boolean loop)
         {
             Console.WriteLine("Sounds\\" + soundName);
             try
             {
                 SoundEffect mySound = Content.Load<SoundEffect>("Sounds\\" + soundName);
                 //Song mysong = Content.Load<Song>("Sounds\\" +soundName);
-                mySound.Play(1.0f, pitch, 0.0f, loop);
+                SoundEffectInstance e = mySound.Play(1.0f, pitch, 0.0f, loop);
+                return e;
             }
             catch(Exception ex)
             {
                 Console.WriteLine("Exception caught "+ex.Message);
             }
+            return null;
         }
 
-        public static void Play(SoundEnum sound, float pitch, Boolean loop)
+        public static SoundEffectInstance Play(SoundEnum sound, float pitch, Boolean loop)
         {
-            Play(sound.ToString(), pitch, loop);
+            SoundEffectInstance e = Play(sound.ToString(), pitch, loop);
+            return e;
         }
 
 
-        public static void PlayBangSound(Boolean loop)
-        {
-            float pitch = 0;
-            Play(SoundEnum.bang, pitch ,loop);
-            Console.WriteLine("in bang");
-        }
-
-        public static void PlayBirdSound(Boolean loop)
+        public static SoundEffectInstance PlayBangSound(Boolean loop)
         {
             float pitch = 0;
-            Play(SoundEnum.bird, pitch, loop);
-            Console.WriteLine("in birds");
+            SoundEffectInstance e = Play(SoundEnum.bang, pitch, loop);
+            return e;
         }
 
-        public static void PlayBrakesSound(Boolean loop)
+        public static SoundEffectInstance PlayBirdSound(Boolean loop)
         {
             float pitch = 0;
-            Play(SoundEnum.brakes,pitch,loop);
-            Console.WriteLine("in brakes");
+            SoundEffectInstance e = Play(SoundEnum.bird, pitch, loop);
+            return e;
         }
 
-        public static void PlayBurstSound(Boolean loop)
+        public static SoundEffectInstance PlayBrakesSound(Boolean loop)
         {
             float pitch = 0;
-            Play(SoundEnum.burst,pitch,loop);
-            Console.WriteLine("in burst");
+            SoundEffectInstance e = Play(SoundEnum.brakes, pitch, loop);
+            return e;
         }
 
-        public static void PlayFinalDriveSound(Boolean loop)
+        public static SoundEffectInstance PlayBurstSound(Boolean loop)
         {
             float pitch = 0;
-            Play(SoundEnum.finalDrive,pitch,loop);
-            Console.WriteLine("in finalDrive");
+            SoundEffectInstance e = Play(SoundEnum.burst, pitch, loop);
+            return e;
         }
 
-        public static void PlayFinalIdleSound(Boolean loop)
+        public static SoundEffectInstance PlayFinalDriveSound(Boolean loop)
         {
             float pitch = 0;
-            Play(SoundEnum.finalIdle,pitch,loop);
-            Console.WriteLine("in finalIdle");
+            SoundEffectInstance e = Play(SoundEnum.finalDrive, pitch, loop);
+            return e;
         }
 
-        public static void PlayHornSound(Boolean loop)
+        public static SoundEffectInstance PlayFinalIdleSound(Boolean loop)
         {
             float pitch = 0;
-            Play(SoundEnum.horn,pitch,loop);
-            Console.WriteLine("in horn");
+            SoundEffectInstance e = Play(SoundEnum.finalIdle, pitch, loop);
+            return e;
+        }
+
+        public static SoundEffectInstance PlayHornSound(Boolean loop)
+        {
+            float pitch = 0;
+            SoundEffectInstance e = Play(SoundEnum.horn, pitch, loop);
+            return e;
         }
 
         public static void PlayMenuMusicSound(Boolean loop)
@@ -135,11 +138,13 @@ namespace ACT2009
             Console.WriteLine("in menuMusic");
         }
 
-        public static void PlayWindSound(Boolean loop)
+        public static SoundEffectInstance PlayWindSound(Boolean loop)
         {
             float pitch = 0;
-            Play(SoundEnum.wind, pitch, loop);
+
+            SoundEffectInstance e = Play(SoundEnum.wind, pitch, loop);
             Console.WriteLine("in wind");
+            return e;
         }
 
 
