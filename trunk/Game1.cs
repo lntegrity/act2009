@@ -198,13 +198,12 @@ namespace ACT2009
             {
                 Sounds.StopMusic();
                 Sounds.PlayGameMusic(true);
-                Sounds.PlayFinalDriveSound(true);
+                SoundEffectInstance e = Sounds.PlayFinalDriveSound(true);
             }
             if (gameMode == GameMode.Main && previousMenu == GameMode.Play)
             {
                 Sounds.StopMusic();
                 Sounds.PlayMenuMusicSound(true);
-                Sounds.PlayFinalDriveSound(false);
             }
 
             //Updating the car, which calls its corresponding input-update
