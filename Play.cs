@@ -64,19 +64,17 @@ namespace ACT2009
 
         #region PlayUpdate
 
-        public Game1.GameMode PlayUpdate(GameTime gameTime, Game1.GameMode gameMode)
+        public Game1.GameMode PlayUpdate(GameTime gameTime, Game1.GameMode gameMode, ref Car cart)
         {
             // Update Play Method
             KeyboardState keyboard = Keyboard.GetState();
+    
+            float speed;
+            speed = cart.GetSpeed();
 
-            if (keyboard.IsKeyDown(Keys.Space))
-            {
-                rotation += .0125f;
-            }
-            else
-            {
-                rotation -= .01f;
-            }
+            speed = (speed * 2.9708f) / 90f;
+
+            rotation = speed - MathHelper.PiOver2;
             rotation = MathHelper.Clamp(rotation, -MathHelper.PiOver2, 1.4f);
             
             return gameMode;
