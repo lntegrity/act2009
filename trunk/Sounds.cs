@@ -29,6 +29,7 @@ namespace ACT2009
     {
         //SoundEffect mySound;
         public static ContentManager Content;// As //ContentManager
+        public static SoundEffectInstance sei;
 
         public Sounds(Game1 game)
         {
@@ -49,6 +50,7 @@ namespace ACT2009
                 SoundEffect mySound = Content.Load<SoundEffect>("Sounds\\" + soundName);
                 //Song mysong = Content.Load<Song>("Sounds\\" +soundName);
                 SoundEffectInstance e = mySound.Play(1.0f, pitch, 0.0f, loop);
+                setSoundEffectInstance(e);
                 return e;
             }
             catch(Exception ex)
@@ -63,7 +65,16 @@ namespace ACT2009
             SoundEffectInstance e = Play(sound.ToString(), pitch, loop);
             return e;
         }
+       
+        public static void setSoundEffectInstance(SoundEffectInstance SoundEffectInstances)
+        {
+            sei = SoundEffectInstances;
+        }
 
+        public static SoundEffectInstance getSoundEffectInstance()
+        {
+            return sei;
+        }
 
         public static SoundEffectInstance PlayBangSound(Boolean loop)
         {
@@ -93,9 +104,8 @@ namespace ACT2009
             return e;
         }
 
-        public static SoundEffectInstance PlayFinalDriveSound(Boolean loop)
+        public static SoundEffectInstance PlayFinalDriveSound(float pitch, Boolean loop)
         {
-            float pitch = 0;
             SoundEffectInstance e = Play(SoundEnum.finalDrive, pitch, loop);
             return e;
         }

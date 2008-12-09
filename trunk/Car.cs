@@ -245,17 +245,29 @@ namespace ACT2009
 
             if (speed == maxSpeedFwd || speed == maxSpeedRew)
             {
-                
+                float pitch = 1;
+                if (Sounds.getSoundEffectInstance() == null)
+                {
+                    Sounds.PlayFinalDriveSound(pitch, true);
+                }
             }
             if (speed < maxSpeedFwd && speed > 0)
             {
+                
                 float pitch = speed / maxSpeedFwd;
-                Sounds.PlayFinalDriveSound(true);
+
+                if (Sounds.getSoundEffectInstance()==null)
+                {
+                    Sounds.PlayFinalDriveSound(pitch, true);
+                }
             }
             if (speed < maxSpeedRew && speed > 0)
             {
                 float pitch = speed / maxSpeedRew;
-                Sounds.PlayFinalDriveSound(true);
+                if (Sounds.getSoundEffectInstance() == null)
+                {
+                    Sounds.PlayFinalDriveSound(pitch, true);
+                }
             }
 
 
