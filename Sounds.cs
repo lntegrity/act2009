@@ -128,6 +128,7 @@ namespace ACT2009
         {
             Song mysong = Content.Load<Song>("Sounds//menumusic");
             MediaPlayer.Play(mysong);
+            MediaPlayer.Volume = 0.5f;
             MediaPlayer.IsRepeating = loop;
             //Play(SoundEnum.menumusic,loop);
             Console.WriteLine("in menuMusic");
