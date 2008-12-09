@@ -45,7 +45,7 @@ namespace ACT2009
         //maximum velocity moving forward (kilometers per hour)
         private float maxSpeedFwd = 90;
         //maximum velocity moving backward (kilometers per hour)
-        private float maxSpeedRew = -15;
+        private float maxSpeedRew = -30;
         //weight of the car (kilogram)
         private float weight = 300;
         //controller the car listens to
@@ -53,7 +53,7 @@ namespace ACT2009
 		//maximum acceleration (meters per second squared)
 		private float maxAcceleration = 10.0f;
 		//maxumum negative acceleration (braking) (meters per second square)
-		private float maxBraking = 8.0f;
+		private float maxBraking = 9.0f;
 
         //initializes the car's in constructor
         public Car(ref Input contr)
