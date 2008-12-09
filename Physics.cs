@@ -13,13 +13,15 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ACT2009
 {
+    
     class Physics
+    #region Variablen
     { 
         // Definiert Hilfsvariablen, die dann im Konstruktor gefüllt werden und zur
         // Verwendung in der Klasse bereitgestellt werden.
-        private Input input;
 
         // stellt Variablen für Werte der Inputklasse bereit
+        private Input input;
         private float InputAcceleration;                    
         private float InputCarBrake;                       
         private float InputCarDirection;
@@ -40,23 +42,28 @@ namespace ACT2009
         private Car pCart;
         private float t;
         private float oldt;
-        
+    #endregion
+
+        #region Konstruktor
         public Physics(ref Car cart)
+        
         {
-            // lädt alle wichtigen Parameter in die Variablen
+            // setzt das Auto und die Eingabequelle
             pCart=cart;
             input = pCart.GetController();
         }
+        #endregion
 
         /// <summary>
         /// Update wird aufgerufen um auf die Eingaben aus der Inputklasse zu reagieren und die
         /// entsprechende interne Funktionalität aufzurufen. 
         /// </summary>
+        #region Update
+
         public void Update(GameTime gtime)
         {
-
+            // holt alle nötigen Werte aus Car und Input
             InputAcceleration = input.GetAccelleration();
-            //InputAcceleration = 1f;
             InputCarBrake = input.GetBrake();
             InputCarDirection = input.GetDirection();
             maxAcc = pCart.GetMaxAcceleration();
@@ -68,30 +75,43 @@ namespace ACT2009
             Weight = pCart.GetWeight();
             SpeedMax = pCart.GetMaxSpeedFwd();
             SpeedMaxRev = pCart.GetMaxSpeedRew();
-            
-            //Aktuelle Zeit wird berechnet
-            //if (oldt == 0f)
-            //{
-            //    oldt = gtime.TotalGameTime.Seconds;
-            //}
 
+            // ermittelt die vergangene Zeit seit letztem Update:
             t = (float) gtime.ElapsedGameTime.Milliseconds/1000f;
             oldt = gtime.TotalGameTime.Milliseconds/1000f;
-            // wird gebremst, dann Brake-Funktion starten
             
-            if (InputCarBrake != 0)
-                this.Brake();
-            // wird nicht gelenkt, dann noInput aufrufen
-            if (InputCarDirection == 0 && InputAcceleration == 0 && InputCarBrake == 0)
-                this.noInput();
-            // wird gelenkt oder Gas gegeben, dann Accelerate aufrufen
-            else
+            // wenn der Benutzer beschleunigt werden diese Methoden aufgerufen
+            if (InputAcceleration != 0)
+            {
                 this.Accelerate();
+                this.Stear();
+            }
+
+            // wenn der Benutzer lenkt aber nicht beschleunigt, werden diese Methoden aufgerufen
+            if (InputCarDirection != 0 && InputAcceleration == 0)
+            {
+                this.noInput();
+                this.Stear();
+            }
+            
+            // erfolgt keine Benutzereingabe, dann ausrollen lassen!
+            if (InputCarDirection == 0 && InputAcceleration == 0)
+            {
+                this.noInput();
+            }
+
+            // wenn der Benutzer bremst, dann wird die Bremsmethode aufgerufen
+            if (InputCarBrake != 0)
+            {
+                this.Brake();
+            }
         }
-        
+        #endregion
+
         /// <summary>
-        /// Wird aufgerufen, wenn der Benutzer Gas gibt und/oder lenkt
+        /// Accelerate wird aufgerufen, wenn der Benutzer Gas gibt
         /// </summary>
+        #region Accelerate
         private void Accelerate()
         {
             // neue Geschwindigkeit nach v = a*t berechnen:
@@ -106,19 +126,11 @@ namespace ACT2009
             speed = speedCheck(speed);
             pCart.SetSpeed(speed);
 
-            // neue Richtung ermitteln und schreiben:
+            // neue Richtung = alte Richtung da sich nur Speed ändert:
             Vector3 v_direction = new Vector3();
-            if (InputCarDirection != 0)
-            {              
-                v_direction = oldDirection + v_Fres(InputAcceleration, maxAcc);
-                v_direction = Vector3.Normalize(v_direction);
-                pCart.SetDirection(v_direction);
-            }
-            else
-            {
-                v_direction = oldDirection;
-            }
+            v_direction = oldDirection;
 
+            // wenn wir fahren, dann:
             if (speed != 0)
             {
                 // neue Position ermitteln und schreiben:
@@ -127,12 +139,13 @@ namespace ACT2009
                 pCart.SetPosition(v_position);
             }
         }
+        #endregion
 
         /// <summary>
-        /// Wird aufgerufen, wenn der Benutzer bremst.
+        /// Brake wird aufgerufen, wenn der Benutzer bremst.
         /// </summary>
         /// <param name="maxBrake">übergibt maximal negative Beschleunigung</param>
-        
+        #region Brake
         private void Brake()
         {
             float speed;
@@ -167,12 +180,13 @@ namespace ACT2009
             v_position = (Math.MeterPerSecond(speed) * v_direction * t) + oldPosition;
             pCart.SetPosition(v_position);
         }
+        #endregion
 
         /// <summary>
-        /// Wird verwendet, wenn der User weder beschleunigt, bremst noch lenkt.
+        /// noInput wird verwendet, wenn der User nicht beschleunigt.
         /// Es wird nur die Reibung berücksichtigt und die Geschwindigkeit angepasst.
         /// </summary>
-        
+        #region noInput
         private void noInput()
         {
             float speed;
@@ -198,18 +212,67 @@ namespace ACT2009
             // neue Position ermitteln und schreiben:
             Vector3 v_position = new Vector3();
             Vector3 v_direction = new Vector3();
-
             v_direction = oldDirection;
             v_position = (Math.MeterPerSecond(speed) * v_direction * t) + oldPosition;
             pCart.SetPosition(v_position);
 
         }
+        #endregion
+
+        /// <summary>
+        /// Wird aufgerufen, wenn gelenkt wird
+        /// </summary>
+        #region Stear
+        private void Stear()
+        {
+            // Winkel um den der Richtungsvektor gedreht wird
+            float Angle = 0f;
+
+            // Fahren wir vorwärts oder rückwärts, oder gar nicht?
+            if (oldSpeed > 0)
+            {
+                Angle = InputCarDirection * -0.8f * t;
+            }
+            else if (oldSpeed < 0)
+            {
+                Angle = InputCarDirection * 0.8f * t;
+            }
+            else
+            {
+                return;
+            }
+
+            double x;
+            double y;
+            float oldx;
+            float oldy;
+            Vector3 vektor;
+
+            // alter Richtungsvektor auslesen:
+            oldx = oldDirection.Z;
+            oldy = oldDirection.X;
+
+            // neue Koordinaten berechnen:
+            x = oldx * System.Math.Cos(Angle) - oldy * System.Math.Sin(Angle);
+            y = oldy * System.Math.Cos(Angle) + oldx * System.Math.Sin(Angle);
+
+            // neue Koordinaten casten:
+            oldx = (float) x;
+            oldy = (float) y;
+
+            // neuen Vektor schreiben:
+            vektor = new Vector3(oldy, 0f, oldx);
+            pCart.SetDirection(vektor);
+        }
+        #endregion
+
         /// <summary>
         /// Gibt den Einheitsvektor der resultierenden Kraft wieder.  
         /// </summary>
         /// <param name="Acc">Beschleunigung zwischen -1 und 1</param>
         /// <param name="max">maximale Beschleunigung des Autos</param>
         /// <returns>Vektor, der die normalisierte resultierende Kraft enthält</returns>
+        #region v_Fres
         private Vector3 v_Fres(float Acc, float max)
         {
             float x;
@@ -218,19 +281,20 @@ namespace ACT2009
             float temp;
 
             // berechnet die in Y-Richtung wirkende Kraft normiert auf Bereich 0 bis 1
-            if (Acc != 0)
+            if (Acc != 0 || oldSpeed != 0)
             {
                 temp = Fres_y(Acc, max) / System.Math.Abs(Weight * Acc * max);
             }
             else
             {
-                temp = 0;
+                temp = oldDirection.X;
             }
 
             // Koordinaten des resultierenden Vektors werden ermittelt
-            x = InputCarDirection;
+            x = temp;
             y = 0;
-            z = temp;
+            z = InputCarDirection;
+
 
             // Vektor wird erzeugt und zurückgegeben
             Vector3 vektor = new Vector3(x, y, z);
@@ -239,7 +303,8 @@ namespace ACT2009
             if (vektor.X != 0 || vektor.Y != 0 || vektor.Z != 0)
                 vektor = Vector3.Normalize(vektor);
             return vektor;
-         }
+        }
+        #endregion
 
         /// <summary>
         /// Berechnet die Beschleunigung, die auf das Auto wirkt.
@@ -247,6 +312,7 @@ namespace ACT2009
         /// <param name="Acc">Beschleunigung zwischen -1 und 1</param>
         /// <param name="max">maximale Beschleunigung, die das Auto erzeugen kann</param>
         /// <returns>resultierende Beschleunigung wird ausgegeben</returns>
+        #region a
         private float a(float Acc, float max)
         {
             float temp;
@@ -258,6 +324,7 @@ namespace ACT2009
             return a;
 
         }
+        #endregion
 
         /// <summary>
         /// Berechnet den Betrag der resultierenden Beschleunigungskraft.
@@ -265,6 +332,7 @@ namespace ACT2009
         /// <param name="Acc">nimmt Beschleunigung zwischen -1 und 1 entgegen</param>
         /// <param name="max">maximale mögliche Beschleunigung des Autos</param>
         /// <returns></returns>
+        #region Fres_y
         private float Fres_y(float Acc, float max)
         {
             float Friction;
@@ -304,6 +372,7 @@ namespace ACT2009
             // gibt resultierende Kraft in N zurück            
             return temp;
         }
+        #endregion
 
         /// <summary>
         /// Prüft, ob die Maximalen Geschwindigkeiten eingehalten werden und setzt die
@@ -311,6 +380,7 @@ namespace ACT2009
         /// </summary>
         /// <param name="speed"></param>
         /// <returns></returns>
+        #region SpeedCheck
         private float speedCheck(float speed)
         {
             // scheller als Maximalgeschwindigkeit Vorwärts?
@@ -322,15 +392,6 @@ namespace ACT2009
             //Geschwindigkeit zurückgeben
             return speed;
         }
-
-        public void Test()
-        {
-            //a(-1f, 10f);
-            //v_Fres(-1f, 6.9f);
-            //noInput();
-            //Brake(8.0f);
-            //Accelerate();
-        }
-    
+        #endregion
     } 
 }
