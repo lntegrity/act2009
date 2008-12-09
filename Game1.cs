@@ -198,7 +198,7 @@ namespace ACT2009
             {
                 Sounds.StopMusic();
                 Sounds.PlayGameMusic(true);
-                SoundEffectInstance e = Sounds.PlayFinalDriveSound(true);
+                SoundEffectInstance e = Sounds.PlayFinalDriveSound(1,true);
             }
             if (gameMode == GameMode.Main && previousMenu == GameMode.Play)
             {
