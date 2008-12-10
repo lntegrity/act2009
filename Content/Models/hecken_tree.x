@@ -17964,7 +17964,7 @@ Mesh CINEMA4D_Mesh {
       0.0;0.0;0.0;;
       0.098;0.098;0.098;;
       TextureFilename {
-        "BARKDEMO.ppm";
+        "BARKDEMO.jpg";
       }
     }
     
@@ -17974,7 +17974,7 @@ Mesh CINEMA4D_Mesh {
       0.0;0.0;0.0;;
       0.25;0.25;0.25;;
       TextureFilename {
-        "TREEDEMO.ppm";
+        "TREEDEMO.jpg";
       }
     }
     
@@ -17998,7 +17998,7 @@ Mesh CINEMA4D_Mesh {
       0.068;0.068;0.068;;
       0.0;0.0;0.0;;
       TextureFilename {
-        "Baum-Rinde-Berg-Ahorn.ppm";
+        "Baum-Rinde-Berg-Ahorn.jpg";
       }
     }
     
@@ -18008,7 +18008,7 @@ Mesh CINEMA4D_Mesh {
       0.0;0.0;0.0;;
       0.0;0.0;0.0;;
       TextureFilename {
-        "Blaetter-Ahorn-Sommer.ppm";
+        "Blaetter-Ahorn-Sommer.png";
       }
     }
     

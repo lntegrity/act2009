@@ -28685,7 +28685,7 @@ Mesh CINEMA4D_Mesh {
       0.1;0.1;0.1;;
       0.0;0.0;0.0;;
       TextureFilename {
-        "RooftilesCeramic0034_1_thumblarge.ppm";
+        "RooftilesCeramic0034_1_thumblarge.jpg";
       }
     }
     
@@ -28695,7 +28695,7 @@ Mesh CINEMA4D_Mesh {
       0.1;0.1;0.1;;
       0.0;0.0;0.0;;
       TextureFilename {
-        "1809-hansebeton.ppm";
+        "1809-hansebeton.jpg";
       }
     }
     
@@ -28712,7 +28712,7 @@ Mesh CINEMA4D_Mesh {
       0.1;0.1;0.1;;
       0.0;0.0;0.0;;
       TextureFilename {
-        "C:\Dokumente und Einstellungen\User\Desktop\fh.ppm";
+        "C:\Dokumente und Einstellungen\User\Desktop\fh.jpg";
       }
     }
     
@@ -28729,7 +28729,7 @@ Mesh CINEMA4D_Mesh {
       0.012;0.012;0.012;;
       0.0;0.0;0.0;;
       TextureFilename {
-        "grass_01_tile.ppm";
+        "grass_01_tile.jpg";
       }
     }
     
@@ -28739,7 +28739,7 @@ Mesh CINEMA4D_Mesh {
       0.0;0.0;0.0;;
       0.0;0.0;0.0;;
       TextureFilename {
-        "02_Sky.ppm";
+        "02_Sky.jpg";
       }
     }
     
@@ -28770,7 +28770,7 @@ Mesh CINEMA4D_Mesh {
       0.147;0.147;0.147;;
       0.0;0.0;0.0;;
       TextureFilename {
-        "AsphaltCloseups0022_1_thumblarge.ppm";
+        "AsphaltCloseups0022_1_thumblarge.jpg";
       }
     }
     
