@@ -15,7 +15,7 @@ namespace ACT2009
 
         Car car;
         //Maximum Distance allowed to use point for collision detection
-        float distanceLimit;
+        //float distanceLimit;
 
 
         Collisiondetect(Car c)

@@ -47,7 +47,6 @@ namespace ACT2009
         Color credits = Color.White;
         Color exit = Color.White;
         Color game = Color.White;
-        Color pauseShadow;
         int selected = 0;
 
         MenuTabs menuTab = MenuTabs.Play;

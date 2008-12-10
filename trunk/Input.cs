@@ -19,7 +19,6 @@ namespace ACT2009
         private float Acceleration = 0.0f;
         private float Brake = 0.0f;
         private float Direction = 0.0f;
-        private bool pause = false;
 
         //constructor is subject to change
         public Input()
