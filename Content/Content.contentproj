@@ -204,36 +204,36 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="coordinate\car_ford_koords.xml">
-      <Name>car_ford_koords</Name>
+    <None Include="coordinate\carFord.coord">
+      <Name>carFord</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
-    <Compile Include="coordinate\car_golf_koords.xml">
-      <Name>car_golf_koords</Name>
+    </None>
+    <None Include="coordinate\carGolf.coord">
+      <Name>carGolf</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
-    <Compile Include="coordinate\koords_Hecken.xml">
-      <Name>koords_Hecken</Name>
+    </None>
+    <None Include="coordinate\hedge.coord">
+      <Name>hedge</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
-    <Compile Include="coordinate\rest_der_trees.xml">
-      <Name>rest_der_trees</Name>
+    </None>
+    <None Include="coordinate\tree.coord">
+      <Name>tree</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
-    <Compile Include="coordinate\_innerBorder.xml">
-      <Name>_innerBorder</Name>
+    </None>
+    <None Include="coordinate\innerBorder.coord">
+      <Name>innerBorder</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
-    <Compile Include="coordinate\_outerBorder.xml">
-      <Name>_outerBorder</Name>
+    </None>
+    <None Include="coordinate\outerBorder.coord">
+      <Name>outerBorder</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\fh_plus_track.x">
