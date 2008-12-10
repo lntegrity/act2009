@@ -63,7 +63,6 @@ namespace ACT2009
             Exit
         }
         GameMode gameMode = GameMode.Main;
-        GameMode currentMenu;
         GameMode previousMenu;
 
         public Game1()
