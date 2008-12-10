@@ -1608,7 +1608,7 @@ Mesh CINEMA4D_Mesh {
       0.0;0.0;0.0;;
       0.098;0.098;0.098;;
       TextureFilename {
-        "BARKDEMO.ppm";
+        "BarkDemo.jpg";
       }
     }
     
@@ -1618,7 +1618,7 @@ Mesh CINEMA4D_Mesh {
       0.0;0.0;0.0;;
       0.25;0.25;0.25;;
       TextureFilename {
-        "TREEDEMO.ppm";
+        "TreeDemo.jpg";
       }
     }
     
