@@ -215,6 +215,7 @@ namespace ACT2009
                 Sounds.StopMusic();
                 
                 //Sounds.PlayMenuMusicSound(true);
+                Sounds.quitAllSEI(); // quits all currently running SoundEffects
             }
             Sounds.Update();
 
