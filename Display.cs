@@ -30,9 +30,11 @@ namespace ACT2009
         private float Xrot, Yrot; // navigation direction
         private float movingSpeed = 1.0f; // moving speed when navigating
         private bool NBpushed = false; // N + B key pushed?
+        private int maxDirections = 20;
+        private Vector3[] oldDirections;
 
 
-        float carScaleValue = 0.015f; // Car Size
+        float carScaleValue = 0.01f; // Car Size
 
         //Vector3 carPosition;
         Vector3 carOffset, carRotationOffset;
@@ -47,13 +49,20 @@ namespace ACT2009
             device = dev;
 
             actCart = carObj;
+
+            oldDirections = new Vector3[maxDirections];
+            for (int i = 0; i < maxDirections; i++)
+            {
+                oldDirections[i] = actCart.GetDirection();
+            }
+
             //carPosition = new Vector3(45.0f, 0.0f, 70.0f);
-            carOffset = new Vector3(0.0f, -0.20f, 2.5f);
-            carRotationOffset = new Vector3(0.4f, 0.0f, 0.5f);
+            carOffset = new Vector3(0.0f, 0.0f, 2.5f);
+            carRotationOffset = new Vector3(0.2f, 0.0f, 0.5f);
 
             Yrot = 3.141592f; // base 180° rotation
-            navPositionMatrix = Matrix.CreateTranslation(new Vector3(0.0f, -1.0f, 0.0f));
-            viewMatrix = Matrix.CreateLookAt(new Vector3(0, 2, 5), Vector3.Zero, Vector3.Up);
+            navPositionMatrix = Matrix.CreateTranslation(new Vector3(0.0f, -2.0f, 0.0f));
+            viewMatrix = Matrix.CreateLookAt(new Vector3(0, 0.26f, 1), Vector3.Zero, Vector3.Up);
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), 800.0f / 600.0f, 1.0f, 1000.0f);
         
         }
@@ -64,9 +73,16 @@ namespace ACT2009
             return Matrix.CreateRotationY(Yrot) * Matrix.CreateRotationX(Xrot) * tMatrix * Matrix.CreateRotationX(-Xrot) * Matrix.CreateRotationY(-Yrot);
         }
 
-        // Debbuging helper navigation
+        // Update Display Method
         public void Update(KeyboardState keyboardState)
         {
+            // Update the cam.
+            for (int i = maxDirections - 2; i >= 0; i--)
+            {
+                oldDirections[i + 1] = oldDirections[i];
+            }
+            oldDirections[0] = actCart.GetDirection();
+
             // switching debugging navigation helper ON OFF
             if (keyboardState.IsKeyDown(Keys.N) && keyboardState.IsKeyDown(Keys.B))
             {
@@ -145,8 +161,10 @@ namespace ACT2009
                     effect.EnableDefaultLighting();
 
                     // Position of the car on the screen
-                    effect.World =  transforms[mesh.ParentBone.Index]   // Positions of the car parts based on the bones
+                    effect.World = transforms[mesh.ParentBone.Index]   // Positions of the car parts based on the bones
                                     * Matrix.CreateScale(carScaleValue) // scaling the car size
+                                    * Matrix.CreateRotationY((float)(System.Math.Atan2(oldDirections[maxDirections - 1].Z, oldDirections[maxDirections - 1].X)))
+                                    * Matrix.CreateRotationY((float)(-System.Math.Atan2(oldDirections[0].Z, oldDirections[0].X)))
                                     * Matrix.CreateTranslation(carOffset) // car screen position offset
                                     * Matrix.CreateTranslation(carRotationOffset)
                                     * navPositionMatrix                 // debbuging navigation helper position
@@ -163,6 +181,12 @@ namespace ACT2009
 
         public void DrawObject(Model objectModel,Vector3 position, Vector3 direction)
         {
+            float tempRotation = 0.0f;
+            if (direction.X != 0 || direction.Z != 0)
+            {
+                direction.Normalize();
+                tempRotation = (float)(System.Math.Atan2(direction.Z, direction.X));
+            }
             //HACK position and direction must be implemented
             foreach (ModelMesh mesh in objectModel.Meshes)
             {
@@ -170,15 +194,17 @@ namespace ACT2009
                 {
                     effect.EnableDefaultLighting();
 
-                    // Position of the objectModel on the screen
-                    effect.World = Matrix.CreateTranslation(actCart.GetPosition()) // translate the objectModel based on car position
+                    // Position of the landscape on the screen
+                    effect.World = Matrix.CreateTranslation(actCart.GetPosition()) // translate the landscape based on car position
                                     * navPositionMatrix                 // debbuging navigation helper position
                                     * Matrix.CreateRotationY((float)(System.Math.PI / 2))
                                     * Matrix.CreateTranslation(new Vector3(-carOffset.X, -carOffset.Y, -carOffset.Z))
                                     * Matrix.CreateTranslation(new Vector3(-carRotationOffset.X, -carRotationOffset.Y, -carRotationOffset.Z))
-                                    * Matrix.CreateRotationY((float)(System.Math.Atan2(actCart.GetDirection().Z, actCart.GetDirection().X)))
+                                    * Matrix.CreateRotationY((float)(System.Math.Atan2(oldDirections[maxDirections - 1].Z, oldDirections[maxDirections - 1].X)))
                                     * Matrix.CreateTranslation(carOffset)
                                     * Matrix.CreateTranslation(carRotationOffset)
+                                    * Matrix.CreateTranslation(position)
+                                    * Matrix.CreateRotationY(tempRotation)
                                     * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
                                     * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
 
