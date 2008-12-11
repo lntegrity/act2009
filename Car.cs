@@ -242,46 +242,57 @@ namespace ACT2009
              *       nur, wenn die geschwindigkeit ungleich 0 ist
             */
             // Tonhoehe abhaengig von Geschwindigkeit
-
             if (speed == maxSpeedFwd || speed == maxSpeedRew)
             {
+                Console.WriteLine("I'm printing in speed==maxSpeedFwd||speed==maxSpeedBwd " + speed);
                 float pitch = 1;
-                if (Sounds.getSoundEffectInstance() == null)
-                {
-                    Sounds.PlayFinalDriveSound(pitch, true);
-                }
+                Sounds.getFinalDriveSEI().Stop();
+                Sounds.PlayFinalDriveSound(pitch, true);
             }
             if (speed < maxSpeedFwd && speed > 0)
             {
-                
-                float pitch = speed / maxSpeedFwd;
 
-                if (Sounds.getSoundEffectInstance()==null)
-                {
-                    Sounds.PlayFinalDriveSound(pitch, true);
-                }
+                Console.WriteLine("I'm printing in speed<maxSpeedFwd" + speed);
+                float pitch = speed / maxSpeedFwd;
+                Sounds.getFinalDriveSEI().Stop();
+                Sounds.PlayFinalDriveSound(pitch, true);
+ 
             }
             if (speed < maxSpeedRew && speed > 0)
             {
+                Console.WriteLine("I'm printing in speed<maxSpeedRew " + speed);
                 float pitch = speed / maxSpeedRew;
-                if (Sounds.getSoundEffectInstance() == null)
-                {
-                    Sounds.PlayFinalDriveSound(pitch, true);
-                }
+                Sounds.getFinalDriveSEI().Stop();
+                Sounds.PlayFinalDriveSound(pitch, true);
+                
             }
+            if (speed == 0 && Sounds.getFinalDriveSEI() != null)
+            {
+                Console.WriteLine("Stopping Sound");
+                Sounds.getFinalDriveSEI().Stop();
 
-
+            }
 
             //Kollission
             if (collisionCorner!=0)
             {
                 Sounds.PlayBangSound(false);
             }
-
+            
             // Lenken
-            if((controller.GetDirection() ==1 || controller.GetDirection()==-1)&&(speed==0))
+            Console.WriteLine("Direction:" + controller.GetDirection());
+            if ((controller.GetDirection() == 1 || controller.GetDirection() == -1) && (speed != 0))
             {
+                Console.WriteLine("Direction:" + controller.GetDirection());
                 Sounds.PlayBrakesSound(false);
+            }
+            if (controller.GetDirection() == 0)
+            {
+                if (Sounds.getBrakesSEI() != null)
+                {
+                    Console.WriteLine("Stop BRAKES");
+                    Sounds.getBrakesSEI().Stop();
+                }
             }
 
         }

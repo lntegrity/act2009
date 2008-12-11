@@ -29,7 +29,8 @@ namespace ACT2009
     {
         //SoundEffect mySound;
         public static ContentManager Content;// As //ContentManager
-        public static SoundEffectInstance sei;
+        public static SoundEffectInstance FDsei;
+        public static SoundEffectInstance Bsei;
 
         public Sounds(Game1 game)
         {
@@ -49,8 +50,8 @@ namespace ACT2009
             {
                 SoundEffect mySound = Content.Load<SoundEffect>("Sounds\\" + soundName);
                 //Song mysong = Content.Load<Song>("Sounds\\" +soundName);
-                SoundEffectInstance e = mySound.Play(1.0f, pitch, 0.0f, loop);
-                setSoundEffectInstance(e);
+                SoundEffectInstance e = mySound.Play(pitch,1.0f, 0.0f, loop);
+                //setSoundEffectInstance(e);
                 return e;
             }
             catch(Exception ex)
@@ -66,14 +67,38 @@ namespace ACT2009
             return e;
         }
        
-        public static void setSoundEffectInstance(SoundEffectInstance SoundEffectInstances)
+        public static void setFinalDriveSEI(SoundEffectInstance SoundEffectInstances)
         {
-            sei = SoundEffectInstances;
+            FDsei = SoundEffectInstances;
         }
 
-        public static SoundEffectInstance getSoundEffectInstance()
+        public static void setBrakesSEI(SoundEffectInstance SoundEffectInstances)
         {
-            return sei;
+           Bsei = SoundEffectInstances;
+        }
+
+        public static SoundEffectInstance getFinalDriveSEI()
+        {
+            return FDsei;
+        }
+
+        public static SoundEffectInstance getBrakesSEI()
+        {
+            return Bsei;
+        }
+
+        public static void quitAllSEI()
+        {
+            if (getBrakesSEI() != null)
+            {
+                getBrakesSEI().Stop();
+            }
+
+            if (getFinalDriveSEI() != null)
+            {
+                getFinalDriveSEI().Stop();
+            }
+
         }
 
         public static SoundEffectInstance PlayBangSound(Boolean loop)
@@ -90,11 +115,11 @@ namespace ACT2009
             return e;
         }
 
-        public static SoundEffectInstance PlayBrakesSound(Boolean loop)
+        public static void PlayBrakesSound(Boolean loop)
         {
-            float pitch = 0;
+            float pitch = 0.5f;
             SoundEffectInstance e = Play(SoundEnum.brakes, pitch, loop);
-            return e;
+            setBrakesSEI(e);
         }
 
         public static SoundEffectInstance PlayBurstSound(Boolean loop)
@@ -104,10 +129,11 @@ namespace ACT2009
             return e;
         }
 
-        public static SoundEffectInstance PlayFinalDriveSound(float pitch, Boolean loop)
+        public static void PlayFinalDriveSound(float pitch, Boolean loop)
         {
+            Console.Write("FINALDRIVE");
             SoundEffectInstance e = Play(SoundEnum.finalDrive, pitch, loop);
-            return e;
+            setFinalDriveSEI(e);
         }
 
         public static SoundEffectInstance PlayFinalIdleSound(Boolean loop)
@@ -127,10 +153,10 @@ namespace ACT2009
         public static void PlayMenuMusicSound(Boolean loop)
         {
             Song mysong = Content.Load<Song>("Sounds//menumusic");
-            MediaPlayer.Play(mysong);
-            MediaPlayer.Volume = 0.5f;
+
+            //MediaPlayer.Play(mysong);         //needs to be switched on
+            MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = loop;
-            //Play(SoundEnum.menumusic,loop);
             Console.WriteLine("in menuMusic");
         }
 
