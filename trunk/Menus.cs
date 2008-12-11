@@ -89,9 +89,9 @@ namespace ACT2009
             GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
 
             // Menu Nav Boundaries
+            Console.WriteLine("Menus.cs: "+gameMode);
             if (gameMode == Game1.GameMode.Main)
             {
-
                 if ((keyboard.IsKeyDown(Keys.Up) || gamePad.DPad.Up == ButtonState.Pressed) && menuUp)
                 {
                     menuUp = false;

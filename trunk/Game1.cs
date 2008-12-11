@@ -44,7 +44,7 @@ namespace ACT2009
         Physics physics;
         Play play;
 
-        //Jasmin
+        //Sounds
         Sounds Sounds;
 
         // Input Objects
@@ -187,23 +187,36 @@ namespace ACT2009
             GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
             
             // Sound Update
-            Sounds.Update();
-
+            Console.WriteLine("Game1.cs:Update()");
             // Game Music Change
             // Menu Update
             previousMenu = gameMode;
             gameMode = menu.MenuUpdate(gameTime, gameMode);
+            Console.WriteLine("GameMode: " + gameMode + "PreviousMenu: " + previousMenu);
+
+            /*if (previousMenu == GameMode.Play)
+            {
+                Console.WriteLine("Previous Menu: Play");
+                Sounds.getSoundEffectInstance().Stop();
+            }
+            */
+
             if (gameMode == GameMode.Play && previousMenu == GameMode.Main)
             {
+                Console.WriteLine("gameMode:Play, previousMenu:Main");
                 Sounds.StopMusic();
-                Sounds.PlayGameMusic(true);
-                SoundEffectInstance e = Sounds.PlayFinalDriveSound(1,true);
+                //Sounds.PlayGameMusic(true);
+                Sounds.PlayFinalDriveSound(1,true);
             }
             if (gameMode == GameMode.Main && previousMenu == GameMode.Play)
             {
+                Console.WriteLine("gameMode:Main, previousMenu:Play");
+                //Sounds.getSoundEffectInstance().Stop();
                 Sounds.StopMusic();
-                Sounds.PlayMenuMusicSound(true);
+                
+                //Sounds.PlayMenuMusicSound(true);
             }
+            Sounds.Update();
 
             //Updating the car, which calls its corresponding input-update
             actCart.Update();
