@@ -154,8 +154,7 @@ namespace ACT2009
         {
             Song mysong = Content.Load<Song>("Sounds//menumusic");
 
-            //MediaPlayer.Play(mysong);         //needs to be switched on
-            MediaPlayer.Volume = 0.1f;
+            MediaPlayer.Play(mysong);         //needs to be switched on
             MediaPlayer.IsRepeating = loop;
             Console.WriteLine("in menuMusic");
         }
@@ -164,6 +163,7 @@ namespace ACT2009
         {
             Song gameSong = Content.Load<Song>("Sounds//Happy Racing");
             MediaPlayer.Play(gameSong);
+            MediaPlayer.Volume = 0.1f;
             MediaPlayer.IsRepeating = loop;
             Console.WriteLine("In gameMusic");
         }
