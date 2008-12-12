@@ -16,7 +16,7 @@ namespace ACT2009
         //list of directions of the object
         private List<Vector3> directions;
 
-        ModelPositions(Model objectModel,List<Vector3> positions)
+        public ModelPositions(Model objectModel, List<Vector3> positions)
         {
             this.objectModel = objectModel;
             this.positions = positions;
@@ -27,7 +27,8 @@ namespace ACT2009
                 directions[i] = Vector3.Zero;
             }
         }
-        ModelPositions(Model objectModel,List<Vector3> positions,List<Vector3> directions)
+
+        public ModelPositions(Model objectModel, List<Vector3> positions, List<Vector3> directions)
         {
             this.objectModel = objectModel;
             this.positions = positions;

@@ -10,18 +10,17 @@ namespace ACT2009
         ModelPositions innerBorder;
         //outer Border
         ModelPositions outerBorder;
-        //car positions
-        ModelPositions carPositions;
 
         Car car;
         //Maximum Distance allowed to use point for collision detection
         //float distanceLimit;
 
 
-        Collisiondetect(Car c)
+        public Collisiondetect(Car c, ModelPositions innerBorder, ModelPositions outerBorder)
         {
             car = c;
-
+            this.innerBorder = innerBorder;
+            this.outerBorder = outerBorder;
         }
 
         //@param arc: arcus under wich the collision occured, if any

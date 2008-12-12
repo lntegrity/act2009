@@ -219,18 +219,18 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </None>
-    <None Include="coordinate\tree.coord">
-      <Name>tree</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
-    <None Include="coordinate\innerBorder.coord">
+    <None Include="coordinate\innerBorder.xml">
       <Name>innerBorder</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </None>
-    <None Include="coordinate\outerBorder.coord">
+    <None Include="coordinate\outerBorder.xml">
       <Name>outerBorder</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </None>
+    <None Include="coordinate\tree.coord">
+      <Name>tree</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </None>

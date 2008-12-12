@@ -44,7 +44,10 @@ namespace ACT2009
         Physics physics;
         Play play;
 
-        //Sounds
+        //Collisiondetection
+        Collisiondetect collision;
+
+        //Jasmin
         Sounds Sounds;
 
         // Input Objects
@@ -101,6 +104,35 @@ namespace ACT2009
             base.Initialize();
         }
 
+        #endregion // Initialize
+        
+        #region Load Content
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            /*
+            //TODO: fix
+            Model huetchen = Content.Load<Model>("Models/huetchen");
+            List<Vector3> inner = loadPoints("coordinate/innerBorder");
+            List<Vector3> outer = loadPoints("coordinate/outerBorder");
+            ModelPositions innerBorder = new ModelPositions(huetchen, inner);
+            ModelPositions outerBorder = new ModelPositions(huetchen, outer);
+            collision = new Collisiondetect(actCart, innerBorder, outerBorder);
+            */
+            menu.MenuInit(Content);
+            play.PlayInit(Content);
+            display.DisplayInit(Content, graphics.GraphicsDevice, ref actCart);
+
+            Sounds.PlayMenuMusicSound(true);
+
+        }
+
         /// <summary>
         /// Loads the points for elementpositioning from an xml file
         /// </summary>
@@ -124,36 +156,6 @@ namespace ACT2009
             }
 
             return trackPoints;
-        }
-        
-        #endregion // Initialize
-        
-        #region Load Content
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-
-        protected override void LoadContent()
-        {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            menu.MenuInit(Content);
-            play.PlayInit(Content);
-            display.DisplayInit(Content, graphics.GraphicsDevice, ref actCart);
-
-            // 3D Assets
-            /*genCart = Content.Load<Model>("Models\\Generic Cart");
-            aspectRatio = (float)graphics.GraphicsDevice.Viewport.Width / (float)graphics.GraphicsDevice.Viewport.Height;
-            */
-            //// TODO: use this.Content to load your game content here
-
-            //Sounds
-            //Song mysong = Content.Load<Song>("Sounds\\menumusic");
-            
-            Sounds.PlayMenuMusicSound(true);
-
         }
         
         #endregion // Load Content
