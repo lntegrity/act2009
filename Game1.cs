@@ -116,7 +116,7 @@ namespace ACT2009
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            /*
+            
             //TODO: fix
             Model huetchen = Content.Load<Model>("Models/huetchen");
             List<Vector3> inner = loadPoints("coordinate/innerBorder");
@@ -124,7 +124,7 @@ namespace ACT2009
             ModelPositions innerBorder = new ModelPositions(huetchen, inner);
             ModelPositions outerBorder = new ModelPositions(huetchen, outer);
             collision = new Collisiondetect(actCart, innerBorder, outerBorder);
-            */
+            
             menu.MenuInit(Content);
             play.PlayInit(Content);
             display.DisplayInit(Content, graphics.GraphicsDevice, ref actCart);
@@ -139,8 +139,8 @@ namespace ACT2009
         private List<Vector3> loadPoints(String xmlFile)
         {
             List<Vector3> trackPoints = new List<Vector3>();
-
-            String xmlData = Content.Load<string>(xmlFile);
+            
+            String xmlData = Content.Load<String>(xmlFile);
             xmlData = xmlData.Trim();
             String[] lines = xmlData.Split('\n');
 
@@ -149,7 +149,7 @@ namespace ACT2009
 
             for (int i = 0; i < lines.Length; i++)
             {
-                String[] currLineCoords = lines[i].Split(' ');
+                String[] currLineCoords = lines[i].Split(';');
                 trackPoints.Add(new Vector3(float.Parse(currLineCoords[0], nfi),
                                                 float.Parse(currLineCoords[2], nfi),
                                                 float.Parse(currLineCoords[1], nfi)));
