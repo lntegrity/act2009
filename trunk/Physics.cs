@@ -348,7 +348,6 @@ namespace ACT2009
         private float Fres_y(float Acc, float max)
         {
             float Friction;
-            float Result;
             float Force;
             float temp;
 
