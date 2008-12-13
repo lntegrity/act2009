@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+# Visual C# Express 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACT2009", "ACT2009.csproj", "{71C18B0E-0FC8-47E9-926B-B851E986B205}"
 EndProject
 Global
