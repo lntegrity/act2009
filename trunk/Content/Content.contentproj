@@ -33,6 +33,10 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.AudioImporters, Version=3.0.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=MSIL">
       <Private>False</Private>
     </Reference>
+    <Reference Include="StringContent, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\StringContent\StringContent\bin\x86\Debug\StringContent.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Textures\ScreenController.jpg">
@@ -204,38 +208,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="coordinate\carFord.coord">
-      <Name>carFord</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
-    <None Include="coordinate\carGolf.coord">
-      <Name>carGolf</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
-    <None Include="coordinate\hedge.coord">
-      <Name>hedge</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
-    <None Include="coordinate\innerBorder.xml">
-      <Name>innerBorder</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
-    <None Include="coordinate\outerBorder.xml">
-      <Name>outerBorder</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
-    <None Include="coordinate\tree.coord">
-      <Name>tree</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Models\fh_plus_track.x">
       <Name>fh_plus_track</Name>
       <Importer>XImporter</Importer>
@@ -260,6 +232,50 @@
       <Name>_obstacleCar</Name>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="coordinate\carGolf.coord">
+      <Name>carGolf</Name>
+      <Importer>CoordImporter</Importer>
+    </Compile>
+    <Compile Include="coordinate\hedge.coord">
+      <Name>hedge</Name>
+      <Importer>CoordImporter</Importer>
+    </Compile>
+    <Compile Include="coordinate\tree.coord">
+      <Name>tree</Name>
+      <Importer>CoordImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="coordinate\carFord.coord">
+      <Name>carFord</Name>
+      <Importer>CoordImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="coordinate\innerBorder.coord">
+      <Name>innerBorder</Name>
+      <Importer>CoordImporter</Importer>
+    </Compile>
+    <Compile Include="coordinate\outerBorder.coord">
+      <Name>outerBorder</Name>
+      <Importer>CoordImporter</Importer>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\BarkDemo.jpg">
+      <Name>BarkDemo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Blaetter-Ahorn-Sommer.png">
+      <Name>Blaetter-Ahorn-Sommer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\v3.0\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
