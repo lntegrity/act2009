@@ -150,7 +150,7 @@ namespace ACT2009
             actCart.SetDirection(tempVector);
 
             // Draw the landscape
-            DrawObject(landscape, Vector3.Zero, Vector3.Zero);
+            DrawObject(landscape, Vector3.Zero, Vector3.Zero, 1.0f);
 
 
             // Draw the car
@@ -179,7 +179,7 @@ namespace ACT2009
             }
         }
 
-        public void DrawObject(Model objectModel,Vector3 position, Vector3 direction)
+        public void DrawObject(Model objectModel,Vector3 position, Vector3 direction, float scaleValue)
         {
             float tempRotation = 0.0f;
             if (direction.X != 0 || direction.Z != 0)
@@ -195,15 +195,16 @@ namespace ACT2009
                     effect.EnableDefaultLighting();
 
                     // Position of the landscape on the screen
-                    effect.World = Matrix.CreateTranslation(actCart.GetPosition()) // translate the landscape based on car position
+                    effect.World =  Matrix.CreateScale(scaleValue)
+                                    * Matrix.CreateTranslation(actCart.GetPosition()) // translate the landscape based on car position
                                     * navPositionMatrix                 // debbuging navigation helper position
+                                    * Matrix.CreateTranslation(position)
                                     * Matrix.CreateRotationY((float)(System.Math.PI / 2))
                                     * Matrix.CreateTranslation(new Vector3(-carOffset.X, -carOffset.Y, -carOffset.Z))
                                     * Matrix.CreateTranslation(new Vector3(-carRotationOffset.X, -carRotationOffset.Y, -carRotationOffset.Z))
                                     * Matrix.CreateRotationY((float)(System.Math.Atan2(oldDirections[maxDirections - 1].Z, oldDirections[maxDirections - 1].X)))
                                     * Matrix.CreateTranslation(carOffset)
                                     * Matrix.CreateTranslation(carRotationOffset)
-                                    * Matrix.CreateTranslation(position)
                                     * Matrix.CreateRotationY(tempRotation)
                                     * Matrix.CreateRotationY(Yrot)      // debbuging navigation helper rotation
                                     * Matrix.CreateRotationX(Xrot);     // debbuging navigation helper rotation
