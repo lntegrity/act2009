@@ -1,0 +1,5 @@
+C:\Dokumente und Einstellungen\serge\Eigene Dateien\Visual Studio 2008\Projects\StringContent\StringContent\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Dokumente und Einstellungen\serge\Eigene Dateien\Visual Studio 2008\Projects\StringContent\StringContent\bin\x86\Debug\StringContent.dll
+C:\Dokumente und Einstellungen\serge\Eigene Dateien\Visual Studio 2008\Projects\StringContent\StringContent\bin\x86\Debug\StringContent.pdb
+C:\Dokumente und Einstellungen\serge\Eigene Dateien\Visual Studio 2008\Projects\StringContent\StringContent\obj\x86\Debug\StringContent.dll
+C:\Dokumente und Einstellungen\serge\Eigene Dateien\Visual Studio 2008\Projects\StringContent\StringContent\obj\x86\Debug\StringContent.pdb
