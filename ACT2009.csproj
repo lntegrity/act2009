@@ -132,6 +132,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="coordinate\carFord.coord" />
     <None Include="coordinate\carGolf.coord" />
     <None Include="coordinate\hedge.coord" />
