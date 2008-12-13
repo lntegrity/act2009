@@ -16,6 +16,8 @@ namespace ACT2009
         //list of directions of the object
         private List<Vector3> directions;
 
+        private float scaleValue = 1.0f;
+
         public ModelPositions(Model objectModel, List<Vector3> positions)
         {
             this.objectModel = objectModel;
@@ -41,11 +43,17 @@ namespace ACT2009
             return positions.Count;
         }
 
+        public void setScale(float temp)
+        {
+            scaleValue = temp;
+        }
+
         public void DrawObjects(Display display)
         {
+            Random rnd = new Random();
             for(int i = 0; i < positions.Count; ++i)
             {
-                display.DrawObject(objectModel,positions[i],directions[i]);
+                display.DrawObject(objectModel, positions[i],Vector3.Zero, scaleValue);
             }
         }
 
