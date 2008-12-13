@@ -35,6 +35,8 @@ namespace ACT2009
         private float Weight;
         private float SpeedMax;
         private float SpeedMaxRev;
+        private int CollisionCorner;
+        private float CollisionArc;
 
         //stellt weitere Variablen und Constanten bereit:
         private const float g = 9.81f;
@@ -76,6 +78,10 @@ namespace ACT2009
             SpeedMax = pCart.GetMaxSpeedFwd();
             SpeedMaxRev = pCart.GetMaxSpeedRew();
 
+            // für CollisionDetection
+            CollisionCorner = pCart.GetCollisionCorner();
+            CollisionArc = pCart.GetCollisionArc();
+
             // ermittelt die vergangene Zeit seit letztem Update:
             t = (float) gtime.ElapsedGameTime.Milliseconds/1000f;
             oldt = gtime.TotalGameTime.Milliseconds/1000f;
@@ -104,6 +110,12 @@ namespace ACT2009
             if (InputCarBrake != 0)
             {
                 this.Brake();
+            }
+
+            // falls es eine Kollision gab, wird diese behandelt
+            if (CollisionCorner != 0)
+            {
+                this.HandleCollision();
             }
         }
         #endregion
@@ -391,6 +403,61 @@ namespace ACT2009
                 speed = SpeedMaxRev;
             //Geschwindigkeit zurückgeben
             return speed;
+        }
+        #endregion
+
+        /// <summary>
+        /// HandleCollision wird aufgerufen, wenn eine Collision stattgefunden hat, behandelt
+        /// diese und setzt die neuen Werte für Geschwindigkeit und Position
+        /// </summary>
+        #region HandleCollision
+        private void HandleCollision()
+        {
+            float Rotation;
+            float Angle;
+            double x;
+            double y;
+            float oldx;
+            float oldy;
+            Vector3 vektor;
+
+            // Kollisionen zwischen 60° und 90° führen zu Stillstand des Wagens (Totalschaden)
+            // Geschwindigkeit anpassen
+            if (CollisionArc < MathHelper.PiOver2 && CollisionArc > MathHelper.Pi / 3.0f)
+            {
+                pCart.SetSpeed(0.0f);
+                Rotation = 0.0f;
+            }
+            // kleinere Geschwindigkeiten führen zu einer reduzierten Speed und einer Rotation
+            else
+            {
+                pCart.SetSpeed(oldSpeed * 0.7f);
+                
+                // Rotation bestimmen
+                Rotation = CollisionArc * 0.8f * t;
+                if (CollisionCorner == Car.FRONTRIGHT || CollisionCorner == Car.BACKLEFT)
+                {
+                    Rotation = Rotation - 2 * Rotation;
+                }
+
+            }
+            Angle = Rotation;
+
+            // alter Richtungsvektor auslesen:
+            oldx = oldDirection.Z;
+            oldy = oldDirection.X;
+
+            // neue Koordinaten berechnen:
+            x = oldx * System.Math.Cos(Angle) - oldy * System.Math.Sin(Angle);
+            y = oldy * System.Math.Cos(Angle) + oldx * System.Math.Sin(Angle);
+
+            // neue Koordinaten casten:
+            oldx = (float)x;
+            oldy = (float)y;
+
+            // neuen Vektor schreiben:
+            vektor = new Vector3(oldy, 0f, oldx);
+            pCart.SetDirection(vektor);
         }
         #endregion
     } 
