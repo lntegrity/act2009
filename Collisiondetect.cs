@@ -87,17 +87,17 @@ namespace ACT2009
                 if (rightCollision)
                 {
                     car.SetCollisionArc((float)System.Math.PI - arcSide);
-                    car.SetCollisionCorner(Car.FRONTRIGHT);
+                    car.SetCollisionCorner(Car.BACKRIGHT);
                 }
                 else if (leftCollision)
                 {
                     car.SetCollisionArc((float)System.Math.PI - arcSide);
-                    car.SetCollisionCorner(Car.FRONTLEFT);
+                    car.SetCollisionCorner(Car.BACKLEFT);
                 }
                 else
                 {
                     car.SetCollisionArc((float)(System.Math.PI / 2));
-                    car.SetCollisionCorner(Car.FRONTLEFT);
+                    car.SetCollisionCorner(Car.BACKLEFT);
                 }
             }
         }
