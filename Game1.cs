@@ -47,6 +47,14 @@ namespace ACT2009
         //Collisiondetection
         Collisiondetect collision;
 
+        // Object Coordinates
+        ModelPositions innerBorder;
+        ModelPositions outerBorder;
+        ModelPositions trees;
+        ModelPositions carFord;
+        ModelPositions carGolf;
+        ModelPositions bushes;
+
         //Jasmin
         Sounds Sounds;
 
@@ -118,11 +126,34 @@ namespace ACT2009
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
             //TODO: fix
-            Model huetchen = Content.Load<Model>("Models/huetchen");
-            List<Vector3> inner = loadPoints("coordinate/innerBorder");
-            List<Vector3> outer = loadPoints("coordinate/outerBorder");
-            ModelPositions innerBorder = new ModelPositions(huetchen, inner);
-            ModelPositions outerBorder = new ModelPositions(huetchen, outer);
+            Model spike = Content.Load<Model>("Models/huetchen");
+            Model carNPC = Content.Load<Model>("Models/_obstacleCar");
+            Model tree = Content.Load<Model>("Models/hecken_tree");
+
+
+            Vector3 innerOffsets = new Vector3(0f, 0.1f, 0f);
+            Vector3 outerOffsets = new Vector3(0f, 0.1f, 0f);
+            Vector3 treesOffsets = new Vector3(0f, 0.5f, 0f);
+            Vector3 bushesOffsets = new Vector3(0f, 0.0f, 0f);
+            Vector3 carFordOffsets = new Vector3(-1.0f, 0.65f, 1.5f);
+            Vector3 carGolfOffsets = new Vector3(0f, 0.35f, -1.5f);
+
+            List<Vector3> innerCoord = loadPoints("coordinate/innerBorder", innerOffsets);
+            List<Vector3> outerCoord = loadPoints("coordinate/outerBorder", outerOffsets);
+            List<Vector3> treesCoord = loadPoints("coordinate/tree", treesOffsets);
+            List<Vector3> bushesCoord = loadPoints("coordinate/hedge", bushesOffsets);
+            List<Vector3> carFordCoord = loadPoints("coordinate/carFord", carFordOffsets);
+            List<Vector3> carGolfCoord = loadPoints("coordinate/carGolf", carGolfOffsets);
+
+            innerBorder = new ModelPositions(spike, innerCoord);
+            outerBorder = new ModelPositions(spike, outerCoord);
+            trees = new ModelPositions(tree, treesCoord);
+            bushes = new ModelPositions(tree, bushesCoord);
+            carFord = new ModelPositions(carNPC, carFordCoord);
+            carGolf = new ModelPositions(carNPC, carGolfCoord);
+            carFord.setScale(0.03f);
+            carGolf.setScale(0.03f);
+
             collision = new Collisiondetect(actCart, innerBorder, outerBorder);
             
             menu.MenuInit(Content);
@@ -136,12 +167,13 @@ namespace ACT2009
         /// <summary>
         /// Loads the points for elementpositioning from an xml file
         /// </summary>
-        private List<Vector3> loadPoints(String xmlFile)
+        private List<Vector3> loadPoints(String xmlFile, Vector3 offsets)
         {
             List<Vector3> trackPoints = new List<Vector3>();
             
             String xmlData = Content.Load<String>(xmlFile);
             xmlData = xmlData.Trim();
+            //char[] tempArr = new char[] { '\n', '\r' };
             String[] lines = xmlData.Split('\n');
 
             // Gets a NumberFormatInfo associated with the en-US culture.
@@ -150,9 +182,9 @@ namespace ACT2009
             for (int i = 0; i < lines.Length; i++)
             {
                 String[] currLineCoords = lines[i].Split(';');
-                trackPoints.Add(new Vector3(float.Parse(currLineCoords[0], nfi),
-                                                float.Parse(currLineCoords[2], nfi),
-                                                float.Parse(currLineCoords[1], nfi)));
+                trackPoints.Add(new Vector3(float.Parse(currLineCoords[0], nfi) + offsets.X,
+                                                float.Parse(currLineCoords[1], nfi) + offsets.Y,
+                                                -float.Parse(currLineCoords[2], nfi) + offsets.Z));
             }
 
             return trackPoints;
@@ -302,6 +334,15 @@ namespace ACT2009
 
                 graphics.GraphicsDevice.RenderState.DepthBufferEnable = true;
                 display.Draw();
+
+                // Draw Objects on the Landscape
+                innerBorder.DrawObjects(display);
+                outerBorder.DrawObjects(display);
+                carFord.DrawObjects(display);
+                carGolf.DrawObjects(display);
+                trees.DrawObjects(display);
+                bushes.DrawObjects(display);
+
                 play.PlayDraw(spriteBatch);                
                 
                 // foreach Mesh
