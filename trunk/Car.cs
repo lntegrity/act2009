@@ -51,9 +51,12 @@ namespace ACT2009
         //controller the car listens to
         private Input controller = null;
 		//maximum acceleration (meters per second squared)
-		private float maxAcceleration = 10.0f;
+		private float maxAcceleration = 7.5f;
 		//maxumum negative acceleration (braking) (meters per second square)
 		private float maxBraking = 9.0f;
+
+        private int pitchlevel = 0;
+
 
         //initializes the car's in constructor
         public Car(ref Input contr)
@@ -234,17 +237,18 @@ namespace ACT2009
         public void Update()
         {
             controller.Update();
-
-            /**
+            
+            /*
              * 1. das motorgeräusch: die tonhöhe (pitch) abhängig von der geschwindigkeit/maximale geschwindigkeit
              * 2. Kollisionsgeräusch abspielen, wenn die Kollisionsvariable auf true steht
              * 3. bei Lenkvolleinschlag (input.getDirection() oder so ähnlich auf 1 oder -1) quietschgeräusche abspielen
              *       nur, wenn die geschwindigkeit ungleich 0 ist
             */
             // Tonhoehe abhaengig von Geschwindigkeit
+            /*
             if (speed == maxSpeedFwd || speed == maxSpeedRew)
             {
-                Console.WriteLine("I'm printing in speed==maxSpeedFwd||speed==maxSpeedBwd " + speed);
+                //Console.WriteLine("I'm printing in speed==maxSpeedFwd||speed==maxSpeedBwd " + speed);
                 float pitch = 1;
                 Sounds.getFinalDriveSEI().Stop();
                 Sounds.PlayFinalDriveSound(pitch, true);
@@ -252,26 +256,18 @@ namespace ACT2009
             if (speed < maxSpeedFwd && speed > 0)
             {
 
-                Console.WriteLine("I'm printing in speed<maxSpeedFwd" + speed);
-                float pitch = speed / maxSpeedFwd;
+                //Console.WriteLine("I'm printing in speed<maxSpeedFwd" + speed);
+                //float pitch = speed / maxSpeedFwd;
                 Sounds.getFinalDriveSEI().Stop();
                 Sounds.PlayFinalDriveSound(pitch, true);
  
             }
-            if (speed < maxSpeedRew && speed > 0)
-            {
-                Console.WriteLine("I'm printing in speed<maxSpeedRew " + speed);
-                float pitch = speed / maxSpeedRew;
-                Sounds.getFinalDriveSEI().Stop();
-                Sounds.PlayFinalDriveSound(pitch, true);
-                
-            }
             if (speed == 0 && Sounds.getFinalDriveSEI() != null)
             {
-                Console.WriteLine("Stopping Sound");
+                //Console.WriteLine("Stopping Sound");
                 Sounds.getFinalDriveSEI().Stop();
 
-            }
+            }*/
 
             //Kollission
             if (collisionCorner!=0)
@@ -280,21 +276,25 @@ namespace ACT2009
             }
             
             // Lenken
-            Console.WriteLine("Direction:" + controller.GetDirection());
+            //Console.WriteLine("Direction:" + controller.GetDirection());
             if ((controller.GetDirection() == 1 || controller.GetDirection() == -1) && (speed != 0))
             {
-                Console.WriteLine("Direction:" + controller.GetDirection());
-                Sounds.PlayBrakesSound(false);
+                //Console.WriteLine("Direction:" + controller.GetDirection());
+                if (Sounds.getBrakesSEI()==null)
+                {
+                    Sounds.PlayBrakesSound(false);
+                }
             }
             if (controller.GetDirection() == 0)
             {
                 if (Sounds.getBrakesSEI() != null)
                 {
-                    Console.WriteLine("Stop BRAKES");
+                    //Console.WriteLine("Stop BRAKES");
                     Sounds.getBrakesSEI().Stop();
+                    Sounds.setBrakesSEI(null);
                 }
             }
-
+            
         }
 
         //Return corners defined by static variables

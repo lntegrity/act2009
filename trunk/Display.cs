@@ -22,6 +22,8 @@ namespace ACT2009
         private Matrix viewMatrix;
         private Matrix projectionMatrix;
 
+        private Texture2D skies;
+
         // Debugging helper
         // Those variables are used to navigate throught the landscape
         // Not a part of the gameplay
@@ -32,9 +34,10 @@ namespace ACT2009
         private bool NBpushed = false; // N + B key pushed?
         private int maxDirections = 20;
         private Vector3[] oldDirections;
+        private Rectangle skiesFrom, skiesTo;
 
 
-        float carScaleValue = 0.01f; // Car Size
+        float carScaleValue = 0.009f; // Car Size
 
         //Vector3 carPosition;
         Vector3 carOffset, carRotationOffset;
@@ -45,6 +48,10 @@ namespace ACT2009
             // Loading the 3D models
             car = Content.Load<Model>("Models/Generic Cart");
             landscape = Content.Load<Model>("Models/fhhof");
+
+            skies = Content.Load<Texture2D>("Textures/skies");
+            skiesFrom = new Rectangle(1000, 200, 1600, 400);
+            skiesTo = new Rectangle(0, 0, 800, 200);
 
             device = dev;
 
@@ -63,7 +70,7 @@ namespace ACT2009
             Yrot = 3.141592f; // base 180° rotation
             navPositionMatrix = Matrix.CreateTranslation(new Vector3(0.0f, -2.0f, 0.0f));
             viewMatrix = Matrix.CreateLookAt(new Vector3(0, 0.26f, 1), Vector3.Zero, Vector3.Up);
-            projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), 800.0f / 600.0f, 1.0f, 1000.0f);
+            projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45.0f), 800.0f / 600.0f, 1.0f, 200.0f);
         
         }
 
@@ -82,6 +89,10 @@ namespace ACT2009
                 oldDirections[i + 1] = oldDirections[i];
             }
             oldDirections[0] = actCart.GetDirection();
+
+            // Calculate the Sky background based on car angle
+            float tempAngle = (float)(System.Math.Atan2(oldDirections[maxDirections - 1].Z, oldDirections[maxDirections - 1].X));
+            skiesFrom = new Rectangle((int)((tempAngle + System.Math.PI) *400), 200, 1600, 400);
 
             // switching debugging navigation helper ON OFF
             if (keyboardState.IsKeyDown(Keys.N) && keyboardState.IsKeyDown(Keys.B))
@@ -132,6 +143,15 @@ namespace ACT2009
                 else if (keyboardState.IsKeyDown(Keys.Down))
                     Xrot += 0.03f;
             }
+        }
+
+        public void DrawBackground(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Begin();
+            {
+                spriteBatch.Draw(skies, skiesTo, skiesFrom, Color.White);
+            }
+            spriteBatch.End();
         }
 
         // The method for called for drawing the 3D environment
