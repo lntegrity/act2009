@@ -13,8 +13,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ACT2009
 {
-    
-    class Physics
+
+    /// <summary>
+    /// This class recalculates the position, direction and speed depending on the input and the car status
+    /// </summary>
+    public class Physics
     #region Variablen
     { 
         // Definiert Hilfsvariablen, die dann im Konstruktor gefüllt werden und zur

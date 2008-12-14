@@ -22,7 +22,11 @@ using System.IO;
 
 namespace ACT2009
 {
-    class Play
+
+    /// <summary>
+    /// This class displays the heads up display
+    /// </summary>
+    public class Play
     {
         #region Variables
 

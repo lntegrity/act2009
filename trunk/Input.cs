@@ -14,6 +14,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ACT2009
 {
+    /// <summary>
+    /// This class provides the current user-orders through the controller and/or keyboard the car should follow
+    /// </summary>
     public class Input
     {
         private float Acceleration = 0.0f;

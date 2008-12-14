@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 namespace ACT2009
 {
     /// <summary>
-    /// Hilfsklasse, die Hilfsfunktionen bereitstellt
+    /// Helperclass for math calculations
     /// </summary>
     public static class Math
     {
