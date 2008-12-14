@@ -128,13 +128,14 @@ namespace ACT2009
             //TODO: fix
             Model spike = Content.Load<Model>("Models/huetchen");
             Model carNPC = Content.Load<Model>("Models/_obstacleCar");
-            Model tree = Content.Load<Model>("Models/hecken_tree");
+            Model tree = Content.Load<Model>("Models/tree");
+            Model hedge = Content.Load<Model>("Models/hecken_tree");
 
 
             Vector3 innerOffsets = new Vector3(0f, 0.1f, 0f);
             Vector3 outerOffsets = new Vector3(0f, 0.1f, 0f);
-            Vector3 treesOffsets = new Vector3(0f, 0.5f, 0f);
-            Vector3 bushesOffsets = new Vector3(0f, 0.0f, 0f);
+            Vector3 treesOffsets = new Vector3(0f, 0.0f, 0f);
+            Vector3 bushesOffsets = new Vector3(0f, -0.3f, 0f);
             Vector3 carFordOffsets = new Vector3(-1.0f, 0.65f, 1.5f);
             Vector3 carGolfOffsets = new Vector3(0f, 0.35f, -1.5f);
 
@@ -148,7 +149,7 @@ namespace ACT2009
             innerBorder = new ModelPositions(spike, innerCoord);
             outerBorder = new ModelPositions(spike, outerCoord);
             trees = new ModelPositions(tree, treesCoord);
-            bushes = new ModelPositions(tree, bushesCoord);
+            bushes = new ModelPositions(hedge, bushesCoord);
             carFord = new ModelPositions(carNPC, carFordCoord);
             carGolf = new ModelPositions(carNPC, carGolfCoord);
             carFord.setScale(0.03f);
@@ -329,8 +330,8 @@ namespace ACT2009
             // Draw Golf Cart and HUD in GameMode.Play
             if (gameMode == GameMode.Play)
             {
-                
-                
+
+                display.DrawBackground(spriteBatch);
 
                 graphics.GraphicsDevice.RenderState.DepthBufferEnable = true;
                 display.Draw();
