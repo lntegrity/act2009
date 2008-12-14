@@ -38,14 +38,14 @@ namespace ACT2009
             //this.content = content;
             Content = new ContentManager(game.Services, "Content");
             Content.RootDirectory = "Content";
-            Console.WriteLine("in sound");
+            //Console.WriteLine("in sound");
 
-            Console.WriteLine(Content);
+            //Console.WriteLine(Content);
         }
 
         public static SoundEffectInstance Play(string soundName, float pitch, Boolean loop)
         {
-            Console.WriteLine("Sounds\\" + soundName);
+            //Console.WriteLine("Sounds\\" + soundName);
             try
             {
                 SoundEffect mySound = Content.Load<SoundEffect>("Sounds\\" + soundName);
@@ -56,7 +56,7 @@ namespace ACT2009
             }
             catch(Exception ex)
             {
-                Console.WriteLine("Exception caught "+ex.Message);
+                //Console.WriteLine("Exception caught "+ex.Message);
             }
             return null;
         }
@@ -104,6 +104,7 @@ namespace ACT2009
         public static SoundEffectInstance PlayBangSound(Boolean loop)
         {
             float pitch = 0;
+            MediaPlayer.Volume = 1f;
             SoundEffectInstance e = Play(SoundEnum.bang, pitch, loop);
             return e;
         }
@@ -117,7 +118,7 @@ namespace ACT2009
 
         public static void PlayBrakesSound(Boolean loop)
         {
-            float pitch = 0.5f;
+            float pitch = 0.7f;
             SoundEffectInstance e = Play(SoundEnum.brakes, pitch, loop);
             setBrakesSEI(e);
         }
@@ -131,7 +132,7 @@ namespace ACT2009
 
         public static void PlayFinalDriveSound(float pitch, Boolean loop)
         {
-            Console.Write("FINALDRIVE");
+            //Console.Write("FINALDRIVE");
             SoundEffectInstance e = Play(SoundEnum.finalDrive, pitch, loop);
             setFinalDriveSEI(e);
         }
@@ -146,6 +147,7 @@ namespace ACT2009
         public static SoundEffectInstance PlayHornSound(Boolean loop)
         {
             float pitch = 0;
+            MediaPlayer.Volume = 1f;
             SoundEffectInstance e = Play(SoundEnum.horn, pitch, loop);
             return e;
         }
@@ -155,24 +157,25 @@ namespace ACT2009
             Song mysong = Content.Load<Song>("Sounds//menumusic");
 
             MediaPlayer.Play(mysong);         //needs to be switched on
+            MediaPlayer.Volume = 0.5f;
             MediaPlayer.IsRepeating = loop;
-            Console.WriteLine("in menuMusic");
+            //Console.WriteLine("in menuMusic");
         }
 
         public static void PlayGameMusic(Boolean loop)
         {
             Song gameSong = Content.Load<Song>("Sounds//Happy Racing");
             MediaPlayer.Play(gameSong);
-            MediaPlayer.Volume = 0.1f;
+            MediaPlayer.Volume = 0.8f;
             MediaPlayer.IsRepeating = loop;
-            Console.WriteLine("In gameMusic");
+            //Console.WriteLine("In gameMusic");
         }
 
         public static void PlayWaterMusicSound(Boolean loop)
         {
             float pitch = 0;
             Play(SoundEnum.water,pitch,loop);
-            Console.WriteLine("in menuMusic");
+            //Console.WriteLine("in menuMusic");
         }
 
         public static SoundEffectInstance PlayWindSound(Boolean loop)
@@ -180,7 +183,7 @@ namespace ACT2009
             float pitch = 0;
 
             SoundEffectInstance e = Play(SoundEnum.wind, pitch, loop);
-            Console.WriteLine("in wind");
+            //Console.WriteLine("in wind");
             return e;
         }
 

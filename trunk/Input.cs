@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ACT2009
 {
-    class Input
+    public class Input
     {
         private float Acceleration = 0.0f;
         private float Brake = 0.0f;
