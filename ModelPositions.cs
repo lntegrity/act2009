@@ -7,7 +7,10 @@ using Microsoft.Xna.Framework;
 
 namespace ACT2009
 {
-    class ModelPositions
+    /// <summary>
+    /// This class is a container for a list of positions and its corresponding Model that shall be displayed
+    /// </summary>
+    public class ModelPositions
     {
         //model of the objects to display
         private Model objectModel;

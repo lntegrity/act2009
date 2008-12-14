@@ -25,7 +25,11 @@ using Microsoft.Xna.Framework.Media;
 
 namespace ACT2009
 {
-    class Sounds
+
+    /// <summary>
+    /// This class plays the sound to be heared in the game
+    /// </summary>
+    public class Sounds
     {
         //SoundEffect mySound;
         public static ContentManager Content;// As //ContentManager

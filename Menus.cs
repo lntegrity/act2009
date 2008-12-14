@@ -22,7 +22,10 @@ using System.IO;
 
 namespace ACT2009
 {
-    class Menus
+    /// <summary>
+    /// This class displays the menus showed on the beginning and end of the game
+    /// </summary>
+    public class Menus
     {
         #region Variables
 

@@ -9,7 +9,10 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ACT2009
 {
-    class Display
+    /// <summary>
+    /// This class displays the scenery, the car and the objects of the virtual environment
+    /// </summary>
+    public class Display
     {
         // 3D stuff
         private Model car, landscape;

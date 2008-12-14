@@ -4,7 +4,10 @@ using System.Collections.Generic;
 
 namespace ACT2009
 {
-    class Collisiondetect
+    /// <summary>
+    /// This class handles the collisiondetection to find when the car crosses the borders of the track
+    /// </summary>
+    public class Collisiondetect
     {
         //inner Border
         ModelPositions innerBorder;
