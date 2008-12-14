@@ -19,16 +19,22 @@ namespace ACT2009
     /// </summary>
     public class Input
     {
+        /// <summary>
+        /// variable to hold the current acceleration buffering for multiple access
+        /// </summary>
         private float Acceleration = 0.0f;
+        /// <summary>
+        /// variable to hold the current braking buffering for multiple access
+        /// </summary>
         private float Brake = 0.0f;
+        /// <summary>
+        /// variable to hold the current direction buffering for multiple access
+        /// </summary>
         private float Direction = 0.0f;
 
-        //constructor is subject to change
-        public Input()
-        {
-        }
-
-        //Updating the Input
+        /// <summary>
+        /// Updating the Input
+        /// </summary>
         public void Update()
         {
             KeyboardState keyboardState = Keyboard.GetState();
@@ -83,28 +89,38 @@ namespace ACT2009
 
         }
         
-        //returns accelleration between -1 (full reverse) and 1 (full forward)
+        /// <summary>
+        /// returns accelleration between -1 (full reverse) and 1 (full forward)
+        /// </summary>
+        /// <returns>direction of accelleration</returns>
         public float GetAccelleration()
         {
             return Acceleration;
         }
 
-        //returns braking between 0 (none) and 1 (full)
+        /// <summary>
+        /// returns braking between 0 (none) and 1 (full)
+        /// </summary>
+        /// <returns>returns the intensity of braking from none (0) to full (1)</returns>
         public float GetBrake()
         {
             return Brake;
         }
 
-        //returns accelleration between -1 (left) and 1 (right)
+        /// <summary>
+        /// returns directions to steer right or left
+        /// </summary>
+        /// <returns>returns steering to the right (1), to the front (0) or to the left (-1)</returns>
         public float GetDirection()
         {
             return Direction;
         }
 
-        //returns pause status false (play) and true (game paused)
+        /*/returns pause status false (play) and true (game paused)
         public bool GetPause()
         {
             return false;
         }
+         */
     }
 }

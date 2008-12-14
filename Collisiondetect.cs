@@ -9,24 +9,40 @@ namespace ACT2009
     /// </summary>
     public class Collisiondetect
     {
-        //inner Border
+        /// <summary>
+        /// List of points forming the inner border
+        /// </summary>
         ModelPositions innerBorder;
-        //outer Border
+        /// <summary>
+        /// List of points forming the outer border
+        /// </summary>
         ModelPositions outerBorder;
 
         Car car;
         //Maximum Distance allowed to use point for collision detection
         //float distanceLimit;
 
-
-        public Collisiondetect(Car c, ModelPositions innerBorder, ModelPositions outerBorder)
+        /// <summary>
+        /// Initializes the collisiondetection with needed data for later collisionchecks
+        /// </summary>
+        /// <param name="c">Car with current position</param>
+        /// <param name="innerBorder">Border at the inside</param>
+        /// <param name="outerBorder">Boder at the outside</param>
+        public Collisiondetect(ref Car c, ref ModelPositions innerBorder, ref ModelPositions outerBorder)
         {
             car = c;
             this.innerBorder = innerBorder;
             this.outerBorder = outerBorder;
         }
 
-        //@param arc: arcus under wich the collision occured, if any
+        /// <summary>
+        /// Tests a given border whether a line consisting of two points collides with it
+        /// </summary>
+        /// <param name="border">Pointlist containing which forms a border for the track</param>
+        /// <param name="a">starting point of the line to be checked</param>
+        /// <param name="b">ending point of the line to be checked</param>
+        /// <param name="arc">arcus under wich the collision occured, if any</param>
+        /// <returns></returns>
         private bool SweepPoints(ModelPositions border, Vector3 a, Vector3 b, ref float arc)
         {
             for (int i=0; i+1 < border.GetCount(); ++i)
@@ -39,13 +55,15 @@ namespace ACT2009
             return getCollisionarc(a, b, border.getPosition(border.GetCount()-1), border.getPosition(0), ref arc);
         }
 
-        //tests every position-pair of inner and outer border if it collided with a car-constraint
+        /// <summary>
+        /// tests every position-pair of inner and outer border if it collided with a car-constraint
+        /// </summary>
         public void detectCollision()
         {
             //car.ResetCollision();
             car.SetCollisionCorner(0);
 
-            //Collisionarc on the side
+            //Collisionarc at one side
             float arcSide = 0;
             //Collisionarc on front or back
             float arcFront = 0;
@@ -105,7 +123,15 @@ namespace ACT2009
             }
         }
 
-        //calculates collision and returns either the collisionarc or null of two 3D-Lines pressed down to z=0
+        /// <summary>
+        /// calculates collision and returns either the collisionarc or null of two 3D-Lines on the plane
+        /// </summary>
+        /// <param name="a">starting point of first line</param>
+        /// <param name="b">ending point of first line</param>
+        /// <param name="c">starting point of second line</param>
+        /// <param name="d">ending point of second line</param>
+        /// <param name="arc">arcus under which the collision occured, if any</param>
+        /// <returns></returns>
         private bool getCollisionarc(Vector3 a, Vector3 b, Vector3 c, Vector3 d, ref float arc)
         {
             float opt1 = d.Y - c.Y;

@@ -21,55 +21,97 @@ namespace ACT2009
     /// </summary>
     public class Car
     {
-        //Input Input;
-
-        //predefined corners of the car (for collisionhandling)
+        /// <summary>
+        /// predefined corner of the car (for collisionhandling)
+        /// </summary>
         public const int FRONTLEFT = 1;
+        /// <summary>
+        /// predefined corner of the car (for collisionhandling)
+        /// </summary>
         public const int FRONTRIGHT = 2;
+        /// <summary>
+        /// predefined corner of the car (for collisionhandling)
+        /// </summary>
         public const int BACKLEFT = 3;
+        /// <summary>
+        /// predefined corner of the car (for collisionhandling)
+        /// </summary>
         public const int BACKRIGHT = 4;
 
-        //corner which had a collision, 0 if no collision
+        /// <summary>
+        /// corner which had a collision, 0 if no collision
+        /// </summary>
         private int collisionCorner = 0;
-        //arc at which the collision has occured
+        /// <summary>
+        /// arc at which the collision has occured
+        /// </summary>
         private float collisionArc = 0;
-        //line at which the car collided (for reflecting)
+        /// <summary>
+        /// line at which the car collided (for reflecting)
+        /// </summary>
         private Vector3 collisionLine = new Vector3(0);
-        //dimensions of the Car
+        /// <summary>
+        /// dimensions of the Car
+        /// </summary>
         private Vector3 dimension = new Vector3(1.5f, 1.5f, 2.0f);
-        //absolute position the car is at (in meters, bottom-middle of the car)
+        /// <summary>
+        /// absolute position the car is at (in meters, bottom-middle of the car)
+        /// </summary>
         private Vector3 position = new Vector3(0);
-        //direction the car is looking at
+        /// <summary>
+        /// direction the car is looking at
+        /// </summary>
         private Vector3 direction = new Vector3(0);
-        //velocity the car is currently moving at (kilometers per hour)
+        /// <summary>
+        /// velocity the car is currently moving at (kilometers per hour)
+        /// </summary>
         private float speed = 0;
-        //color the car is painted in
+        /// <summary>
+        /// color the car is painted in
+        /// </summary>
         private Color color = Color.Blue;
-        //maximum velocity moving forward (kilometers per hour)
+        /// <summary>
+        /// maximum velocity moving forward (kilometers per hour)
+        /// </summary>
         private float maxSpeedFwd = 90;
-        //maximum velocity moving backward (kilometers per hour)
+        /// <summary>
+        /// maximum velocity moving backward (kilometers per hour)
+        /// </summary>
         private float maxSpeedRew = -30;
-        //weight of the car (kilogram)
+        /// <summary>
+        /// weight of the car (kilogram)
+        /// </summary>
         private float weight = 300;
-        //controller the car listens to
+        /// <summary>
+        /// controller the car listens to
+        /// </summary>
         private Input controller = null;
-		//maximum acceleration (meters per second squared)
+		/// <summary>
+        /// maximum acceleration (meters per second squared)
+		/// </summary>
 		private float maxAcceleration = 7.5f;
-		//maxumum negative acceleration (braking) (meters per second square)
+		/// <summary>
+        /// maxumum negative acceleration (braking) (meters per second square)
+		/// </summary>
 		private float maxBraking = 9.0f;
 
-        private int pitchlevel = 0;
 
-
-        //initializes the car's in constructor
+        /// <summary>
+        /// initializes the car in constructor
+        /// </summary>
+        /// <param name="contr">reference of the input-handler</param>
         public Car(ref Input contr)
         {
             //can only be set in constructor
             controller = contr;
         }
 
-        //initializes the car's data
-        Car(Input contr, Color clr)
+        /// <summary>
+        /// initializes the car in constructor
+        /// </summary>
+        /// <param name="contr">reference of the input-handler</param>
+        /// <param name="clr">color of the car</param>
+        Car(ref Input contr, Color clr)
         {
             //can only be set in constructor
             color = clr;
@@ -78,8 +120,13 @@ namespace ACT2009
             controller = contr;
         }
 
-        //initializes the car's data
-        Car(Input contr, Color clr, float wgt)
+        /// <summary>
+        /// initializes the car in constructor
+        /// </summary>
+        /// <param name="contr">reference of the input-handler</param>
+        /// <param name="clr">color of the car</param>
+        /// <param name="wgt">weight (in kilogram) of the car</param>
+        Car(ref Input contr, Color clr, float wgt)
         {
 
             //can only be set in constructor
@@ -92,151 +139,225 @@ namespace ACT2009
             weight = wgt;
         }
 
-        //sets the corner which had a collision, 0 if no collision occured
+        /// <summary>
+        /// sets the corner which had a collision, 0 if no collision occured
+        /// </summary>
+        /// <param name="crnr">predefined constant of the corner or 0 if none</param>
         public void SetCollisionCorner(int crnr)
         {
             collisionCorner = crnr;
         }
 
-        //returns the corner which had a collision, 0 if no collision occured
+        /// <summary>
+        /// returns the corner which had a collision, 0 if no collision occured
+        /// </summary>
+        /// <returns>predefined constant of the corner or 0 if none</returns>
         public int GetCollisionCorner()
         {
             return collisionCorner;
         }
 
-        //sets the arc at which the collision has occured
+        /// <summary>
+        /// sets the arc at which the collision has occured
+        /// </summary>
+        /// <param name="cllArc">the arcus under which the collision occured</param>
         public void SetCollisionArc(float cllArc)
         {
             collisionArc = cllArc;
         }
 
-        //returns the arc at which the collision has occured
+        /// <summary>
+        /// returns the arc at which the collision has occured
+        /// </summary>
+        /// <returns>arcus under which the collision has occured</returns>
         public float GetCollisionArc()
         {
             return collisionArc;
         }
 
-        //Sets the line at which the car collided (for reflecting)
+        /// <summary>
+        /// Sets the line at which the car collided (for reflecting)
+        /// </summary>
+        /// <param name="cllLine">Point paired with point (0,0,0) to describe how the line lies in space</param>
         public void SetCollisionLine(Vector3 cllLine)
         {
             collisionLine = cllLine;
         }
 
-        //Returns the line at which the car collided (for reflecting)
+        /// <summary>
+        /// Returns the line at which the car collided (for reflecting)
+        /// </summary>
+        /// <returns>Point paired with point (0,0,0) to describe how the line lies in space</returns>
         public Vector3 SetCollisionLine()
         {
             return collisionLine;
         }
 
-        //returns the dimensions of the Car
+        /// <summary>
+        /// returns the dimensions of the Car
+        /// </summary>
+        /// <returns>Size of the car</returns>
         public Vector3 GetDimension()
         {
             return dimension;
         }
         
-        //returns the highest possible acceleration of the car
+        /// <summary>
+        /// returns the highest possible acceleration of the car
+        /// </summary>
+        /// <returns>maximum possible accelleration in meter per secondsquare</returns>
         public float GetMaxAcceleration()
         {
             return maxAcceleration;
         }
 
-        //sets the highest possible acceleration of the car
+        /// <summary>
+        /// sets the highest possible acceleration of the car
+        /// </summary>
+        /// <param name="macc">maximum possible accelleration in meter per secondsquare</param>
         public void SetMaxAcceleration(float macc)
         {
             maxAcceleration = macc;
         }
 		
-		//returns the highest possible braking of the car
+		/// <summary>
+        /// returns the highest possible braking of the car
+		/// </summary>
+        /// <returns>maximum possible braking in meter per secondsquare</returns>
         public float GetMaxBraking()
         {
             return maxBraking;
         }
 
-        //sets the highest possible braking of the car
+        /// <summary>
+        /// sets the highest possible braking of the car
+        /// </summary>
+        /// <param name="mbrac">maximum possible braking in meter per secondsquare</param>
         public void SetMaxBraking(float mbrac)
         {
             maxBraking = mbrac;
         }
 		
-        //returns the current absolute position of the car
+        /// <summary>
+        /// returns the current absolute position of the car
+        /// </summary>
+        /// <returns>position of the car</returns>
         public Vector3 GetPosition()
         {
             return position;
         }
 
-        //sets a new absolute position of the car
+        /// <summary>
+        /// sets a new absolute position of the car
+        /// </summary>
+        /// <param name="pos">position of the car</param>
         public void SetPosition(Vector3 pos)
         {
             position = pos;
         }
 
-        //returns the vector the car directs at
+        /// <summary>
+        /// returns the vector the car directs at
+        /// </summary>
+        /// <returns>direction of the car</returns>
         public Vector3 GetDirection()
         {
             return direction;
         }
 
-        //sets the direction the car looks at
+        /// <summary>
+        /// sets the direction the car looks at
+        /// </summary>
+        /// <param name="dir">direction of the car</param>
         public void SetDirection(Vector3 dir)
         {
             direction = dir;
         }
 
-        //returns the current speed of the car in km/h
+        /// <summary>
+        /// returns the current speed of the car in km/h
+        /// </summary>
+        /// <returns>speed of the car in kilometers per hour</returns>
         public float GetSpeed()
         {
             return speed;
         }
 
-        //sets the current speed of the car in km/h
+        /// <summary>
+        /// sets the current speed of the car in km/h
+        /// </summary>
+        /// <param name="spd">speed of the car in kilometers per hour</param>
         public void SetSpeed(float spd)
         {
             speed = spd;
         }
 
-        //returns the color of the car
+        /// <summary>
+        /// returns the color of the car
+        /// </summary>
+        /// <returns>color of the car</returns>
         public Color GetColor()
         {
             return color;
         }
 
-        //returns the maximum forward velocity of the car in km/h
+        /// <summary>
+        /// returns the maximum forward velocity of the car in km/h
+        /// </summary>
+        /// <returns>maximum forward speed of the car in kilometers per hour</returns>
         public float GetMaxSpeedFwd()
         {
             return maxSpeedFwd;
         }
 
-        //sets the maximum forward velocity of the car in km/h
+        /// <summary>
+        /// sets the maximum forward velocity of the car in km/h
+        /// </summary>
+        /// <param name="spd">maximum forward speed of the car in kilometers per hour</param>
         public void SetMaxSpeedFwd(float spd)
         {
             maxSpeedFwd = spd;
         }
 
-        //returns the maximum reverse velocity of the car in km/h
+        /// <summary>
+        /// returns the maximum reverse velocity of the car in km/h
+        /// </summary>
+        /// <returns>maximum reverse speed of the car in kilometers per hour</returns>
         public float GetMaxSpeedRew()
         {
             return maxSpeedRew;
         }
 
-        //sets the maximum reverse velocity of the car in km/h
+        /// <summary>
+        /// sets the maximum reverse velocity of the car in km/h
+        /// </summary>
+        /// <param name="spd">maximum reverse speed of the car in kilometers per hour</param>
         public void SetMaxSpeedRew(float spd)
         {
             maxSpeedRew = spd;
         }
 
-        //returns the weight of the car in kilogram
+        /// <summary>
+        /// returns the weight of the car in kilogram
+        /// </summary>
+        /// <returns>weight of the car in kilogram</returns>
         public float GetWeight()
         {
             return weight;
         }
 
-        //returns the controller the car listens to
+        /// <summary>
+        /// returns the controller the car listens to
+        /// </summary>
+        /// <returns>controller that controls the car</returns>
         public Input GetController()
         {
             return controller;
         }
 
-        //Updating the corresponding input
+        /// <summary>
+        /// Updating the corresponding input and sounds
+        /// </summary>
         public void Update()
         {
             controller.Update();
@@ -300,7 +421,11 @@ namespace ACT2009
             
         }
 
-        //Return corners defined by static variables
+        /// <summary>
+        /// calculates the corner defined by the constant given
+        /// </summary>
+        /// <param name="corner">const value describing one of the cars corners</param>
+        /// <returns>position of the given corner</returns>
         public Vector3 getCorner(int corner)
         {
             Vector3 cornerPos = new Vector3();

@@ -155,7 +155,7 @@ namespace ACT2009
             carFord.setScale(0.03f);
             carGolf.setScale(0.03f);
 
-            collision = new Collisiondetect(actCart, innerBorder, outerBorder);
+            collision = new Collisiondetect(ref actCart, ref innerBorder, ref outerBorder);
             
             menu.MenuInit(Content);
             play.PlayInit(Content);
