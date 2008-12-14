@@ -22,6 +22,8 @@ namespace ACT2009
         private Matrix viewMatrix;
         private Matrix projectionMatrix;
 
+        private static bool USE_SMALL_SKIE_BACKGROUND = true;
+
         private Texture2D skies;
 
         // Debugging helper
@@ -49,7 +51,14 @@ namespace ACT2009
             car = Content.Load<Model>("Models/Generic Cart");
             landscape = Content.Load<Model>("Models/fhhof");
 
-            skies = Content.Load<Texture2D>("Textures/skies");
+            if (USE_SMALL_SKIE_BACKGROUND)
+            {
+                skies = Content.Load<Texture2D>("Textures/skies_small");
+            }
+            else
+            {
+                skies = Content.Load<Texture2D>("Textures/skies");
+            }
             skiesFrom = new Rectangle(1000, 200, 1600, 400);
             skiesTo = new Rectangle(0, 0, 800, 200);
 
@@ -92,7 +101,14 @@ namespace ACT2009
 
             // Calculate the Sky background based on car angle
             float tempAngle = (float)(System.Math.Atan2(oldDirections[maxDirections - 1].Z, oldDirections[maxDirections - 1].X));
-            skiesFrom = new Rectangle((int)((tempAngle + System.Math.PI) *400), 200, 1600, 400);
+            if (USE_SMALL_SKIE_BACKGROUND)
+            {
+                skiesFrom = new Rectangle((int)((tempAngle + System.Math.PI) * 100), 50, 400, 100);
+            }
+            else
+            {
+                skiesFrom = new Rectangle((int)((tempAngle + System.Math.PI) * 400), 200, 1600, 400);
+            }
 
             // switching debugging navigation helper ON OFF
             if (keyboardState.IsKeyDown(Keys.N) && keyboardState.IsKeyDown(Keys.B))
