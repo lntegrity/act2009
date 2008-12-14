@@ -16,7 +16,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ACT2009
 {
-    class Car
+    /// <summary>
+    /// This class contains all Car-dependant data to be handled by multiple parts of the game
+    /// </summary>
+    public class Car
     {
         //Input Input;
 

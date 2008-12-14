@@ -60,10 +60,6 @@ namespace ACT2009
             Exit
         }
 
-        public Menus()
-        {
-
-        }
         #endregion // Variables
 
         #region MenuInit
@@ -89,7 +85,6 @@ namespace ACT2009
             GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
 
             // Menu Nav Boundaries
-            Console.WriteLine("Menus.cs: "+gameMode);
             if (gameMode == Game1.GameMode.Main)
             {
                 if ((keyboard.IsKeyDown(Keys.Up) || gamePad.DPad.Up == ButtonState.Pressed) && menuUp)
@@ -152,7 +147,11 @@ namespace ACT2009
             if (menuTab == MenuTabs.Play && keyboard.IsKeyDown(Keys.Enter) ||
                 gamePad.Buttons.A == ButtonState.Pressed)
             {
-                gameMode = Game1.GameMode.Play;            
+                //Modeswitch for Sound
+                //Sounds.StopMusic();
+                gameMode = Game1.GameMode.Play; 
+                //So start the right Music
+                //Sounds.PlayGameMusic(true);
             }
             // Go To Controller Layout
             if (menuTab == MenuTabs.Layout && keyboard.IsKeyDown(Keys.Enter) ||

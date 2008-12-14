@@ -27,7 +27,7 @@ using Microsoft.Xna.Framework.Media;
 namespace ACT2009
 {
     /// <summary>
-    /// This is the main type for your game
+    /// The core-class of the ACT2009 Project
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
@@ -222,67 +222,55 @@ namespace ACT2009
             GamePadState gamePad = GamePad.GetState(PlayerIndex.One);
             
             // Sound Update
-            Console.WriteLine("Game1.cs:Update()");
+            //Console.WriteLine("Game1.cs:Update()");
             // Game Music Change
             // Menu Update
             previousMenu = gameMode;
             gameMode = menu.MenuUpdate(gameTime, gameMode);
-            Console.WriteLine("GameMode: " + gameMode + "PreviousMenu: " + previousMenu);
+            //Console.WriteLine("GameMode: " + gameMode + "PreviousMenu: " + previousMenu);
 
-            /*if (previousMenu == GameMode.Play)
+            //So we are in the main menu after the game
+            if (previousMenu == GameMode.Play && gameMode != previousMenu)
             {
-                Console.WriteLine("Previous Menu: Play");
-                Sounds.getSoundEffectInstance().Stop();
-            }
-            */
-
-            if (gameMode == GameMode.Play && previousMenu == GameMode.Main)
-            {
-                Console.WriteLine("gameMode:Play, previousMenu:Main");
+                //Console.WriteLine("Previous Menu: Play");
+                Sounds.quitAllSEI(); // quits all currently running SoundEffects
                 Sounds.StopMusic();
-                //Sounds.PlayGameMusic(true);
+                Sounds.PlayMenuMusicSound(true);
+            }
+            else if (gameMode == GameMode.Play && gameMode != previousMenu)
+            {
+                //Console.WriteLine("gameMode:Play, previousMenu:Main");
+                Sounds.StopMusic();
+                Sounds.PlayGameMusic(true);
                 Sounds.PlayFinalDriveSound(1,true);
             }
-            if (gameMode == GameMode.Main && previousMenu == GameMode.Play)
+            else if (gameMode == GameMode.Main && previousMenu == GameMode.Play)
             {
-                Console.WriteLine("gameMode:Main, previousMenu:Play");
+                //Console.WriteLine("gameMode:Main, previousMenu:Play");
                 //Sounds.getSoundEffectInstance().Stop();
                 Sounds.StopMusic();
-                
+
                 //Sounds.PlayMenuMusicSound(true);
                 Sounds.quitAllSEI(); // quits all currently running SoundEffects
             }
+            
+            /*if (gameMode != previousMenu)
+            {
+                Sounds.PlayHornSound(false);
+            }*/
+
+            // Allows the game to exit
+            if (gameMode == GameMode.Exit && ((keyboard.IsKeyDown(Keys.Enter) ||
+                gamePad.Buttons.A == ButtonState.Pressed)))
+            {
+                this.Exit();
+                //Console.Write("Exit Game");
+            }
+
             Sounds.Update();
 
             //Updating the car, which calls its corresponding input-update
             actCart.Update();
-
-            ////Rotate the car  
-            //if(actCart.GetController().GetDirection() < 0)
-            //{
-            //    Vector3 tempVector = actCart.GetDirection();
-            //    tempVector.Normalize();
-            //    actCart.SetDirection(tempVector);
-
-            //    double angle = System.Math.Atan2(actCart.GetDirection().Z, actCart.GetDirection().X) -0.03;
-            //    actCart.SetDirection(new Vector3((float)System.Math.Cos(angle), 0.0f, (float)System.Math.Sin(angle)));
-            //}
-            //else if (actCart.GetController().GetDirection() > 0)
-            //{
-            //    Vector3 tempVector = actCart.GetDirection();
-            //    tempVector.Normalize();
-            //    actCart.SetDirection(tempVector);
-
-            //    double angle = System.Math.Atan2(actCart.GetDirection().Z, actCart.GetDirection().X) + 0.03;
-            //    actCart.SetDirection(new Vector3((float)System.Math.Cos(angle), 0.0f, (float)System.Math.Sin(angle)));
-            //}
-
-            ////Change Car Position
-            //if (actCart.GetController().GetAccelleration() > 0)
-            //{
-            //    float speedFactor = 0.2f;
-            //    actCart.SetPosition(actCart.GetPosition() + new Vector3((float)actCart.GetDirection().X * speedFactor, (float)actCart.GetDirection().Y * speedFactor, (float)actCart.GetDirection().Z * speedFactor));
-            //}
 
             // Updating the game physic
             physics.Update(gameTime);
@@ -296,14 +284,6 @@ namespace ACT2009
             //    gameMode = GameMode.Pause;
             //    this.game = this.pauseShadow;
             //}
-
-            // Allows the game to exit
-            if (gameMode == GameMode.Exit && ((keyboard.IsKeyDown(Keys.Enter) ||
-                gamePad.Buttons.A == ButtonState.Pressed)))
-            {
-                this.Exit();
-                Console.Write("Exit Game");
-            }
 
             base.Update(gameTime);
         }

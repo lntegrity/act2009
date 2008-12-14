@@ -51,14 +51,14 @@ namespace ACT2009
             car = Content.Load<Model>("Models/Generic Cart");
             landscape = Content.Load<Model>("Models/fhhof");
 
-            if (USE_SMALL_SKIE_BACKGROUND)
+            /*if (USE_SMALL_SKIE_BACKGROUND)
             {
                 skies = Content.Load<Texture2D>("Textures/skies_small");
             }
             else
-            {
+            {*/
                 skies = Content.Load<Texture2D>("Textures/skies");
-            }
+            //}
             skiesFrom = new Rectangle(1000, 200, 1600, 400);
             skiesTo = new Rectangle(0, 0, 800, 200);
 
