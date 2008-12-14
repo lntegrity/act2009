@@ -243,11 +243,11 @@ namespace ACT2009
             // Fahren wir vorwärts oder rückwärts, oder gar nicht?
             if (oldSpeed > 0)
             {
-                Angle = InputCarDirection * -0.8f * t;
+                Angle = InputCarDirection * -1.2f * t;
             }
             else if (oldSpeed < 0)
             {
-                Angle = InputCarDirection * 0.8f * t;
+                Angle = InputCarDirection * 1.2f * t;
             }
             else
             {
