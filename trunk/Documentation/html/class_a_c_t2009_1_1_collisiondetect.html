@@ -31,20 +31,87 @@
 <a href="class_a_c_t2009_1_1_collisiondetect-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="0a454b0fd4558f8bf235b0e97cb96ea7"></a><!-- doxytag: member="ACT2009::Collisiondetect::Collisiondetect" ref="0a454b0fd4558f8bf235b0e97cb96ea7" args="(Car c, ModelPositions innerBorder, ModelPositions outerBorder)" -->
-&nbsp;</td><td class="memItemRight" valign="bottom"><b>Collisiondetect</b> (<a class="el" href="class_a_c_t2009_1_1_car.html">Car</a> c, <a class="el" href="class_a_c_t2009_1_1_model_positions.html">ModelPositions</a> innerBorder, <a class="el" href="class_a_c_t2009_1_1_model_positions.html">ModelPositions</a> outerBorder)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_c_t2009_1_1_collisiondetect.html#4eb9459384c938135b06126179ba0e18">Collisiondetect</a> (ref <a class="el" href="class_a_c_t2009_1_1_car.html">Car</a> c, ref <a class="el" href="class_a_c_t2009_1_1_model_positions.html">ModelPositions</a> innerBorder, ref <a class="el" href="class_a_c_t2009_1_1_model_positions.html">ModelPositions</a> outerBorder)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="61c94a024467d2053ee15991bdf96989"></a><!-- doxytag: member="ACT2009::Collisiondetect::detectCollision" ref="61c94a024467d2053ee15991bdf96989" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>detectCollision</b> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initializes the collisiondetection with needed data for later collisionchecks.  <a href="#4eb9459384c938135b06126179ba0e18"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_c_t2009_1_1_collisiondetect.html#61c94a024467d2053ee15991bdf96989">detectCollision</a> ()</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">tests every position-pair of inner and outer border if it collided with a car-constraint  <a href="#61c94a024467d2053ee15991bdf96989"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 This class handles the collisiondetection to find when the car crosses the borders of the track. 
 <p>
+<hr><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" name="4eb9459384c938135b06126179ba0e18"></a><!-- doxytag: member="ACT2009::Collisiondetect::Collisiondetect" ref="4eb9459384c938135b06126179ba0e18" args="(ref Car c, ref ModelPositions innerBorder, ref ModelPositions outerBorder)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ACT2009::Collisiondetect::Collisiondetect           </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="class_a_c_t2009_1_1_car.html">Car</a>&nbsp;</td>
+          <td class="paramname"> <em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="class_a_c_t2009_1_1_model_positions.html">ModelPositions</a>&nbsp;</td>
+          <td class="paramname"> <em>innerBorder</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="class_a_c_t2009_1_1_model_positions.html">ModelPositions</a>&nbsp;</td>
+          <td class="paramname"> <em>outerBorder</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Initializes the collisiondetection with needed data for later collisionchecks. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>c</em>&nbsp;</td><td><a class="el" href="class_a_c_t2009_1_1_car.html" title="This class contains all Car-dependant data to be handled by multiple parts of the...">Car</a> with current position</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>innerBorder</em>&nbsp;</td><td>Border at the inside</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>outerBorder</em>&nbsp;</td><td>Boder at the outside</td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="61c94a024467d2053ee15991bdf96989"></a><!-- doxytag: member="ACT2009::Collisiondetect::detectCollision" ref="61c94a024467d2053ee15991bdf96989" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ACT2009::Collisiondetect::detectCollision           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+tests every position-pair of inner and outer border if it collided with a car-constraint 
+<p>
+
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>Collisiondetect.cs</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Dec 14 23:37:50 2008 for ACT2009 by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Dec 15 00:57:01 2008 for ACT2009 by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.7.1 </small></address>
 </body>

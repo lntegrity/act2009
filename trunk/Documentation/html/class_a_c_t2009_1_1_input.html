@@ -31,29 +31,114 @@
 <a href="class_a_c_t2009_1_1_input-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="d72859f79adbac92ff85865368165ab8"></a><!-- doxytag: member="ACT2009::Input::Update" ref="d72859f79adbac92ff85865368165ab8" args="()" -->
-void&nbsp;</td><td class="memItemRight" valign="bottom"><b>Update</b> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_c_t2009_1_1_input.html#d72859f79adbac92ff85865368165ab8">Update</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="35a53cd69b227af9c987cdcaa11a3d48"></a><!-- doxytag: member="ACT2009::Input::GetAccelleration" ref="35a53cd69b227af9c987cdcaa11a3d48" args="()" -->
-float&nbsp;</td><td class="memItemRight" valign="bottom"><b>GetAccelleration</b> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Updating the <a class="el" href="class_a_c_t2009_1_1_input.html" title="This class provides the current user-orders through the controller and/or keyboard...">Input</a>.  <a href="#d72859f79adbac92ff85865368165ab8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_c_t2009_1_1_input.html#35a53cd69b227af9c987cdcaa11a3d48">GetAccelleration</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="c57bae79a6493a678ac42a15ba10ce62"></a><!-- doxytag: member="ACT2009::Input::GetBrake" ref="c57bae79a6493a678ac42a15ba10ce62" args="()" -->
-float&nbsp;</td><td class="memItemRight" valign="bottom"><b>GetBrake</b> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns accelleration between -1 (full reverse) and 1 (full forward)  <a href="#35a53cd69b227af9c987cdcaa11a3d48"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_c_t2009_1_1_input.html#c57bae79a6493a678ac42a15ba10ce62">GetBrake</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="c9a78a9b37dbb3cd17f6400963c35aaa"></a><!-- doxytag: member="ACT2009::Input::GetDirection" ref="c9a78a9b37dbb3cd17f6400963c35aaa" args="()" -->
-float&nbsp;</td><td class="memItemRight" valign="bottom"><b>GetDirection</b> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns braking between 0 (none) and 1 (full)  <a href="#c57bae79a6493a678ac42a15ba10ce62"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">float&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_c_t2009_1_1_input.html#c9a78a9b37dbb3cd17f6400963c35aaa">GetDirection</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="3ba2ef226fc635a170799a8d3d771fec"></a><!-- doxytag: member="ACT2009::Input::GetPause" ref="3ba2ef226fc635a170799a8d3d771fec" args="()" -->
-bool&nbsp;</td><td class="memItemRight" valign="bottom"><b>GetPause</b> ()</td></tr>
-
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">returns directions to steer right or left  <a href="#c9a78a9b37dbb3cd17f6400963c35aaa"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 This class provides the current user-orders through the controller and/or keyboard the car should follow. 
 <p>
+<hr><h2>Member Function Documentation</h2>
+<a class="anchor" name="35a53cd69b227af9c987cdcaa11a3d48"></a><!-- doxytag: member="ACT2009::Input::GetAccelleration" ref="35a53cd69b227af9c987cdcaa11a3d48" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ACT2009::Input::GetAccelleration           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns accelleration between -1 (full reverse) and 1 (full forward) 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>direction of accelleration</dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="c57bae79a6493a678ac42a15ba10ce62"></a><!-- doxytag: member="ACT2009::Input::GetBrake" ref="c57bae79a6493a678ac42a15ba10ce62" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ACT2009::Input::GetBrake           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns braking between 0 (none) and 1 (full) 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>returns the intensity of braking from none (0) to full (1)</dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="c9a78a9b37dbb3cd17f6400963c35aaa"></a><!-- doxytag: member="ACT2009::Input::GetDirection" ref="c9a78a9b37dbb3cd17f6400963c35aaa" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ACT2009::Input::GetDirection           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+returns directions to steer right or left 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>returns steering to the right (1), to the front (0) or to the left (-1)</dd></dl>
+
+</div>
+</div><p>
+<a class="anchor" name="d72859f79adbac92ff85865368165ab8"></a><!-- doxytag: member="ACT2009::Input::Update" ref="d72859f79adbac92ff85865368165ab8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ACT2009::Input::Update           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Updating the <a class="el" href="class_a_c_t2009_1_1_input.html" title="This class provides the current user-orders through the controller and/or keyboard...">Input</a>. 
+<p>
+
+</div>
+</div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>Input.cs</ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Dec 14 23:37:50 2008 for ACT2009 by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Mon Dec 15 00:57:01 2008 for ACT2009 by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.7.1 </small></address>
 </body>
