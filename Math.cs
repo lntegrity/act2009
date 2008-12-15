@@ -12,10 +12,10 @@ namespace ACT2009
     public static class Math
     {
         /// <summary>
-        /// Berechnung von km/h in m/s
+        /// converts km/h to m/s
         /// </summary>
-        /// <param name="kmh">Geschwindigkeit in km/h</param>
-        /// <returns>Geschwindigkeit in m/s</returns>
+        /// <param name="kmh">Speed in km/h</param>
+        /// <returns>Speed in m/s</returns>
         public static float MeterPerSecond(float kmh)
         {
             float ms = (kmh * 1000)/3600;
@@ -23,10 +23,10 @@ namespace ACT2009
         }
 
         /// <summary>
-        /// Berechnung von m/s in km/h
+        /// converts m/s to km/h
         /// </summary>
-        /// <param name="ms">Geschwindigkeit in m/s</param>
-        /// <returns>Geschwindigkeit in km/h</returns>
+        /// <param name="ms">Speed in m/s</param>
+        /// <returns>Speed in km/h</returns>
         public static float KMperHour(float ms)
         {
             float kmh = (ms * 3600) / 1000;
@@ -34,11 +34,11 @@ namespace ACT2009
         }
 
         /// <summary>
-        /// Berechnet den Winkel zwischen zwei Vektoren
+        /// Calculates angle between two vectors
         /// </summary>
-        /// <param name="vector1">Erster Vektor</param>
-        /// <param name="vector2">Zweiter Vektor</param>
-        /// <returns>Winkel in Winkelgrad</returns>
+        /// <param name="vector1">vector one</param>
+        /// <param name="vector2">vector two</param>
+        /// <returns>angle between the vectors</returns>
         public static double getAngle(Vector3 vector1, Vector3 vector2)
         {
             double angle;
