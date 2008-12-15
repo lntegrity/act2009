@@ -317,12 +317,12 @@ namespace ACT2009
                 display.Draw();
 
                 // Draw Objects on the Landscape
-                innerBorder.DrawObjects(display);
-                outerBorder.DrawObjects(display);
-                carFord.DrawObjects(display);
-                carGolf.DrawObjects(display);
-                trees.DrawObjects(display);
-                bushes.DrawObjects(display);
+                innerBorder.DrawObjects(ref display);
+                outerBorder.DrawObjects(ref display);
+                carFord.DrawObjects(ref display);
+                carGolf.DrawObjects(ref display);
+                trees.DrawObjects(ref display);
+                bushes.DrawObjects(ref display);
 
                 play.PlayDraw(spriteBatch);                
                 
