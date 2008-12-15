@@ -27,7 +27,7 @@ namespace ACT2009
         /// </summary>
         /// <param name="c">Car with current position</param>
         /// <param name="innerBorder">Border at the inside</param>
-        /// <param name="outerBorder">Boder at the outside</param>
+        /// <param name="outerBorder">Border at the outside</param>
         public Collisiondetect(ref Car c, ref ModelPositions innerBorder, ref ModelPositions outerBorder)
         {
             car = c;
