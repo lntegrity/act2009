@@ -31,10 +31,14 @@ namespace ACT2009
     /// </summary>
     public class Sounds
     {
-        public static ContentManager Content;       
+        ///<summary>ContentManager of the Game</summary>
+        public static ContentManager Content;           
+        /// <summary>SoundEffectInstance of FinalDrive</summary>
         public static SoundEffectInstance FDsei;
-        public static SoundEffectInstance Bsei;
-        public static SoundEffectInstance BangSEI;
+        /// <summary>SoundEffectInstance of Brake</summary>
+        public static SoundEffectInstance Bsei;         
+        /// <summary>SoundEffectInstance of Bang</summary>
+        public static SoundEffectInstance BangSEI;      
 
 
         /// <summary>
